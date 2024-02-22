@@ -1,7 +1,16 @@
-
-
-# Awesome Open Source Data Engineering Ecosystem [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome Open Source Data Engineering [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 A curated list of open source tools used in analytical stacks and data engineering ecosystem 
+
+## Table of contents
+- [Storage Systems](https://github.com/pracdata/awesome-open-source-data-engineering?tab=readme-ov-file#storage-systems)
+- [Data Lake Platform](https://github.com/pracdata/awesome-open-source-data-engineering?tab=readme-ov-file#data-lake-platform)
+- [Data Integration](https://github.com/pracdata/awesome-open-source-data-engineering?tab=readme-ov-file#data-integration)
+- [Data Processing & Computation](https://github.com/pracdata/awesome-open-source-data-engineering?tab=readme-ov-file#data-processing-and-computation)
+- [Workflow Management & DataOps](https://github.com/pracdata/awesome-open-source-data-engineering?tab=readme-ov-file#workflow-management--dataops)
+- [Data Infrastructure](https://github.com/pracdata/awesome-open-source-data-engineering?tab=readme-ov-file#data-infrastructure)
+- [Metadata Management](https://github.com/pracdata/awesome-open-source-data-engineering?tab=readme-ov-file#metadata-management)
+- [Analytics & Visualisation](https://github.com/pracdata/awesome-open-source-data-engineering?tab=readme-ov-file#analytics--visualisation)
+- [ML/AI Platform](https://github.com/pracdata/awesome-open-source-data-engineering?tab=readme-ov-file#mlai-platform)
 
 ## STORAGE SYSTEMS
 
@@ -125,7 +134,7 @@ A curated list of open source tools used in analytical stacks and data engineeri
 - [Apache Ozone](https://github.com/apache/ozone) - A scalable, redundant, and distributed object store for Apache Hadoop 
 - [Ceph](https://github.com/ceph/ceph) - A distributed object, block, and file storage platform
 - [Minio](https://github.com/minio/minio) - A high performance object storage being API compatible with Amazon S3 
-- 
+
 ### Serialisation Framework
 - [Apache Parquet](https://github.com/apache/parquet-format) - An efficient columnar binary storage format that supports nested data
 - [Apache Avro](https://github.com/apache/avro) - An efficient and fast row-based binary serialisation framework
@@ -321,7 +330,7 @@ A curated list of open source tools used in analytical stacks and data engineeri
 - [Cube](https://github.com/cube-js/cube) - A semantic layer for building data applications supporting popular databse engines
 - [Apache Linkis](https://github.com/apache/linkis) - A computation middleware to facilitate connection and orchestration between applications and data engines 
 
-## ML PLATFORM
+## ML/AI PLATFORM
 
 ### Vector Storage
 - [milvus](https://github.com/milvus-io/milvus) -  A cloud-native vector database, storage for AI applications 
