@@ -166,7 +166,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Kafka Connect](https://github.com/apache/kafka) - A streaming data integration framework and runtime on top of Apache Kafka supporting CDC
 - [Flink CDC Connectors](https://github.com/ververica/flink-cdc-connectors) - CDC Connectors for Apache Flink engine supporting different databases
 - [Brooklin](https://github.com/linkedin/brooklin) - A distributed platform for streaming data between various heterogeneous source and destination systems
-
+- [https://github.com/rudderlabs/rudder-server](RudderStack) - A headless Customer Data Platform to build data pipelines, open alternative to Segment
 
 ### Log & Event Collection
 - [CloudQuery](https://github.com/cloudquery/cloudquery) - An ETL tool for syncing data from cloud APIs to variety of supported destinations 
