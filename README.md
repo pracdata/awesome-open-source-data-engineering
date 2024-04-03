@@ -92,10 +92,11 @@ For more information about the above compiled landscape for 2024, please read th
 - [Quickwit](https://github.com/quickwit-oss/quickwit) - A fast cloud-native search engine for observability data
 
 ### Streaming Database
-- [RasingWave](https://github.com/risingwavelabs/risingwave) - A scalable Postgres for stream processing, analytics, and management
+- [RisingWave](https://github.com/risingwavelabs/risingwave) - A scalable Postgres for stream processing, analytics, and management
 - [Materialize](https://github.com/MaterializeInc/materialize) - A real-time data warehouse purpose-built for operational workloads
 - [EventStoreDB](https://github.com/EventStore/EventStore) - An event-native database designed for event sourcing and event-driven architectures
 - [KsqlDB](https://github.com/confluentinc/ksql) - A database for building stream processing applications on top of Apache Kafka
+- [Timeplus Proton](https://github.com/timeplus-io/proton) - A streaming SQL engine, fast and lightweight, powered by ClickHouse
 
 ### Time-Series Database
 - [Influxdb](https://github.com/influxdata/influxdb) - A scalable datastore for metrics, events, and real-time analytics
@@ -203,6 +204,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Benthos](https://github.com/benthosdev/benthos) - A high performance declarative stream processing engine 
 - [Akka](https://github.com/akka/akka) - A highly concurrent, distributed, message-driven processing system based on Actor Model 
 - [Bytewax](https://github.com/bytewax/bytewax) - A Python stream processing framework with a Rust distributed processing engine
+- [Timeplus Proton](https://github.com/timeplus-io/proton) - A streaming SQL engine, fast and lightweight, powered by ClickHouse
 
 ### Parallel Python Execution
 - [Vaex](https://github.com/vaexio/vaex) - A high performance Python library for  big tabular datasets.
