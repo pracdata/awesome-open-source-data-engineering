@@ -183,7 +183,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache Inlong](https://github.com/apache/Inlong) - An integration framework for supporting massive data, originally built at Tencent
 - [Meltano](https://github.com/meltano/meltano) - A declarative code-first data integration engine 
 - [Apache SeaTunnel](https://github.com/apache/seatunnel) - A high-performance, distributed data integration tool supporting vairous ingestion patterns
-- [Estuary Flow](https://github.com/estuary/flow) - a real-time ETL and data pipeline platform for quick data integration
+- [Estuary Flow](https://github.com/estuary/flow) - A real-time ETL and data pipeline platform for quick data integration
 - [dlt](https://github.com/dlt-hub/dlt) - A lightweight data integration library for Python-first data platforms
 
 ### CDC Tool
@@ -282,9 +282,9 @@ For more information about the above compiled landscape for 2024, please read th
 - [Maestro](https://github.com/Netflix/maestro) - A general-purpose workflow orchestrator developed by Netflix
 
 ### Job Scheduling
-- [Celery](https://github.com/celery/celery) - Distributed Task Queue system for Python
-- [DKron](https://github.com/distribworks/dkron) - Distributed, fault tolerant job scheduling system
-- [ApScheduler](https://github.com/agronholm/apscheduler/) - Advanced task scheduler and task queue system for Python
+- [Celery](https://github.com/celery/celery) - A distributed Task Queue system for Python
+- [DKron](https://github.com/distribworks/dkron) - A distributed, fault tolerant job scheduling system
+- [ApScheduler](https://github.com/agronholm/apscheduler/) - An advanced task scheduler and task queue system for Python
 
 ### Data Quality
 - [Data-diff](https://github.com/datafold/data-diff) - A tool for comparing tables within or across databases 
@@ -340,7 +340,7 @@ For more information about the above compiled landscape for 2024, please read th
 ### Monitoring Dashboard
 - [Grafana](https://github.com/grafana/grafana) - A popular open and composable observability and data visualization platform
 - [Kibana](https://github.com/elastic/kibana) - The visualistion and search dashboard for Elasticsearch
-- [RConsole](https://github.com/redpanda-data/console) - A UI for monitoring and managing Apache Kafka and Redpanda workloads.
+- [RConsole](https://github.com/redpanda-data/console) - A UI for monitoring and managing Apache Kafka and Redpanda workloads
 
 ### Log & Metrics Pipeline
 - [Fluentd](https://github.com/fluent/fluentd) - A metric collection, buffering and router service
@@ -389,7 +389,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [dash](https://github.com/plotly/dash) - A Python framework for building ML & data science web apps
 - [Vizro](https://github.com/mckinsey/vizro) - A toolkit for creating modular data visualization applications
 - [Mercury](https://github.com/mljar/mercury) - A tool to convert Jupyter Notebooks to web apps
-- [Query](https://github.com/quarylabs/quary) - A code-based BI solution
+- [Quary](https://github.com/quarylabs/quary) - A code-based BI solution
 
 ### Query & Collaboration
 - [Hue](https://github.com/cloudera/hue) - A query and data exploration tool with Hadoop ecosystem support, developed by Cloudera
