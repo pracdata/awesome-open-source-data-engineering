@@ -31,7 +31,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [OceanBase](https://github.com/oceanbase/oceanbase) - A scalable distributed relational database
 - [ShardingSphere](https://github.com/apache/shardingsphere) - A Distributed SQL transaction & query engine
 - [Neon](https://github.com/neondatabase/neon) - A serverless open-source alternative to AWS Aurora Postgres
-
+- [CrateDB](https://github.com/crate/crate) - A distributed and scalable PostgreSQL-compatible SQL database 
 ### Cache Store
 - [Redis](https://github.com/redis/redis) - A popular key-value based cache store
 - [Memcached](https://github.com/memcached/memcached) - A high performance multithreadedkey-value cache store
