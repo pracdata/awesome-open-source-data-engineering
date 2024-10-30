@@ -1,5 +1,5 @@
 # Awesome Open Source Data Engineering [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-A curated list of open source tools used in analytical stacks and data engineering ecosystem 
+A curated list of open source tools used in analytics platforms and data engineering ecosystem
 ![Open Source Data Engineering Landscape 2024](https://github.com/pracdata/awesome-open-source-data-engineering/assets/2711465/2a59a1a3-2f82-4e78-939e-2f9228b4892f)
 For more information about the above compiled landscape for 2024, please read the published blog post on [Substack](https://open.substack.com/pub/practicaldataengineering/p/open-source-data-engineering-landscape?r=23jwn&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true) or [Medium](https://alirezasadeghi1.medium.com/open-source-data-engineering-landscape-2024-8a56d23b7fdb)
 
@@ -31,7 +31,8 @@ For more information about the above compiled landscape for 2024, please read th
 - [OceanBase](https://github.com/oceanbase/oceanbase) - A scalable distributed relational database
 - [ShardingSphere](https://github.com/apache/shardingsphere) - A Distributed SQL transaction & query engine
 - [Neon](https://github.com/neondatabase/neon) - A serverless open-source alternative to AWS Aurora Postgres
-- [CrateDB](https://github.com/crate/crate) - A distributed and scalable PostgreSQL-compatible SQL database 
+- [CrateDB](https://github.com/crate/crate) - A distributed and scalable PostgreSQL-compatible SQL database
+
 ### Cache Store
 - [Redis](https://github.com/redis/redis) - A popular key-value based cache store
 - [Memcached](https://github.com/memcached/memcached) - A high performance multithreadedkey-value cache store
@@ -49,6 +50,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [CouchDB](https://github.com/apache/couchdb) - A Scalable document-oriented NoSQL database
 - [Couchbase](https://github.com/couchbase) - A modern cloud-native NoSQL distributed database
 - [FerretDB](https://github.com/FerretDB/FerretDB) - A truly Open Source MongoDB alternative!
+- [LowDB](https://github.com/typicode/lowdb) - A simple and fast JSON database 
 
 ### NoSQL Multi-model
 - [OrientDB](https://github.com/orientechnologies/orientdb) - A Multi-model DBMS supporting Graph, Document, Reactive, Full-Text and Geospatial models
@@ -70,6 +72,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [etcd](https://github.com/etcd-io/etcd) - A distributed reliable key-value store written in Go
 - [TiKV](https://github.com/tikv/tikv) - A distributed transactional key-value database, originally created to complement TiDB
 - [Immudb](https://github.com/codenotary/immudb) - A database with built-in cryptographic proof and verification
+- [Valkey](https://github.com/valkey-io/valkey) - A distributed key-value datastore forked from Redis
 
 ### Wide-column Key-value Store
 - [Apache Cassandra](https://github.com/apache/cassandra) - A highly-scalable LSM-Tree based partitioned row store
@@ -90,6 +93,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Meilisearch](https://github.com/meilisearch/meilisearch) - A fast search API with great integration support
 - [OpenSearch](https://github.com/opensearch-project/OpenSearch) - A community-driven, open source fork of Elasticsearch and Kibana
 - [Quickwit](https://github.com/quickwit-oss/quickwit) - A fast cloud-native search engine for observability data
+- [ParadeDB](https://github.com/paradedb/paradedb) - A search engine built on Postgres
 
 ### Streaming Database
 - [RisingWave](https://github.com/risingwavelabs/risingwave) - A scalable Postgres for stream processing, analytics, and management
@@ -106,12 +110,12 @@ For more information about the above compiled landscape for 2024, please read th
 - [QuestDB](https://github.com/questdb/questdb) - A time-series database for fast ingest and SQL queries
 - [TDEngine](https://github.com/taosdata/TDengine) - A high-performance, cloud native time-series database optimized for Internet of Things (IoT)
 - [KairosDB](https://github.com/kairosdb/kairosdb) - A scalable time series database written in Java
+- [GreptimeDB](https://github.com/GreptimeTeam/greptimedb) - A cloud-native, unified time series database for metrics, logs and events
 
 ### Columnar OLAP Database
 - [Apache Kudu](https://github.com/apache/kudu) -  A column-oriented data store for the Apache Hadoop ecosystem
 - [Greeenplum](https://github.com/greenplum-db/gpdb) -  A column-oriented massively parallel PostgreSQL for analytics
 - [MonetDB](https://github.com/MonetDB/MonetDB) - A high-performance columnar database originally developed by the CWI database research group
-- [DuckDB](https://github.com/duckdb/duckdb) - An in-process SQL OLAP Database Management System
 - [Databend](https://github.com/datafuselabs/databend) - An lastic, workload-aware cloud-native data warehouse built in Rust
 - [ByConity](https://github.com/ByConity/ByConity) - A cloud-native data warehouse forked from ClickHouse
 - [hydra](https://github.com/hydradatabase/hydra) - A fast column-oriented Postgres extension
@@ -123,6 +127,16 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache Kylin](https://github.com/apache/kylin) - A distributed OLAP engine designed to provide multi-dimensional analysis on Hadoop
 - [Apache Doris](https://github.com/apache/doris) - A high-performance and real-time analytical database based on MPP architecture
 - [StarRocks](https://github.com/StarRocks/StarRocks) -  A sub-second OLAP database supporting multi-dimensional analytics (Linux Foundation project)
+
+### In-process OLAP Engine
+- [DuckDB](https://github.com/duckdb/duckdb) - An in-process SQL OLAP Database Management System
+- [GlareDB](https://github.com/GlareDB/glaredb) - A SQL database for running analytics across distributed data
+- [Apache DataFusion](https://github.com/apache/datafusion) - An extensible query engine with SQL and Dataframe APIs
+- [chdb](https://github.com/chdb-io/chdb) - An in-process OLAP SQL Engine powered by ClickHouse
+
+### OLAP Extensions
+- [pg_duckdb](https://github.com/duckdb/pg_duckdb) - A Postgres extension that embeds DuckDB's analytics engine
+- [pg_analytics](https://github.com/paradedb/pg_analytics) - A DuckDB-powered analytics extension for Postgres
 
 
 ## DATA LAKE PLATFORM
@@ -136,19 +150,26 @@ For more information about the above compiled landscape for 2024, please read th
 ### Distributed Object Store
 - [Apache Ozone](https://github.com/apache/ozone) - A scalable, redundant, and distributed object store for Apache Hadoop 
 - [Ceph](https://github.com/ceph/ceph) - A distributed object, block, and file storage platform
-- [Minio](https://github.com/minio/minio) - A high performance object storage being API compatible with Amazon S3 
+- [Minio](https://github.com/minio/minio) - A high performance object storage being API compatible with Amazon S3
+- [Garage](https://git.deuxfleurs.fr/Deuxfleurs/garage) - A S3-compatible distributed object storage designed for self-hosting at a small-to-medium scale
 
 ### Serialisation Framework
 - [Apache Parquet](https://github.com/apache/parquet-format) - An efficient columnar binary storage format that supports nested data
 - [Apache Avro](https://github.com/apache/avro) - An efficient and fast row-based binary serialisation framework
-- [Apache ORC](https://github.com/apache/orc) - A self-describing type-aware columnar file format designed for Hadoop 
+- [Apache ORC](https://github.com/apache/orc) - A self-describing type-aware columnar file format designed for Hadoop
+- [Lance](https://github.com/lancedb/lance) - A modern columnar data format for ML and LLMs implemented in Rust
 
 ### Open Table Format
 - [Apache Hudi](https://github.com/apache/hudi) - An open table format desined to support incremental data ingestion on cloud and Hadoop
 - [Apache Iceberg](https://github.com/apache/iceberg) -  A high-performance table format for large analytic tables developed at Netflix
 - [Delta Lake](https://github.com/delta-io/delta) - A storage framework for building Lakehouse architecture developed by Databricks
 - [Apache Paimon](https://github.com/apache/incubator-paimon) - An Apache inclubating project to support streaming high-speed data ingestion
-- [OneTable](https://github.com/onetable-io/onetable) - A unified framework supporting interoperability across multiple open-source table formats
+- [Apache XTable](https://github.com/apache/incubator-xtable) - A unified framework supporting interoperability across multiple open-source table formats
+
+### Native Open Table Format Library
+- [Delta-rs](https://github.com/delta-io/delta-rs) - A native Rust library for Delta Lake, with bindings into Python
+- [PyIceberg](https://github.com/apache/iceberg-python) - A native Python library for interacting with Iceberg table format
+- [Hudi-rs](https://github.com/apache/hudi-rs)- A native Rust library for Apache Hudi, with bindings into Python
 
 
 ## DATA INTEGRATION
@@ -161,6 +182,8 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache Inlong](https://github.com/apache/Inlong) - An integration framework for supporting massive data, originally built at Tencent
 - [Meltano](https://github.com/meltano/meltano) - A declarative code-first data integration engine 
 - [Apache SeaTunnel](https://github.com/apache/seatunnel) - A high-performance, distributed data integration tool supporting vairous ingestion patterns
+- [Estuary Flow](https://github.com/estuary/flow) - a real-time ETL and data pipeline platform for quick data integration
+- [dlt](https://github.com/dlt-hub/dlt) - A lightweight data integration library for Python-first data platforms
 
 ### CDC Tool
 - [Debezium](https://github.com/debezium/debezium) - A change data capture framework supporting variety of databases
@@ -168,6 +191,14 @@ For more information about the above compiled landscape for 2024, please read th
 - [Flink CDC Connectors](https://github.com/ververica/flink-cdc-connectors) - CDC Connectors for Apache Flink engine supporting different databases
 - [Brooklin](https://github.com/linkedin/brooklin) - A distributed platform for streaming data between various heterogeneous source and destination systems
 - [RudderStack](https://github.com/rudderlabs/rudder-server) - A headless Customer Data Platform to build data pipelines, open alternative to Segment
+- [Artie Transfer](https://github.com/artie-labs/transfer) - A real-time CDC replication solution between OLTP and OLAP databases
+- [Dozer](https://github.com/getdozer/dozer) - A real-time CDC based data integration tool between various sources and sinks
+- [PeerDB](https://github.com/PeerDB-io/peerdb) - A CDC tool to replicate data from Postgres to data warehouses, queues and other storage
+
+### Data Migration
+- [DBmate](https://github.com/amacneil/dbmate) - A lightweight, framework-agnostic database migration tool.
+- [Ingestr](https://github.com/bruin-data/ingestr) - A CLI tool to copy data between any databases with a single command
+- [Sling](https://github.com/slingdata-io/sling-cli) - A CLI tool to transfer data from a source to target storage/database
 
 ### Log & Event Collection
 - [CloudQuery](https://github.com/cloudquery/cloudquery) - An ETL tool for syncing data from cloud APIs to variety of supported destinations 
@@ -175,6 +206,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [EventMesh](https://github.com/apache/eventmesh) - A serverless event middlewar for collecting and loading event data into various targets
 - [Apache Flume](https://github.com/apache/flume) - A scalable distributed log aggregation service
 - [Steampipe](https://github.com/turbot/steampipe) - A zero-ETL solution for getting data directly from APIs and services
+- [Jitsu](https://github.com/jitsucom/jitsu) - A fully-scriptable data ingestion engine for collecting event data
 
 ### Event Hub
 - [Apache Kafka](https://github.com/apache/kafka) - A highly scalable distributed event store and streaming platform
@@ -183,6 +215,9 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache RocketMQ](https://github.com/apache/rocketmq) - A a cloud native messaging and streaming platform
 - [Redpanda](https://github.com/redpanda-data/redpanda) - A high performance Kafka API compatible streaming data platform 
 - [Memphis](https://github.com/memphisdev/memphis) - A scalable data streaming platform for building event-driven applications
+
+### Reverse ETL
+- [Multiwoven](https://github.com/Multiwoven/multiwoven) - A Reverse ETL open source alternative to Hightouch and RudderStack
 
 
 ## DATA PROCESSING AND COMPUTATION
@@ -196,7 +231,6 @@ For more information about the above compiled landscape for 2024, please read th
 - [Hadoop MapReduce](https://github.com/apache/hadoop) - A  highly scalable distributed batch processing framework from Apache Hadoop project
 - [Apache Tez](https://github.com/apache/tez) - A distributed data processing pipeline built for Apache Hive and Hadoop
 
-
 ### Stream Processing
 - [Apache Flink](https://github.com/apache/flink) - A scalable high throughput stream processing framework 
 - [Apache Samza](https://github.com/apache/samza) - A distributed stream processing framework which uses Kafka and Hadoop, originally developed by LinkedIn
@@ -205,14 +239,26 @@ For more information about the above compiled landscape for 2024, please read th
 - [Akka](https://github.com/akka/akka) - A highly concurrent, distributed, message-driven processing system based on Actor Model 
 - [Bytewax](https://github.com/bytewax/bytewax) - A Python stream processing framework with a Rust distributed processing engine
 - [Timeplus Proton](https://github.com/timeplus-io/proton) - A streaming SQL engine, fast and lightweight, powered by ClickHouse
+- [FastStream](https://github.com/airtai/faststream) - A Python framework for interacting with event streams such as Apache Kafka
+- [Bento](https://github.com/warpstreamlabs/bento) - A stream processing engine from WarpStream Labs
 
-### Parallel Python Execution
-- [Vaex](https://github.com/vaexio/vaex) - A high performance Python library for  big tabular datasets.
-- [Dask](https://github.com/dask/dask) - A flexible parallel computing library for analytics
+### Python Processing Framework
 - [Polars](https://github.com/pola-rs/polars) - A multithreaded Dataframe with vectorized query engine, written in Rust
 - [PySpark](https://github.com/apache/spark) - An interface for Apache Spark in Python
-- [RAY](https://github.com/ray-project/ray) - A unified framework with distributed runtime for scaling python applications
+- [Vaex](https://github.com/vaexio/vaex) - A high performance Python library for  big tabular datasets.
 - [Apache Arrow](https://github.com/apache/arrow) - An efficient in-memory data format
+- [Ibis](https://github.com/ibis-project/ibis) - A portable Python dataframe library supporting many engine backends
+- [SQLFrame](https://github.com/eakmanrq/sqlframe) - A Spark DataFrame API compatible library for data transformation
+
+### Python Workflow Scaling
+- [Dask](https://github.com/dask/dask) - A flexible parallel computing library with task scheduling
+- [RAY](https://github.com/ray-project/ray) - A unified framework with distributed runtime for scaling Python applications
+- [Modin](https://github.com/modin-project/modin) - A library for scaling Pandas workflows to multi-threded execution
+- [Pandaral·lel](https://github.com/nalepae/pandarallel) - A library to parallelize Pandas operations on all available CPUs
+
+### SQL Toolkit
+- [SQLAlchemy](https://github.com/sqlalchemy/sqlalchemy) - A Python SQL toolkit and Object Relational Mapper
+- [SQLGlot](https://github.com/tobymao/sqlglot) - A Python SQL parser and transpiler
 
 
 ## WORKFLOW MANAGEMENT & DATAOPS
@@ -231,18 +277,32 @@ For more information about the above compiled landscape for 2024, please read th
 - [Mage.ai](https://github.com/mage-ai/mage-ai) - A platform for integrating, cheduling and managing data pipelines
 - [Temporal](https://github.com/temporalio/temporal) - A resilient workflow management system, originated as a fork of Uber's Cadence
 - [Windmill](https://github.com/windmill-labs/windmill) - A fast workflow engine, and open-source alternative to Airplane and Retool
+- [Maestro](https://github.com/Netflix/maestro) - A general-purpose workflow orchestrator developed by Netflix
+
+### Job Scheduling
+- [Celery](https://github.com/celery/celery) - Distributed Task Queue system for Python
+- [DKron](https://github.com/distribworks/dkron) - Distributed, fault tolerant job scheduling system
+- [ApScheduler](https://github.com/agronholm/apscheduler/) - Advanced task scheduler and task queue system for Python
 
 ### Data Quality
 - [Data-diff](https://github.com/datafold/data-diff) - A tool for comparing tables within or across databases 
 - [Great Expectations](https://github.com/great-expectations/great_expectations) - A data validation and profiling tool written in Python
+- [Deeque](https://github.com/awslabs/deequ) - A library based on Apache Spark for measuring data quality in large datasets
+- [Pandera](https://github.com/unionai-oss/pandera) - A light-weight, flexible, and expressive statistical data testing library
+- [Soda](https://github.com/sodadata/soda-core) - A CLI tool and Python library for data quality testing
 
 ### Data Versioning
 - [LakeFS](https://github.com/treeverse/lakeFS) - A data version control for data stored in data lakes
 - [Project Nessie](https://github.com/projectnessie/nessie) - A transactional Catalog for Data Lakes with Git-like semantics
+- [DVC](https://github.com/iterative/dvc) - A data version control tool for data and ML experiments
 
 ### Data Modeling
 - [dbt](https://github.com/dbt-labs/dbt-core) - A data modeling and transformation tool for data pipelines
-- [SQLMesh](https://github.com/TobikoData/sqlmesh) - A data transformation and modeling framework that is backwards compatible with dbt.
+- [SQLMesh](https://github.com/TobikoData/sqlmesh) - A data transformation and modeling framework that is backwards compatible with dbt
+
+### Pipeline Observability
+- [Elementry](https://github.com/elementary-data/elementary) - A dbt-native data observability solution to monitor data pipelines
+
 
 ## DATA INFRASTRUCTURE
 
@@ -298,15 +358,21 @@ For more information about the above compiled landscape for 2024, please read th
 - [Marquez](https://github.com/MarquezProject/marquez) - A metadata service for the collection, aggregation, and visualization of metadata
 - [ckan](https://github.com/ckan/ckan) - A data management system  for cataloging, managing and accessing data
 - [Open Metadata](https://github.com/open-metadata/OpenMetadata) - A unified platform for discovery and governance, using a central metadata repository
+- [ODD Platform](https://github.com/opendatadiscovery/odd-platform) - A data discovery and observability platform
 
 ### Open Standards
 - [Open Lineage](https://github.com/OpenLineage/OpenLineage) - An open standard for lineage metadata collection 
 - [Open Metadata](https://github.com/open-metadata/OpenMetadata) - A unified metadata platform providing open stadards for managing metadata
 - [Egeria](https://github.com/odpi/egeria) - Open metadata and governance standards to facilitate metadata exchange
 
-### Schema Service
+### Schema & Catalog Service
 - [Hive Metastore](https://github.com/apache/hive) - A popular schema management and metastore service as part of the Apache hive project
-- [Confluent Schema Registry](https://github.com/confluentinc/schema-registry) - A schema registry for Kafka, developed by Confluent 
+- [Confluent Schema Registry](https://github.com/confluentinc/schema-registry) - A schema registry for Kafka, developed by Confluent
+- [Apache Polaris](https://github.com/apache/polaris) - An interoperable, open source catalog for Apache Iceberg
+- [Unity Catalog](https://github.com/unitycatalog/unitycatalog) - A Universal catalog for Data Lakehouse formats and other data/AI assets
+- [Lakekeeper](https://github.com/lakekeeper/lakekeeper) - A Rust native Apache Iceberg REST Catalog
+- [OpenHouse](https://github.com/linkedin/openhouse) - A declarative catalog with data services for open Data Lakehouse
+
 
 ## ANALYTICS & VISUALISATION
 
@@ -314,13 +380,22 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache Superset](https://github.com/apache/superset) - A poular open source data visualization and data exploration platform 
 - [Metabase](https://github.com/metabase/metabase) - A simple data visualisation and exploration dashboard
 - [Redash](https://github.com/getredash/redash) - A tool to explore, query, visualize, and share data with many data source connectors
+- [Lightdash](https://github.com/lightdash/lightdash) - A self-service BI to turn dbt project into a full-stack BI platform
+
+## BI as Code (Web App)
 - [Streamlit](https://github.com/streamlit/streamlit) - A python tool to package and share data as web apps
+- [Evidence](https://github.com/evidence-dev/evidence) - A tool to build interactive data visualizations in pure SQL and markdown
+- [dash](https://github.com/plotly/dash) - A Python framework for building ML & data science web apps
+- [Vizro](https://github.com/mckinsey/vizro) - A toolkit for creating modular data visualization applications
+- [Mercury](https://github.com/mljar/mercury) - A tool to convert Jupyter Notebooks to web apps
+- [Query](https://github.com/quarylabs/quary) - A code-based BI solution
 
 ### Query & Collaboration
 - [Hue](https://github.com/cloudera/hue) - A query and data exploration tool with Hadoop ecosystem support, developed by Cloudera
 - [Apache Zeppelin](https://github.com/apache/zeppelin) - A web-base Notebook for interactive data analytics and collaboration for Hadoop
 - [Querybook](https://github.com/pinterest/querybook) - A simple query and notebook UI developed by Pinterest
 - [Jupyter](https://github.com/jupyter/notebook) - A popular interactive web-based notebook application
+- [Datasette](https://github.com/simonw/datasette) - A tool for exploring and publishing data 
 
 ### MPP Query Engine
 - [Apache Hive](https://github.com/apache/hive) - A data warehousing and MPP engine on top of Hadoop
@@ -332,7 +407,11 @@ For more information about the above compiled landscape for 2024, please read th
 ### Semantic Layer
 - [Alluxio](https://github.com/Alluxio/alluxio) - A data orchestration and virtual distributed storage system
 - [Cube](https://github.com/cube-js/cube) - A semantic layer for building data applications supporting popular databse engines
-- [Apache Linkis](https://github.com/apache/linkis) - A computation middleware to facilitate connection and orchestration between applications and data engines 
+- [Apache Linkis](https://github.com/apache/linkis) - A computation middleware to facilitate connection and orchestration between applications and data engines
+
+### Data Sharing
+- [delta-sharing](https://github.com/delta-io/delta-sharing) - An open protocol for secure real-time exchange of large datasets
+
 
 ## ML/AI PLATFORM
 
@@ -358,3 +437,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Determined AI](https://github.com/determined-ai/determined) - An ML platform that simplifies distributed training, tuning and experiment tracking
 - [RAY](https://github.com/ray-project/ray) - A unified framework for scaling AI and Python applications
 - [kubeflow](https://github.com/kubeflow/kubeflow) - A cloud-native platform for ML operations - pipelines, training and deployment
+- [Haystack](https://github.com/deepset-ai/haystack) - AI orchestration framework to build customizable, production-ready LLM applications
+- [Kedro](https://github.com/kedro-org/kedro) - A toolbox and framework for building production-ready data science and ML workflows
+- [Pachyderm](https://github.com/pachyderm/pachyderm) - A calable ML and Data Science data processing workflow management platform
+- [Superduper](https://github.com/superduper-io/superduper) - a Python based framework for building AI-data workflows and applications
