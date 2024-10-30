@@ -189,6 +189,7 @@ For more information about the above compiled landscape for 2024, please read th
 ### CDC Tool
 - [Debezium](https://github.com/debezium/debezium) - A change data capture framework supporting variety of databases
 - [Kafka Connect](https://github.com/apache/kafka) - A streaming data integration framework and runtime on top of Apache Kafka supporting CDC
+- [Redpanda Conenct](https://github.com/redpanda-data/connect) - A data streaming and integration framework on top of Redpanda
 - [Flink CDC Connectors](https://github.com/ververica/flink-cdc-connectors) - CDC Connectors for Apache Flink engine supporting different databases
 - [Brooklin](https://github.com/linkedin/brooklin) - A distributed platform for streaming data between various heterogeneous source and destination systems
 - [RudderStack](https://github.com/rudderlabs/rudder-server) - A headless Customer Data Platform to build data pipelines, open alternative to Segment
