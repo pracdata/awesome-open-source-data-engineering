@@ -235,6 +235,7 @@ For more information about the above compiled landscape for 2024, please read th
 ### Data Quality
 - [Data-diff](https://github.com/datafold/data-diff) - A tool for comparing tables within or across databases 
 - [Great Expectations](https://github.com/great-expectations/great_expectations) - A data validation and profiling tool written in Python
+- [DataKitchen Open Source Data Observability](https://docs.datakitchen.io/articles/?readerUiPreview=1#!open-source-data-observability/data-observability-overview) - End to end Data Journey Observability plus data profiling, anomaly detection, and auto created data quality validation tests.  With UI. Apache 2.0 license
 
 ### Data Versioning
 - [LakeFS](https://github.com/treeverse/lakeFS) - A data version control for data stored in data lakes
