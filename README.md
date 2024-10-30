@@ -165,6 +165,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Delta Lake](https://github.com/delta-io/delta) - A storage framework for building Lakehouse architecture developed by Databricks
 - [Apache Paimon](https://github.com/apache/incubator-paimon) - An Apache inclubating project to support streaming high-speed data ingestion
 - [Apache XTable](https://github.com/apache/incubator-xtable) - A unified framework supporting interoperability across multiple open-source table formats
+- [OpenHouse](https://github.com/linkedin/openhouse) - A declarative catalog with data services for open Data Lakehouse formats
 
 ### Native Open Table Format Library
 - [Delta-rs](https://github.com/delta-io/delta-rs) - A native Rust library for Delta Lake, with bindings into Python
@@ -371,7 +372,6 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache Polaris](https://github.com/apache/polaris) - An interoperable, open source catalog for Apache Iceberg
 - [Unity Catalog](https://github.com/unitycatalog/unitycatalog) - A Universal catalog for Data Lakehouse formats and other data/AI assets
 - [Lakekeeper](https://github.com/lakekeeper/lakekeeper) - A Rust native Apache Iceberg REST Catalog
-- [OpenHouse](https://github.com/linkedin/openhouse) - A declarative catalog with data services for open Data Lakehouse
 
 
 ## ANALYTICS & VISUALISATION
@@ -404,10 +404,11 @@ For more information about the above compiled landscape for 2024, please read th
 - [Trino](https://github.com/trinodb/trino) - The former PrestoSQL distributed SQL query engine
 - [Apache Drill](https://github.com/apache/drill) - A distributed MPP query engine against NoSQL and Hadoop data storage systems
 
-### Semantic Layer
+### Semantic & Middleware Layer
 - [Alluxio](https://github.com/Alluxio/alluxio) - A data orchestration and virtual distributed storage system
 - [Cube](https://github.com/cube-js/cube) - A semantic layer for building data applications supporting popular databse engines
 - [Apache Linkis](https://github.com/apache/linkis) - A computation middleware to facilitate connection and orchestration between applications and data engines
+- [Apache Gluten](https://github.com/apache/incubator-gluten) - A middle layer for offloading JVM-based SQL engines execution to native engines
 
 ### Data Sharing
 - [delta-sharing](https://github.com/delta-io/delta-sharing) - An open protocol for secure real-time exchange of large datasets
