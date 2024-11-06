@@ -158,6 +158,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache Avro](https://github.com/apache/avro) - An efficient and fast row-based binary serialisation framework
 - [Apache ORC](https://github.com/apache/orc) - A self-describing type-aware columnar file format designed for Hadoop
 - [Lance](https://github.com/lancedb/lance) - A modern columnar data format for ML and LLMs implemented in Rust
+- [Vortex](https://github.com/spiraldb/vortex) - A highly extensible and fast columnar file format
 
 ### Open Table Format
 - [Apache Hudi](https://github.com/apache/hudi) - An open table format desined to support incremental data ingestion on cloud and Hadoop
