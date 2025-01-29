@@ -64,7 +64,9 @@ For more information about the above compiled landscape for 2024, please read th
 - [HugeGraph](https://github.com/apache/incubator-hugegraph) - A fast-speed and highly-scalable graph database
 - [NebulaGraph](https://github.com/vesoft-inc/nebula) - A distributed, horizontal scalability, fast open-source graph database
 - [Cayley](https://github.com/cayleygraph/cayley) - Inspired by the graph database behind Google's Knowledge Graph
-- [Dgraph](https://github.com/dgraph-io/dgraph) -  A horizontally scalable and distributed GraphQL database with a graph backend
+- [Dgraph](https://github.com/dgraph-io/dgraph) - A horizontally scalable and distributed GraphQL database with a graph backend
+- [Apache Age](https://github.com/apache/age) - A graph database as an extension to PostgreSQL
+- [FalkorDB](https://github.com/FalkorDB/falkordb) - A graph database that uses GraphBLAS under the hood, tailored for LLMs
 
 ### Distributed Key-value Store
 - [Riak](https://github.com/basho/riak) - A decentralized key-value datastore from Basho Technologies
@@ -73,6 +75,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [TiKV](https://github.com/tikv/tikv) - A distributed transactional key-value database, originally created to complement TiDB
 - [Immudb](https://github.com/codenotary/immudb) - A database with built-in cryptographic proof and verification
 - [Valkey](https://github.com/valkey-io/valkey) - A distributed key-value datastore forked from Redis
+- [Apache Kvrocks](https://github.com/apache/kvrocks) - A distributed key-value database that uses RocksDB as storage engine 
 
 ### Wide-column Key-value Store
 - [Apache Cassandra](https://github.com/apache/cassandra) - A highly-scalable LSM-Tree based partitioned row store
@@ -101,6 +104,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [EventStoreDB](https://github.com/EventStore/EventStore) - An event-native database designed for event sourcing and event-driven architectures
 - [KsqlDB](https://github.com/confluentinc/ksql) - A database for building stream processing applications on top of Apache Kafka
 - [Timeplus Proton](https://github.com/timeplus-io/proton) - A streaming SQL engine, fast and lightweight, powered by ClickHouse
+- [Fluss](https://github.com/alibaba/fluss) - A streaming storage serving as the real-time data layer for Lakehouse architectures
 
 ### Time-Series Database
 - [Influxdb](https://github.com/influxdata/influxdb) - A scalable datastore for metrics, events, and real-time analytics
@@ -111,6 +115,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [TDEngine](https://github.com/taosdata/TDengine) - A high-performance, cloud native time-series database optimized for Internet of Things (IoT)
 - [KairosDB](https://github.com/kairosdb/kairosdb) - A scalable time series database written in Java
 - [GreptimeDB](https://github.com/GreptimeTeam/greptimedb) - A cloud-native, unified time series database for metrics, logs and events
+- [HoraeDB](https://github.com/apache/horaedb) - A distributed, cloud native time-series database
 
 ### Columnar OLAP Database
 - [Apache Kudu](https://github.com/apache/kudu) -  A column-oriented data store for the Apache Hadoop ecosystem
@@ -133,11 +138,13 @@ For more information about the above compiled landscape for 2024, please read th
 - [GlareDB](https://github.com/GlareDB/glaredb) - A SQL database for running analytics across distributed data
 - [Apache DataFusion](https://github.com/apache/datafusion) - An extensible query engine with SQL and Dataframe APIs
 - [chdb](https://github.com/chdb-io/chdb) - An in-process OLAP SQL Engine powered by ClickHouse
+- [SlateDB](https://github.com/slatedb/slatedb) - A cloud-native embedded storage engine built on object storage
 
 ### OLAP Extensions
 - [pg_duckdb](https://github.com/duckdb/pg_duckdb) - A Postgres extension that embeds DuckDB's analytics engine
 - [pg_analytics](https://github.com/paradedb/pg_analytics) - A DuckDB-powered analytics extension for Postgres
-
+- [pg_mooncake](https://github.com/Mooncake-Labs/pg_mooncake) - A columnar storage extension for Postres based on DuckDB
+- [pg_parquet](https://github.com/CrunchyData/pg_parquet) - A Postgres extension for reading and writing data lake Parquet files
 
 ## DATA LAKE PLATFORM
 
@@ -159,13 +166,13 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache ORC](https://github.com/apache/orc) - A self-describing type-aware columnar file format designed for Hadoop
 - [Lance](https://github.com/lancedb/lance) - A modern columnar data format for ML and LLMs implemented in Rust
 - [Vortex](https://github.com/spiraldb/vortex) - A highly extensible and fast columnar file format
+- [Arrow Feather](https://github.com/apache/arrow) - A portable file format for storing Arrow tables or data frames
 
 ### Open Table Format
 - [Apache Hudi](https://github.com/apache/hudi) - An open table format desined to support incremental data ingestion on cloud and Hadoop
 - [Apache Iceberg](https://github.com/apache/iceberg) -  A high-performance table format for large analytic tables developed at Netflix
 - [Delta Lake](https://github.com/delta-io/delta) - A storage framework for building Lakehouse architecture developed by Databricks
 - [Apache Paimon](https://github.com/apache/incubator-paimon) - An Apache inclubating project to support streaming high-speed data ingestion
-- [Apache XTable](https://github.com/apache/incubator-xtable) - A unified framework supporting interoperability across multiple open-source table formats
 - [OpenHouse](https://github.com/linkedin/openhouse) - A declarative catalog with data services for open Data Lakehouse formats
 
 ### Native Open Table Format Library
@@ -173,6 +180,9 @@ For more information about the above compiled landscape for 2024, please read th
 - [PyIceberg](https://github.com/apache/iceberg-python) - A native Python library for interacting with Iceberg table format
 - [Hudi-rs](https://github.com/apache/hudi-rs)- A native Rust library for Apache Hudi, with bindings into Python
 
+### Universal Lakehouse
+- [Apache XTable](https://github.com/apache/incubator-xtable) - A unified framework supporting interoperability across multiple open-source table formats
+- [Apache Amoro](https://github.com/apache/amoro) - A Lakehouse management system built on open data lake formats
 
 ## DATA INTEGRATION
 
@@ -191,7 +201,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Debezium](https://github.com/debezium/debezium) - A change data capture framework supporting variety of databases
 - [Kafka Connect](https://github.com/apache/kafka) - A streaming data integration framework and runtime on top of Apache Kafka supporting CDC
 - [Redpanda Conenct](https://github.com/redpanda-data/connect) - A data streaming and integration framework on top of Redpanda
-- [Flink CDC Connectors](https://github.com/ververica/flink-cdc-connectors) - CDC Connectors for Apache Flink engine supporting different databases
+- [Flink CDC](https://github.com/apache/flink-cdc) - CDC Connectors for Apache Flink engine supporting different databases
 - [Brooklin](https://github.com/linkedin/brooklin) - A distributed platform for streaming data between various heterogeneous source and destination systems
 - [RudderStack](https://github.com/rudderlabs/rudder-server) - A headless Customer Data Platform to build data pipelines, open alternative to Segment
 - [Artie Transfer](https://github.com/artie-labs/transfer) - A real-time CDC replication solution between OLTP and OLAP databases
@@ -218,6 +228,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache RocketMQ](https://github.com/apache/rocketmq) - A a cloud native messaging and streaming platform
 - [Redpanda](https://github.com/redpanda-data/redpanda) - A high performance Kafka API compatible streaming data platform 
 - [Memphis](https://github.com/memphisdev/memphis) - A scalable data streaming platform for building event-driven applications
+- [AutoMQ](https://github.com/AutoMQ/automq) - A a cloud-first alternative to Kafka using S3 as the main storage layer
 
 ### Reverse ETL
 - [Multiwoven](https://github.com/Multiwoven/multiwoven) - A Reverse ETL open source alternative to Hightouch and RudderStack
@@ -229,6 +240,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache Beam](https://github.com/apache/beam) - A unified programming model supporting execution on popular distributed processing backends 
 - [Apache Spark](https://github.com/apache/spark) - A unified analytics engine for large-scale data processing 
 - [Dinky](https://github.com/DataLinkDC/dinky) - A unified streaming & batch computation platform based on Apache Flink
+- [Feldora](https://github.com/feldera/feldera) - A unified incremental computation engine 
 
 ### Batch processing
 - [Hadoop MapReduce](https://github.com/apache/hadoop) - A  highly scalable distributed batch processing framework from Apache Hadoop project
@@ -243,7 +255,8 @@ For more information about the above compiled landscape for 2024, please read th
 - [Bytewax](https://github.com/bytewax/bytewax) - A Python stream processing framework with a Rust distributed processing engine
 - [Timeplus Proton](https://github.com/timeplus-io/proton) - A streaming SQL engine, fast and lightweight, powered by ClickHouse
 - [FastStream](https://github.com/airtai/faststream) - A Python framework for interacting with event streams such as Apache Kafka
-- [Bento](https://github.com/warpstreamlabs/bento) - A stream processing engine from WarpStream Labs
+- [Bento](https://github.com/warpstreamlabs/bento) - A stream processing engine from WarpStream Labs (forked from Benthos)
+- [Fluvio](https://github.com/infinyon/fluvio) - A lean distributed stream processing system written in Rust and web assembly
 
 ### Python Processing Framework
 - [Polars](https://github.com/pola-rs/polars) - A multithreaded Dataframe with vectorized query engine, written in Rust
@@ -252,12 +265,15 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache Arrow](https://github.com/apache/arrow) - An efficient in-memory data format
 - [Ibis](https://github.com/ibis-project/ibis) - A portable Python dataframe library supporting many engine backends
 - [SQLFrame](https://github.com/eakmanrq/sqlframe) - A Spark DataFrame API compatible library for data transformation
+- [Daft](https://github.com/Eventual-Inc/Daft) - A distributed query engine for large-scale data processing using Python or SQL
+- [cuDF](https://github.com/rapidsai/cudf) -  A GPU-accelerated pandas API dataFrame library 
 
 ### Python Workflow Scaling
 - [Dask](https://github.com/dask/dask) - A flexible parallel computing library with task scheduling
 - [RAY](https://github.com/ray-project/ray) - A unified framework with distributed runtime for scaling Python applications
 - [Modin](https://github.com/modin-project/modin) - A library for scaling Pandas workflows to multi-threded execution
 - [Pandaral·lel](https://github.com/nalepae/pandarallel) - A library to parallelize Pandas operations on all available CPUs
+
 
 ### SQL Toolkit
 - [SQLAlchemy](https://github.com/sqlalchemy/sqlalchemy) - A Python SQL toolkit and Object Relational Mapper
@@ -313,6 +329,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache Yarn](https://github.com/apache/hadoop) - The default Resource Scheduler for Apache Hadoop clusters
 - [Apache Mesos](https://github.com/apache/mesos) - A resource scheduling and cluster resource abstraction framework developed by Ph.D. students at UC Berkeley
 - [Kubernetes](https://github.com/kubernetes/kubernetes) - A production-grade container scheduling and management tool
+- [Apache YuniKorn](https://github.com/apache/yunikorn-core) - A light-weight, universal resource scheduler for container orchestrator systems
 - [Docker](https://github.com/docker) - The popular OS-level virtualization and containerization software
 
 ### Cluster Administration
@@ -341,7 +358,7 @@ For more information about the above compiled landscape for 2024, please read th
 ### Monitoring Dashboard
 - [Grafana](https://github.com/grafana/grafana) - A popular open and composable observability and data visualization platform
 - [Kibana](https://github.com/elastic/kibana) - The visualistion and search dashboard for Elasticsearch
-- [RConsole](https://github.com/redpanda-data/console) - A UI for monitoring and managing Apache Kafka and Redpanda workloads
+- [Redpanda Console](https://github.com/redpanda-data/console) - A UI for monitoring and managing Apache Kafka and Redpanda workloads
 
 ### Log & Metrics Pipeline
 - [Fluentd](https://github.com/fluent/fluentd) - A metric collection, buffering and router service
@@ -351,6 +368,8 @@ For more information about the above compiled landscape for 2024, please read th
 - [Vector](https://github.com/vectordotdev/vector) - A  high-performance, end-to-end (agent & aggregator) observability data pipeline
 - [StatsD](https://github.com/statsd/statsd) - A network daemon for collection, aggregation and routing of metrics
 
+### Cost Management
+- [OpenCost](https://github.com/opencost/opencost) - Cost monitoring for Kubernetes workloads and cloud costs
 
 ## METADATA MANAGEMENT
 
@@ -411,6 +430,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Cube](https://github.com/cube-js/cube) - A semantic layer for building data applications supporting popular databse engines
 - [Apache Linkis](https://github.com/apache/linkis) - A computation middleware to facilitate connection and orchestration between applications and data engines
 - [Apache Gluten](https://github.com/apache/incubator-gluten) - A middle layer for offloading JVM-based SQL engines execution to native engines
+- [Apache OpenDAL](https://github.com/apache/opendal) - An open data access Llyer that enables seamless interaction with diverse storage services
 
 ### Data Sharing
 - [delta-sharing](https://github.com/delta-io/delta-sharing) - An open protocol for secure real-time exchange of large datasets
@@ -444,3 +464,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Kedro](https://github.com/kedro-org/kedro) - A toolbox and framework for building production-ready data science and ML workflows
 - [Pachyderm](https://github.com/pachyderm/pachyderm) - A calable ML and Data Science data processing workflow management platform
 - [Superduper](https://github.com/superduper-io/superduper) - a Python based framework for building AI-data workflows and applications
+
+### LLMOps
+- [Dify](https://github.com/langgenius/dify) - LLM development platform nwith AI workflow, RAG pipeline and model management
+- [Cognee](https://github.com/topoteretes/cognee) - LLM Memory Engine for implementing LLM Workflows
