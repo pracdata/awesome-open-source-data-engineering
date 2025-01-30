@@ -81,7 +81,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache Cassandra](https://github.com/apache/cassandra) - A highly-scalable LSM-Tree based partitioned row store
 - [Apache Hbase](https://github.com/apache/hbase) - A distributed wide column-oriented store modeled after Google' Bigtable
 - [Scylla](https://github.com/scylladb/scylladb) - LSM-Tree based wide-column API-compatible with Apache Cassandra and Amazon DynamoDB
-- [Apache Accumulo]() - A distributed key-value store with scalable data storage and retrieval, on top of Hadoop
+- [Apache Accumulo](https://github.com/apache/accumulo) - A distributed key-value store with scalable data storage and retrieval, on top of Hadoop
 
 ### Embedded Key-value Store
 - [LevelDB](https://github.com/google/leveldb) | ⚠️ Inactive | - A fast key-value storage library written at Google
@@ -307,6 +307,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Deeque](https://github.com/awslabs/deequ) - A library based on Apache Spark for measuring data quality in large datasets
 - [Pandera](https://github.com/unionai-oss/pandera) - A light-weight, flexible, and expressive statistical data testing library
 - [Soda](https://github.com/sodadata/soda-core) - A CLI tool and Python library for data quality testing
+- [Pydantic](https://github.com/pydantic/pydantic) - A data validation library using Python type hints 
 
 ### Data Versioning
 - [LakeFS](https://github.com/treeverse/lakeFS) - A data version control for data stored in data lakes
@@ -414,6 +415,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache Zeppelin](https://github.com/apache/zeppelin) - A web-base Notebook for interactive data analytics and collaboration for Hadoop
 - [Querybook](https://github.com/pinterest/querybook) - A simple query and notebook UI developed by Pinterest
 - [Jupyter](https://github.com/jupyter/notebook) - A popular interactive web-based notebook application
+- [IPython](https://github.com/ipython/ipython) - An enhanced interactive Python shell for data analysis
 - [Datasette](https://github.com/simonw/datasette) - A tool for exploring and publishing data 
 
 ### MPP Query Engine
@@ -466,3 +468,5 @@ For more information about the above compiled landscape for 2024, please read th
 - [Haystack](https://github.com/deepset-ai/haystack) - AI orchestration framework to build customizable, production-ready LLM applications
 - [Superduper](https://github.com/superduper-io/superduper) - a Python based framework for building AI-data workflows and applications
 - [Cognee](https://github.com/topoteretes/cognee) - LLM Memory Engine for implementing LLM Workflows
+- [vLLM](https://github.com/vllm-project/vllm) - A high-throughput and memory-efficient inference and serving engine for LLMs
+
