@@ -41,20 +41,20 @@ For more information about the above compiled landscape for 2024, please read th
 ### In-memory SQL Database
 - [Apache Ignite](https://github.com/apache/ignite) - A distributed, ACID-compliant in-memory DBMS 
 - [ReadySet](https://github.com/readysettech/readyset) - A MySQL and Postgres wire-compatible caching layer
-- [VoltDB](https://github.com/voltdb/voltdb/) - A distributed, horizontally-scalable, ACID-compliant database 
+- [VoltDB](https://github.com/voltdb/) - A distributed, horizontally-scalable, ACID-compliant database 
 
 ### Document Store
 - [MongoDB](https://github.com/mongodb/mongo) - A cross-platform, document-oriented NoSQL database
 - [RavenDB](https://github.com/ravendb/ravendb) - An ACID NoSQL document database
-- [RethinkDB](https://github.com/rethinkdb/rethinkdb) - A distributed document-oriented database for real-time applications
+- [RethinkDB](https://github.com/rethinkdb/rethinkdb) | ⚠️ Inactive | - A distributed document-oriented database for real-time applications
 - [CouchDB](https://github.com/apache/couchdb) - A Scalable document-oriented NoSQL database
 - [Couchbase](https://github.com/couchbase) - A modern cloud-native NoSQL distributed database
 - [FerretDB](https://github.com/FerretDB/FerretDB) - A truly Open Source MongoDB alternative!
-- [LowDB](https://github.com/typicode/lowdb) - A simple and fast JSON database 
+- [LowDB](https://github.com/typicode/lowdb) | ⚠️ Inactive | - A simple and fast JSON database 
 
 ### NoSQL Multi-model
 - [OrientDB](https://github.com/orientechnologies/orientdb) - A Multi-model DBMS supporting Graph, Document, Reactive, Full-Text and Geospatial models
-- [ArrangoDB](https://github.com/arangodb/arangodb) - A  Multi-model database with flexible data models for documents, graphs, and key-values
+- [ArrangoDB](https://github.com/arangodb/arangodb) - A Multi-model database with flexible data models for documents, graphs, and key-values
 - [SurrealDB](https://github.com/surrealdb/surrealdb) - A scalable, distributed, collaborative, document-graph database
 - [EdgeDB](https://github.com/edgedb/edgedb) - A graph-relational database with declarative schema
 
@@ -63,13 +63,13 @@ For more information about the above compiled landscape for 2024, please read th
 - [JunasGraph](https://github.com/JanusGraph/janusgraph) - A highly scalable distributed graph database
 - [HugeGraph](https://github.com/apache/incubator-hugegraph) - A fast-speed and highly-scalable graph database
 - [NebulaGraph](https://github.com/vesoft-inc/nebula) - A distributed, horizontal scalability, fast open-source graph database
-- [Cayley](https://github.com/cayleygraph/cayley) - Inspired by the graph database behind Google's Knowledge Graph
+- [Cayley](https://github.com/cayleygraph/cayley) | ⚠️ Inactive | - Inspired by the graph database behind Google's Knowledge Graph
 - [Dgraph](https://github.com/dgraph-io/dgraph) - A horizontally scalable and distributed GraphQL database with a graph backend
 - [Apache Age](https://github.com/apache/age) - A graph database as an extension to PostgreSQL
 - [FalkorDB](https://github.com/FalkorDB/falkordb) - A graph database that uses GraphBLAS under the hood, tailored for LLMs
 
 ### Distributed Key-value Store
-- [Riak](https://github.com/basho/riak) - A decentralized key-value datastore from Basho Technologies
+- [Riak](https://github.com/basho/riak) | ⚠️ Inactive | - A decentralized key-value datastore from Basho Technologies
 - [FoundationDB](https://github.com/apple/foundationdb) - A distributed, transactional key-value store from Apple
 - [etcd](https://github.com/etcd-io/etcd) - A distributed reliable key-value store written in Go
 - [TiKV](https://github.com/tikv/tikv) - A distributed transactional key-value database, originally created to complement TiDB
@@ -84,7 +84,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache Accumulo]() - A distributed key-value store with scalable data storage and retrieval, on top of Hadoop
 
 ### Embedded Key-value Store
-- [LevelDB](https://github.com/google/leveldb) - A fast key-value storage library written at Google
+- [LevelDB](https://github.com/google/leveldb) | ⚠️ Inactive | - A fast key-value storage library written at Google
 - [RocksDB](https://github.com/facebook/rocksdb) - An embeddable, persistent key-value store developed by Meta (Facebook)
 - [MyRocks](https://github.com/facebook/mysql-5.6) - A RocksDB storage engine for MySQL
 - [BadgerDB](https://github.com/dgraph-io/badger) - An embeddable, fast key-value database written in pure Go
@@ -92,7 +92,7 @@ For more information about the above compiled landscape for 2024, please read th
 ### Search Engine
 - [Apache Solr](https://github.com/apache/solr) - A fast distributed search database built on Apache Lucene
 - [Elastic Search](https://github.com/elastic/elasticsearch) - A distributed, RESTful search engine optimized for speed
-- [Sphinx](https://github.com/sphinxsearch/sphinx) -  A fulltext search engine with high speed of indexation
+- [Sphinx](https://github.com/sphinxsearch/sphinx) | ⚠️ Inactive | - A fulltext search engine with high speed of indexation
 - [Meilisearch](https://github.com/meilisearch/meilisearch) - A fast search API with great integration support
 - [OpenSearch](https://github.com/opensearch-project/OpenSearch) - A community-driven, open source fork of Elasticsearch and Kibana
 - [Quickwit](https://github.com/quickwit-oss/quickwit) - A fast cloud-native search engine for observability data
@@ -113,17 +113,17 @@ For more information about the above compiled landscape for 2024, please read th
 - [Netflix Atlas](https://github.com/Netflix/atlas) - An n-memory dimensional time series database developed and open sourced by Netflix
 - [QuestDB](https://github.com/questdb/questdb) - A time-series database for fast ingest and SQL queries
 - [TDEngine](https://github.com/taosdata/TDengine) - A high-performance, cloud native time-series database optimized for Internet of Things (IoT)
-- [KairosDB](https://github.com/kairosdb/kairosdb) - A scalable time series database written in Java
+- [KairosDB](https://github.com/kairosdb/kairosdb) | ⚠️ Inactive | - A scalable time series database written in Java
 - [GreptimeDB](https://github.com/GreptimeTeam/greptimedb) - A cloud-native, unified time series database for metrics, logs and events
 - [HoraeDB](https://github.com/apache/horaedb) - A distributed, cloud native time-series database
 
 ### Columnar OLAP Database
 - [Apache Kudu](https://github.com/apache/kudu) -  A column-oriented data store for the Apache Hadoop ecosystem
-- [Greeenplum](https://github.com/greenplum-db/gpdb) -  A column-oriented massively parallel PostgreSQL for analytics
+- [Greeenplum](https://github.com/greenplum-db/gpdb-archive) | ⛔️ Archived | -  A column-oriented massively parallel PostgreSQL for analytics
 - [MonetDB](https://github.com/MonetDB/MonetDB) - A high-performance columnar database originally developed by the CWI database research group
 - [Databend](https://github.com/datafuselabs/databend) - An lastic, workload-aware cloud-native data warehouse built in Rust
 - [ByConity](https://github.com/ByConity/ByConity) - A cloud-native data warehouse forked from ClickHouse
-- [hydra](https://github.com/hydradatabase/hydra) - A fast column-oriented Postgres extension
+- [Hydra](https://github.com/hydradatabase/hydra) | ⚠️ Inactive | - A column-oriented Postgres extension
 
 ### Real-time OLAP Engine
 - [ClickHouse](https://github.com/ClickHouse/ClickHouse) - A real-time column-oriented database originally developed at Yandex
@@ -150,7 +150,7 @@ For more information about the above compiled landscape for 2024, please read th
 
 ### Distributed File System
 - [Apache Hadoop HDFS](https://github.com/apache/hadoop) - A highly scalable distributed block-based file system 
-- [GlusterFS](https://github.com/gluster/glusterfs) - A scalable distributed storage that can scale to several petabytes
+- [GlusterFS](https://github.com/gluster/glusterfs) | ⚠️ Inactive | - A scalable distributed storage that can scale to several petabytes
 - [JuiceFS](https://github.com/juicedata/juicefs) - A distributed POSIX file system built on top of Redis and S3
 - [Lustre](https://github.com/lustre) - A distributed parallel file system purpose-built to provide global POSIX-compliant namespace
 
@@ -202,7 +202,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Kafka Connect](https://github.com/apache/kafka) - A streaming data integration framework and runtime on top of Apache Kafka supporting CDC
 - [Redpanda Conenct](https://github.com/redpanda-data/connect) - A data streaming and integration framework on top of Redpanda
 - [Flink CDC](https://github.com/apache/flink-cdc) - CDC Connectors for Apache Flink engine supporting different databases
-- [Brooklin](https://github.com/linkedin/brooklin) - A distributed platform for streaming data between various heterogeneous source and destination systems
+- [Brooklin](https://github.com/linkedin/brooklin) | ⚠️ Inactive | - A distributed platform for streaming data between various heterogeneous source and destination systems
 - [RudderStack](https://github.com/rudderlabs/rudder-server) - A headless Customer Data Platform to build data pipelines, open alternative to Segment
 - [Artie Transfer](https://github.com/artie-labs/transfer) - A real-time CDC replication solution between OLTP and OLAP databases
 - [Dozer](https://github.com/getdozer/dozer) - A real-time CDC based data integration tool between various sources and sinks
@@ -215,9 +215,9 @@ For more information about the above compiled landscape for 2024, please read th
 
 ### Log & Event Collection
 - [CloudQuery](https://github.com/cloudquery/cloudquery) - An ETL tool for syncing data from cloud APIs to variety of supported destinations 
-- [Snowplow](https://github.com/snowplow/snowplow) - A cloud-native engine for collecting behavioral data and load into various cloud storage systems
+- [Snowplow](https://github.com/snowplow/snowplow) | ⚠️ Inactive | - A cloud-native engine for collecting behavioral data and load into various cloud storage systems
 - [EventMesh](https://github.com/apache/eventmesh) - A serverless event middlewar for collecting and loading event data into various targets
-- [Apache Flume](https://github.com/apache/flume) - A scalable distributed log aggregation service
+- [Apache Flume](https://github.com/apache/flume) | ⚠️ Inactive | - A scalable distributed log aggregation service
 - [Steampipe](https://github.com/turbot/steampipe) - A zero-ETL solution for getting data directly from APIs and services
 - [Jitsu](https://github.com/jitsucom/jitsu) - A fully-scriptable data ingestion engine for collecting event data
 
@@ -227,7 +227,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache Pulsar](https://github.com/apache/pulsar) - A scalable distributed pub-sub messaging system
 - [Apache RocketMQ](https://github.com/apache/rocketmq) - A a cloud native messaging and streaming platform
 - [Redpanda](https://github.com/redpanda-data/redpanda) - A high performance Kafka API compatible streaming data platform 
-- [Memphis](https://github.com/memphisdev/memphis) - A scalable data streaming platform for building event-driven applications
+- [Memphis](https://github.com/memphisdev/memphis) | ⚠️ Inactive | - A scalable data streaming platform for building event-driven applications
 - [AutoMQ](https://github.com/AutoMQ/automq) - A a cloud-first alternative to Kafka using S3 as the main storage layer
 
 ### Reverse ETL
@@ -250,7 +250,6 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache Flink](https://github.com/apache/flink) - A scalable high throughput stream processing framework 
 - [Apache Samza](https://github.com/apache/samza) - A distributed stream processing framework which uses Kafka and Hadoop, originally developed by LinkedIn
 - [Apache Storm](https://github.com/apache/storm) - A distributed realtime computation system based on  Actor Model framework
-- [Benthos](https://github.com/benthosdev/benthos) - A high performance declarative stream processing engine 
 - [Akka](https://github.com/akka/akka) - A highly concurrent, distributed, message-driven processing system based on Actor Model 
 - [Bytewax](https://github.com/bytewax/bytewax) - A Python stream processing framework with a Rust distributed processing engine
 - [Timeplus Proton](https://github.com/timeplus-io/proton) - A streaming SQL engine, fast and lightweight, powered by ClickHouse
@@ -272,8 +271,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Dask](https://github.com/dask/dask) - A flexible parallel computing library with task scheduling
 - [RAY](https://github.com/ray-project/ray) - A unified framework with distributed runtime for scaling Python applications
 - [Modin](https://github.com/modin-project/modin) - A library for scaling Pandas workflows to multi-threded execution
-- [Pandaral·lel](https://github.com/nalepae/pandarallel) - A library to parallelize Pandas operations on all available CPUs
-
+- [Pandaral·lel](https://github.com/nalepae/pandarallel) | ⚠️ Inactive | - A library to parallelize Pandas operations on all available CPUs
 
 ### SQL Toolkit
 - [SQLAlchemy](https://github.com/sqlalchemy/sqlalchemy) - A Python SQL toolkit and Object Relational Mapper
@@ -286,7 +284,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache Airflow](https://github.com/apache/airflow) - A plaform for creating and scheduling workflows as directed acyclic graphs (DAGs) of tasks
 - [Prefect](https://github.com/PrefectHQ/prefect) - A Python based workflow orchestration tool 
 - [Argo](https://github.com/argoproj/argo-workflows) - A container-native workflow engine for orchestrating parallel jobs on Kubernetes 
-- [Azkaban](https://github.com/azkaban/azkaban) - A batch workflow job scheduler created at LinkedIn to run Hadoop jobs
+- [Azkaban](https://github.com/azkaban/azkaban) | ⚠️ Inactive | - A batch workflow job scheduler created at LinkedIn to run Hadoop jobs
 - [Cadence](https://github.com/uber/cadence) - A distributed, scalable available orchestration supporting different language client libraries
 - [Dagster](https://github.com/dagster-io/dagster) - A cloud-native data pipeline orchestrator written in Python
 - [Apache DolpinScheduler](https://github.com/apache/dolphinscheduler) - A low-code high performance workflow orchestration platform
@@ -304,7 +302,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [ApScheduler](https://github.com/agronholm/apscheduler/) - An advanced task scheduler and task queue system for Python
 
 ### Data Quality
-- [Data-diff](https://github.com/datafold/data-diff) - A tool for comparing tables within or across databases 
+- [Data-diff](https://github.com/datafold/data-diff) | ⛔️ Archived | - A tool for comparing tables within or across databases 
 - [Great Expectations](https://github.com/great-expectations/great_expectations) - A data validation and profiling tool written in Python
 - [Deeque](https://github.com/awslabs/deequ) - A library based on Apache Spark for measuring data quality in large datasets
 - [Pandera](https://github.com/unionai-oss/pandera) - A light-weight, flexible, and expressive statistical data testing library
@@ -366,7 +364,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Logstash](https://github.com/elastic/logstash) - A server-side log and metric transport and processor, as part of the ELK stack
 - [Telegraf](https://github.com/influxdata/telegraf) - A plugin-driven server agent for collecting & reporting metrics developed by Influxdata
 - [Vector](https://github.com/vectordotdev/vector) - A  high-performance, end-to-end (agent & aggregator) observability data pipeline
-- [StatsD](https://github.com/statsd/statsd) - A network daemon for collection, aggregation and routing of metrics
+- [StatsD](https://github.com/statsd/statsd) | ⚠️ Inactive | - A network daemon for collection, aggregation and routing of metrics
 
 ### Cost Management
 - [OpenCost](https://github.com/opencost/opencost) - Cost monitoring for Kubernetes workloads and cloud costs
@@ -455,7 +453,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Metaflow](https://github.com/Netflix/metaflow) - A tool to build and manage ML/AI, and data science projects, developed at Netflix
 - [SkyPilot](https://github.com/skypilot-org/skypilot) - A framework for running LLMs, AI, and batch jobs on any cloud
 - [Jina](https://github.com/jina-ai/jina) - A tool to build multimodal AI applications with cloud-native stack
-- [NNI](https://github.com/microsoft/nni) - An autoML toolkit for automate machine learning lifecycle, from Microsoft
+- [NNI](https://github.com/microsoft/nni) | ⛔️ Archived | - An autoML toolkit for automate machine learning lifecycle, from Microsoft
 - [BentoML](https://github.com/bentoml/BentoML) - A framework for building reliable and scalable AI applications
 - [Determined AI](https://github.com/determined-ai/determined) - An ML platform that simplifies distributed training, tuning and experiment tracking
 - [RAY](https://github.com/ray-project/ray) - A unified framework for scaling AI and Python applications
