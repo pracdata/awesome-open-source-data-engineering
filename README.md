@@ -460,11 +460,11 @@ For more information about the above compiled landscape for 2024, please read th
 - [Determined AI](https://github.com/determined-ai/determined) - An ML platform that simplifies distributed training, tuning and experiment tracking
 - [RAY](https://github.com/ray-project/ray) - A unified framework for scaling AI and Python applications
 - [kubeflow](https://github.com/kubeflow/kubeflow) - A cloud-native platform for ML operations - pipelines, training and deployment
-- [Haystack](https://github.com/deepset-ai/haystack) - AI orchestration framework to build customizable, production-ready LLM applications
 - [Kedro](https://github.com/kedro-org/kedro) - A toolbox and framework for building production-ready data science and ML workflows
 - [Pachyderm](https://github.com/pachyderm/pachyderm) - A calable ML and Data Science data processing workflow management platform
-- [Superduper](https://github.com/superduper-io/superduper) - a Python based framework for building AI-data workflows and applications
 
 ### LLMOps
 - [Dify](https://github.com/langgenius/dify) - LLM development platform nwith AI workflow, RAG pipeline and model management
+- [Haystack](https://github.com/deepset-ai/haystack) - AI orchestration framework to build customizable, production-ready LLM applications
+- [Superduper](https://github.com/superduper-io/superduper) - a Python based framework for building AI-data workflows and applications
 - [Cognee](https://github.com/topoteretes/cognee) - LLM Memory Engine for implementing LLM Workflows
