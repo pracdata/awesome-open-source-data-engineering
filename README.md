@@ -313,6 +313,9 @@ For more information about the above compiled landscape for 2024, please read th
 - [LakeFS](https://github.com/treeverse/lakeFS) - A data version control for data stored in data lakes
 - [Project Nessie](https://github.com/projectnessie/nessie) - A transactional Catalog for Data Lakes with Git-like semantics
 - [DVC](https://github.com/iterative/dvc) - A data version control tool for data and ML experiments
+- [Dolt](https://github.com/dolthub/dolt) - A Git for data tool
+- [Git-lfs](https://github.com/git-lfs/git-lfs) - A Git extension for versioning large files
+- [Datachain](https://github.com/iterative/datachain) - A Python-based framework for versioning for unstructured Data
 
 ### Data Modeling
 - [dbt](https://github.com/dbt-labs/dbt-core) - A data modeling and transformation tool for data pipelines
