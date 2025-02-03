@@ -256,6 +256,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [FastStream](https://github.com/airtai/faststream) - A Python framework for interacting with event streams such as Apache Kafka
 - [Bento](https://github.com/warpstreamlabs/bento) - A stream processing engine from WarpStream Labs (forked from Benthos)
 - [Fluvio](https://github.com/infinyon/fluvio) - A lean distributed stream processing system written in Rust and web assembly
+- [Arroyo](https://github.com/ArroyoSystems/arroyo) - A distributed stream processing engine written in Rust
 
 ### Python Processing Framework
 - [Polars](https://github.com/pola-rs/polars) - A multithreaded Dataframe with vectorized query engine, written in Rust
@@ -395,6 +396,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Apache Polaris](https://github.com/apache/polaris) - An interoperable, open source catalog for Apache Iceberg
 - [Unity Catalog](https://github.com/unitycatalog/unitycatalog) - A Universal catalog for Data Lakehouse formats and other data/AI assets
 - [Lakekeeper](https://github.com/lakekeeper/lakekeeper) - A Rust native Apache Iceberg REST Catalog
+- [Apache Gravitino](https://github.com/apache/gravitino) - A geo-distributed and federated open data catalog
 
 
 ## ANALYTICS & VISUALISATION
@@ -427,6 +429,7 @@ For more information about the above compiled landscape for 2024, please read th
 - [Presto](https://github.com/prestodb/presto) - A distributed SQL query engine for big data
 - [Trino](https://github.com/trinodb/trino) - The former PrestoSQL distributed SQL query engine
 - [Apache Drill](https://github.com/apache/drill) - A distributed MPP query engine against NoSQL and Hadoop data storage systems
+- [DataFusion Ballista](https://github.com/apache/datafusion-ballista) - A distributed query execution engine based on Apache DataFusion
 
 ### Semantic & Middleware Layer
 - [Alluxio](https://github.com/Alluxio/alluxio) - A data orchestration and virtual distributed storage system
