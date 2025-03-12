@@ -1,7 +1,8 @@
 # Awesome Open Source Data Engineering [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 A curated list of open source tools used in analytics platforms and data engineering ecosystem
-![Open Source Data Engineering Landscape 2024](https://github.com/pracdata/awesome-open-source-data-engineering/assets/2711465/2a59a1a3-2f82-4e78-939e-2f9228b4892f)
-For more information about the above compiled landscape for 2024, please read the published blog post on [Substack](https://open.substack.com/pub/practicaldataengineering/p/open-source-data-engineering-landscape?r=23jwn&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true) or [Medium](https://alirezasadeghi1.medium.com/open-source-data-engineering-landscape-2024-8a56d23b7fdb)
+![Open Source Data Engineering Landscape 2025](https://github.com/user-attachments/assets/fe9e97a8-abd8-47a9-8429-15130055785c)
+
+For more information about the above compiled landscape for 2025, please refer to the published blog post on [Pracdata.io](https://www.pracdata.io/p/open-source-data-engineering-landscape-2025)
 
 ## Table of contents
 - [Storage Systems](https://github.com/pracdata/awesome-open-source-data-engineering?tab=readme-ov-file#storage-systems)
