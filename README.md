@@ -125,6 +125,7 @@ For more information about the above compiled landscape for 2025, please refer t
 - [Databend](https://github.com/datafuselabs/databend) - An lastic, workload-aware cloud-native data warehouse built in Rust
 - [ByConity](https://github.com/ByConity/ByConity) - A cloud-native data warehouse forked from ClickHouse
 - [Hydra](https://github.com/hydradatabase/hydra) | ⚠️ Inactive | - A column-oriented Postgres extension
+- [BemiDB](https://github.com/BemiHQ/BemiDB) - A column-oriented Postgres read replica in a single binary, written in Go
 
 ### Real-time OLAP Engine
 - [ClickHouse](https://github.com/ClickHouse/ClickHouse) - A real-time column-oriented database originally developed at Yandex
