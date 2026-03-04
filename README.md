@@ -434,6 +434,7 @@ For more information about the above compiled landscape for 2025, please refer t
 
 ### Semantic & Middleware Layer
 - [Alluxio](https://github.com/Alluxio/alluxio) - A data orchestration and virtual distributed storage system
+- [Bonnard](https://github.com/bonnard-data/bonnard) - Open-source agentic schema for reliable data outputs with MCP support, multi-warehouse connectivity, and CLI-first workflow
 - [Cube](https://github.com/cube-js/cube) - A semantic layer for building data applications supporting popular databse engines
 - [Apache Linkis](https://github.com/apache/linkis) - A computation middleware to facilitate connection and orchestration between applications and data engines
 - [Apache Gluten](https://github.com/apache/incubator-gluten) - A middle layer for offloading JVM-based SQL engines execution to native engines
