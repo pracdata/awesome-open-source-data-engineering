@@ -344,6 +344,7 @@ For more information about the above compiled landscape for 2025, please refer t
 - [Apache Knox](https://github.com/apache/knox) - A gateway and SSO service for managing access to Hadoop clusters
 - [Apache Ranger](https://github.com/apache/ranger) - A security and governance platform for Hadoop and other popular services
 - [Kerberos](https://github.com/krb5/krb5) - A popular enterprise network authentication protocol
+- [ReleaseRun](https://releaserun.com/) - Free browser-based tools for dependency CVE scanning, EOL detection, and security health checks across npm, PyPI, Go, Rust, Maven, and more. No install required.
 
 ### Metrics Store
 - [Influxdb](https://github.com/influxdata/influxdb) - A scalable datastore for metrics and events
