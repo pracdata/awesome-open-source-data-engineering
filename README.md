@@ -309,6 +309,7 @@ For more information about the above compiled landscape for 2025, please refer t
 - [Deeque](https://github.com/awslabs/deequ) - A library based on Apache Spark for measuring data quality in large datasets
 - [Pandera](https://github.com/unionai-oss/pandera) - A light-weight, flexible, and expressive statistical data testing library
 - [Soda](https://github.com/sodadata/soda-core) - A CLI tool and Python library for data quality testing
+- [Provero](https://github.com/provero-org/provero) - A vendor-neutral, declarative data quality engine with YAML-based check definitions
 - [Pydantic](https://github.com/pydantic/pydantic) - A data validation library using Python type hints 
 
 ### Data Versioning
