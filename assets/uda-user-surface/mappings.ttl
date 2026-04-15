@@ -1,0 +1,258 @@
+# =============================================================================
+# UDA Mappings: Claude Code User Surface
+# =============================================================================
+# Connects domain model concepts to their data container representations
+# (GraphQL types, Avro records, Zod schemas) following Netflix UDA patterns.
+#
+# Each Mapping links a subgraph of the domain model to a subgraph of a
+# data container representation, making concepts discoverable across systems.
+# =============================================================================
+
+@prefix ccsurface: <https://rdf.agentwarehouses.dev/onto/claude-code-surface#> .
+@prefix mapping:   <https://rdf.agentwarehouses.dev/ns/mapping#> .
+@prefix rdf:       <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# --- Data container URNs ---
+# GraphQL schema served by the Agent SDK gateway
+# Avro records for warehouse ingestion
+# Zod schemas for TypeScript SDK structured output
+
+# =============================================================================
+# Mapping: DimUser → GraphQL + Avro + Zod
+# =============================================================================
+
+<urn:agentwarehouses:mapping:DimUser:graphql>
+    rdf:type                  mapping:Mapping ;
+    mapping:forPrimaryConcept [
+        rdf:type             mapping:ConceptMapping ;
+        mapping:forConcept   ccsurface:DimUser ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:user_key ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_DimUser:ccsurface_user_key> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:user_id ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_DimUser:ccsurface_user_id> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:plan_tier ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_DimUser:ccsurface_plan_tier> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:auth_method ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_DimUser:ccsurface_auth_method> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:permission_mode ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_DimUser:ccsurface_permission_mode> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:zdr_enabled ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_DimUser:ccsurface_zdr_enabled> ] ;
+    ] ;
+    mapping:toDataAsset       <urn:agentwarehouses:graphql:schema> .
+
+<urn:agentwarehouses:mapping:DimUser:avro>
+    rdf:type                  mapping:Mapping ;
+    mapping:forPrimaryConcept [
+        rdf:type             mapping:ConceptMapping ;
+        mapping:forConcept   ccsurface:DimUser ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:user_key ;
+            mapping:toField      <urn:agentwarehouses:avro:CCSURFACE_DimUser:CCSURFACE_user_key> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:user_id ;
+            mapping:toField      <urn:agentwarehouses:avro:CCSURFACE_DimUser:CCSURFACE_user_id> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:plan_tier ;
+            mapping:toField      <urn:agentwarehouses:avro:CCSURFACE_DimUser:CCSURFACE_plan_tier> ] ;
+    ] ;
+    mapping:toDataAsset       <urn:agentwarehouses:avro:warehouse> .
+
+<urn:agentwarehouses:mapping:DimUser:zod>
+    rdf:type                  mapping:Mapping ;
+    mapping:forPrimaryConcept [
+        rdf:type             mapping:ConceptMapping ;
+        mapping:forConcept   ccsurface:DimUser ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:user_key ;
+            mapping:toField      <urn:agentwarehouses:zod:DimUser:user_key> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:user_id ;
+            mapping:toField      <urn:agentwarehouses:zod:DimUser:user_id> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:plan_tier ;
+            mapping:toField      <urn:agentwarehouses:zod:DimUser:plan_tier> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:auth_method ;
+            mapping:toField      <urn:agentwarehouses:zod:DimUser:auth_method> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:permission_mode ;
+            mapping:toField      <urn:agentwarehouses:zod:DimUser:permission_mode> ] ;
+    ] ;
+    mapping:toDataAsset       <urn:agentwarehouses:zod:sdk> .
+
+# =============================================================================
+# Mapping: DimDevice → GraphQL + Zod
+# =============================================================================
+
+<urn:agentwarehouses:mapping:DimDevice:graphql>
+    rdf:type                  mapping:Mapping ;
+    mapping:forPrimaryConcept [
+        rdf:type             mapping:ConceptMapping ;
+        mapping:forConcept   ccsurface:DimDevice ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:device_key ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_DimDevice:ccsurface_device_key> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:os_name ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_DimDevice:ccsurface_os_name> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:arch ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_DimDevice:ccsurface_arch> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:claude_code_version ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_DimDevice:ccsurface_claude_code_version> ] ;
+    ] ;
+    mapping:toDataAsset       <urn:agentwarehouses:graphql:schema> .
+
+# =============================================================================
+# Mapping: DimUserSurface → GraphQL + Zod
+# =============================================================================
+
+<urn:agentwarehouses:mapping:DimUserSurface:graphql>
+    rdf:type                  mapping:Mapping ;
+    mapping:forPrimaryConcept [
+        rdf:type             mapping:ConceptMapping ;
+        mapping:forConcept   ccsurface:DimUserSurface ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:surface_key ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_DimUserSurface:ccsurface_surface_key> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:surface_type ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_DimUserSurface:ccsurface_surface_type> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:is_remote ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_DimUserSurface:ccsurface_is_remote> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:is_headless ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_DimUserSurface:ccsurface_is_headless> ] ;
+    ] ;
+    mapping:toDataAsset       <urn:agentwarehouses:graphql:schema> .
+
+# =============================================================================
+# Mapping: FactSession → GraphQL + Avro + Zod
+# =============================================================================
+
+<urn:agentwarehouses:mapping:FactSession:graphql>
+    rdf:type                  mapping:Mapping ;
+    mapping:forPrimaryConcept [
+        rdf:type             mapping:ConceptMapping ;
+        mapping:forConcept   ccsurface:FactSession ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:session_key ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_FactSession:ccsurface_session_key> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:duration_ms ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_FactSession:ccsurface_duration_ms> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:total_cost_usd ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_FactSession:ccsurface_total_cost_usd> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:num_turns ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_FactSession:ccsurface_num_turns> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:input_tokens ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_FactSession:ccsurface_input_tokens> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:output_tokens ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_FactSession:ccsurface_output_tokens> ] ;
+    ] ;
+    mapping:forRelatedConcept [
+        rdf:type             mapping:ConceptMapping ;
+        mapping:forConcept   ccsurface:DimUser ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:user_key ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_FactSession:ccsurface_fk_user> ] ;
+    ] ;
+    mapping:forRelatedConcept [
+        rdf:type             mapping:ConceptMapping ;
+        mapping:forConcept   ccsurface:DimDevice ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:device_key ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_FactSession:ccsurface_fk_device> ] ;
+    ] ;
+    mapping:forRelatedConcept [
+        rdf:type             mapping:ConceptMapping ;
+        mapping:forConcept   ccsurface:DimUserSurface ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:surface_key ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_FactSession:ccsurface_fk_surface> ] ;
+    ] ;
+    mapping:toDataAsset       <urn:agentwarehouses:graphql:schema> .
+
+# =============================================================================
+# Mapping: FactToolUse → GraphQL + Zod
+# =============================================================================
+
+<urn:agentwarehouses:mapping:FactToolUse:graphql>
+    rdf:type                  mapping:Mapping ;
+    mapping:forPrimaryConcept [
+        rdf:type             mapping:ConceptMapping ;
+        mapping:forConcept   ccsurface:FactToolUse ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:tool_use_key ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_FactToolUse:ccsurface_tool_use_key> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:tool_duration_ms ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_FactToolUse:ccsurface_tool_duration_ms> ] ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:is_error ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_FactToolUse:ccsurface_is_error> ] ;
+    ] ;
+    mapping:forRelatedConcept [
+        rdf:type             mapping:ConceptMapping ;
+        mapping:forConcept   ccsurface:FactSession ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:session_key ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_FactToolUse:ccsurface_fk_session> ] ;
+    ] ;
+    mapping:forRelatedConcept [
+        rdf:type             mapping:ConceptMapping ;
+        mapping:forConcept   ccsurface:DimTool ;
+        mapping:fieldMapping [
+            rdf:type             mapping:FieldMapping ;
+            mapping:fromProperty ccsurface:tool_key ;
+            mapping:toField      <urn:agentwarehouses:graphql:CCSURFACE_FactToolUse:ccsurface_fk_tool> ] ;
+    ] ;
+    mapping:toDataAsset       <urn:agentwarehouses:graphql:schema> .

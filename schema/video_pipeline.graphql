@@ -1,0 +1,135 @@
+# Video Pipeline GraphQL Schema
+# Shared between Python generation core and TypeScript social distribution.
+# Python: Strawberry server implements these types.
+# TypeScript: GraphQL codegen produces Zod-compatible types.
+
+enum VideoStatus {
+  PENDING
+  GENERATING
+  READY
+  UPLOADING
+  PUBLISHED
+  FAILED
+}
+
+enum Platform {
+  TIKTOK
+  YOUTUBE_SHORTS
+  INSTAGRAM_REELS
+}
+
+enum VideoResolution {
+  SD_480P
+  HD_720P
+  HD_1080P
+  UHD_4K
+}
+
+enum GenerationModel {
+  VEO_3_1_FAST
+  VEO_3_1_QUALITY
+}
+
+enum PromptStyle {
+  CINEMATIC
+  DOCUMENTARY
+  COMMERCIAL
+  MUSIC_VIDEO
+  VLOG
+}
+
+type VideoMetadata {
+  title: String!
+  description: String
+  resolution: VideoResolution!
+  durationSeconds: Float!
+  hasAudio: Boolean!
+  tags: [String!]!
+}
+
+type VideoAsset {
+  id: ID!
+  url: String
+  status: VideoStatus!
+  platforms: [Platform!]!
+  metadata: VideoMetadata!
+  generationTaskId: String
+  createdAt: String!
+  updatedAt: String!
+}
+
+type GenerationTask {
+  id: ID!
+  prompt: String!
+  negativePrompt: String
+  model: GenerationModel!
+  resolution: VideoResolution!
+  durationSeconds: Float!
+  status: VideoStatus!
+  videoAsset: VideoAsset
+  error: String
+  createdAt: String!
+}
+
+type DistributionResult {
+  platform: Platform!
+  success: Boolean!
+  platformVideoId: String
+  platformUrl: String
+  error: String
+}
+
+type DistributionTask {
+  id: ID!
+  videoAssetId: ID!
+  platforms: [Platform!]!
+  results: [DistributionResult!]!
+  createdAt: String!
+}
+
+# Inputs
+
+input GenerateVideoInput {
+  prompt: String!
+  negativePrompt: String
+  model: GenerationModel = VEO_3_1_FAST
+  resolution: VideoResolution = UHD_4K
+  durationSeconds: Float = 10.0
+  style: PromptStyle = CINEMATIC
+  platforms: [Platform!]!
+  title: String!
+  description: String
+  tags: [String!] = []
+}
+
+input DistributeVideoInput {
+  videoAssetId: ID!
+  platforms: [Platform!]!
+}
+
+input CinematicPromptInput {
+  topic: String!
+  style: PromptStyle = CINEMATIC
+  durationSeconds: Float = 10.0
+  includeAudioDirection: Boolean = true
+}
+
+# Queries
+
+type Query {
+  generationTask(id: ID!): GenerationTask
+  listGenerationTasks(status: VideoStatus, limit: Int = 20): [GenerationTask!]!
+  videoAsset(id: ID!): VideoAsset
+  listVideoAssets(platform: Platform, limit: Int = 20): [VideoAsset!]!
+  distributionTask(id: ID!): DistributionTask
+}
+
+# Mutations
+
+type Mutation {
+  generateVideo(input: GenerateVideoInput!): GenerationTask!
+  generateCinematicPrompt(input: CinematicPromptInput!): String!
+  distributeVideo(input: DistributeVideoInput!): DistributionTask!
+  retryGeneration(taskId: ID!): GenerationTask!
+  cancelGeneration(taskId: ID!): GenerationTask!
+}

@@ -1,0 +1,20 @@
+# Default owner for everything
+* @alex-jadecli
+
+# CI/CD and GitHub config require admin review
+.github/ @alex-jadecli
+Makefile @alex-jadecli
+pyproject.toml @alex-jadecli
+
+# Scrapy crawler core
+src/agentwarehouses/spiders/ @alex-jadecli
+src/agentwarehouses/pipelines/ @alex-jadecli
+src/agentwarehouses/settings.py @alex-jadecli
+
+# Pydantic data models
+src/agentwarehouses/models/ @alex-jadecli
+claude_code_models/ @alex-jadecli
+
+# Claude Code agent config
+.claude/ @alex-jadecli
+CLAUDE.md @alex-jadecli

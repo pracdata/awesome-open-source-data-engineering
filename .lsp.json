@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oraios/serena/main/schema/lsp-config.json",
+  "python": {
+    "command": "pylsp",
+    "args": [],
+    "extensionToLanguage": {
+      ".py": "python"
+    },
+    "initializationOptions": {},
+    "settings": {
+      "pylsp": {
+        "plugins": {
+          "ruff": { "enabled": true, "lineLength": 120 },
+          "pycodestyle": { "enabled": false },
+          "mccabe": { "enabled": false },
+          "pyflakes": { "enabled": false }
+        }
+      }
+    }
+  },
+  "typescript": {
+    "command": "typescript-language-server",
+    "args": ["--stdio"],
+    "extensionToLanguage": {
+      ".ts": "typescript",
+      ".tsx": "typescriptreact"
+    },
+    "initializationOptions": {
+      "preferences": {
+        "importModuleSpecifierPreference": "relative"
+      }
+    }
+  },
+  "java": {
+    "command": "jdtls",
+    "args": [],
+    "extensionToLanguage": {
+      ".java": "java"
+    },
+    "settings": {
+      "java": {
+        "home": "/usr/lib/jvm/java-21-openjdk-amd64",
+        "configuration": {
+          "runtimes": [
+            {
+              "name": "JavaSE-21",
+              "path": "/usr/lib/jvm/java-21-openjdk-amd64",
+              "default": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  "graphql": {
+    "command": "graphql-lsp",
+    "args": ["server", "-m", "stream"],
+    "extensionToLanguage": {
+      ".graphql": "graphql",
+      ".gql": "graphql"
+    }
+  }
+}

@@ -1,0 +1,96 @@
+[project]
+name = "claude-code-models"
+version = "0.1.0"
+description = "Pydantic 2.0 data models for Claude Code CLI, Agent SDK, and MCP SDK v2 — prepared for Pydantic 3.0"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "agentwarehouses" }]
+keywords = ["claude-code", "pydantic", "mcp", "agent-sdk", "data-models"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Typing :: Typed",
+]
+dependencies = [
+    "pydantic>=2.7,<4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=6.0",
+    "pytest-xdist>=3.5",
+    "pytest-benchmark>=5.0",
+    "ruff>=0.5",
+    "mypy>=1.10",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "claude_code_models/__init__.py"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "unit: Pure unit tests — no I/O, no network (default)",
+    "validation: Pydantic validation edge cases and error paths",
+    "serialization: JSON/dict round-trip serialization tests",
+    "semver: SemVer parsing, bumping, and comparison",
+    "hooks: Hook event, matcher, and handler models",
+    "plugins: Plugin manifest and marketplace models",
+    "tools: Tool definitions and permission rules",
+    "cli: CLI commands, flags, and environment variables",
+    "channels: Channel notification and permission relay models",
+    "mcp: MCP server and tool definition models",
+    "agents: Subagent and agent team models",
+    "skills: Skill frontmatter and slash command models",
+    "sessions: Session and checkpoint models",
+    "slow: Tests that take >1s (excluded from fast runs)",
+]
+addopts = [
+    "-ra",
+    "--strict-markers",
+    "--tb=short",
+]
+
+[tool.coverage.run]
+source = ["claude_code_models"]
+branch = true
+parallel = true
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+skip_empty = true
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "\\.\\.\\.",
+]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+plugins = ["pydantic.mypy"]
+
+# --- Upstream dependency tracking for release-please ---
+# When these upstream packages release new versions, bump our MINOR version.
+# Track via: release-please + renovate/dependabot PRs with conventional commits.
+#
+# Tracked upstreams:
+#   anthropic (claude-agent-sdk-python) — https://github.com/anthropics/anthropic-sdk-python
+#   mcp (modelcontextprotocol/sdk-python v2) — https://github.com/modelcontextprotocol/python-sdk

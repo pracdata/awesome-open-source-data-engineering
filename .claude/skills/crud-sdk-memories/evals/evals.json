@@ -1,0 +1,36 @@
+{
+  "skill_name": "crud-sdk-memories",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a new memorie called 'example' using sdk",
+      "expected_output": "Valid memorie created with correct configuration",
+      "files": [],
+      "assertions": [
+        "Uses correct sdk method for creating memories",
+        "Output includes the name 'example'",
+        "All required fields are present"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "List all memories and show their configuration using sdk",
+      "expected_output": "Complete listing of memories with details",
+      "files": [],
+      "assertions": [
+        "Uses correct sdk command or method for listing",
+        "Response includes name and configuration fields"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Delete the memorie named 'example' using sdk",
+      "expected_output": "Resource removed successfully",
+      "files": [],
+      "assertions": [
+        "Uses correct sdk method for deletion",
+        "Confirms removal or provides verification step"
+      ]
+    }
+  ]
+}

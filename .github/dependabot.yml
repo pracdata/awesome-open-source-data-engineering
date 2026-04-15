@@ -1,0 +1,36 @@
+version: 2
+updates:
+  # Python dependencies via pip
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    groups:
+      dev-dependencies:
+        patterns: ["ruff", "mypy", "pytest*"]
+      scrapy-stack:
+        patterns: ["scrapy", "orjson", "rbloom"]
+    reviewers:
+      - alex-jadecli
+    labels:
+      - dependencies
+      - automated
+    commit-message:
+      prefix: "deps"
+      include: scope
+
+  # GitHub Actions versions
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    reviewers:
+      - alex-jadecli
+    labels:
+      - ci
+      - automated
+    commit-message:
+      prefix: "ci"
+      include: scope

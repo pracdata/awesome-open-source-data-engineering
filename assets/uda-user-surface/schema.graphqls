@@ -1,0 +1,236 @@
+# =============================================================================
+# UDA GraphQL Projection: Claude Code User Surface
+# =============================================================================
+# Transpiled from ccsurface: domain model following Netflix UDA patterns.
+# Each type carries @udaUri linking back to the RDF concept it represents.
+# Federation-ready with @key directives on natural/surrogate keys.
+# =============================================================================
+
+# --- Custom directive for UDA semantic linking ---
+directive @udaUri(uri: String!) on OBJECT | FIELD_DEFINITION | ENUM | ENUM_VALUE
+
+# =============================================================================
+# ENUMERATIONS
+# =============================================================================
+
+enum CCSURFACE_PlanTier @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#PlanTier") {
+  FREE @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#Free")
+  PRO @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#Pro")
+  TEAM @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#Team")
+  ENTERPRISE @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#Enterprise")
+  API @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#API")
+}
+
+enum CCSURFACE_AuthMethod @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#AuthMethod") {
+  OAUTH @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#OAuth")
+  API_KEY @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#APIKey")
+  OAUTH_TOKEN @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#OAuthToken")
+}
+
+enum CCSURFACE_PermissionMode @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#PermissionMode") {
+  DEFAULT @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#ModeDefault")
+  ACCEPT_EDITS @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#ModeAcceptEdits")
+  PLAN @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#ModePlan")
+  DONT_ASK @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#ModeDontAsk")
+  AUTO @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#ModeAuto")
+  BYPASS_PERMISSIONS @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#ModeBypass")
+}
+
+enum CCSURFACE_OSName @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#OSName") {
+  LINUX @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#Linux")
+  MACOS @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#MacOS")
+  WINDOWS @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#Windows")
+}
+
+enum CCSURFACE_SurfaceType @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#SurfaceType") {
+  CLI @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#CLI")
+  VSCODE @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#VSCode")
+  JETBRAINS @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#JetBrains")
+  DESKTOP @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#Desktop")
+  WEB @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#Web")
+  MOBILE @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#Mobile")
+  SLACK @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#Slack")
+  GITHUB_ACTION @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#GitHubAction")
+  GITLAB_CI @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#GitLabCI")
+  SDK @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#SDK")
+}
+
+enum CCSURFACE_ModelTier @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#ModelTier") {
+  OPUS @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#Opus")
+  SONNET @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#Sonnet")
+  HAIKU @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#Haiku")
+}
+
+enum CCSURFACE_ToolCategory @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#ToolCategory") {
+  FILE_OPERATIONS @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#CatFileOps")
+  CODE_EXECUTION @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#CatCodeExec")
+  CODE_SEARCH @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#CatCodeSearch")
+  FILE_SEARCH @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#CatFileSearch")
+  WEB_OPERATIONS @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#CatWebOps")
+  SUBAGENT_SPAWNING @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#CatSubagent")
+  TASK_MANAGEMENT @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#CatTaskMgmt")
+  MCP_INTEGRATION @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#CatMCP")
+  GIT_OPERATIONS @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#CatGit")
+  USER_INTERACTION @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#CatUserInteraction")
+  WORKFLOW @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#CatWorkflow")
+}
+
+# =============================================================================
+# DIMENSION TYPES
+# =============================================================================
+
+"""
+User Dimension — Kimball Type 2 SCD tracking user attributes over time.
+"""
+type CCSURFACE_DimUser @key(fields: "ccsurface_user_key") @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#DimUser") {
+  ccsurface_user_key: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#user_key")
+  ccsurface_user_id: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#user_id")
+  ccsurface_org_id: String @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#org_id")
+  ccsurface_plan_tier: CCSURFACE_PlanTier! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#plan_tier")
+  ccsurface_auth_method: CCSURFACE_AuthMethod! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#auth_method")
+  ccsurface_permission_mode: CCSURFACE_PermissionMode! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#permission_mode")
+  ccsurface_zdr_enabled: Boolean! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#zdr_enabled")
+  ccsurface_effective_from: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#effective_from")
+  ccsurface_effective_to: String @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#effective_to")
+  ccsurface_is_current: Boolean! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#is_current")
+}
+
+"""
+Device Dimension — the physical/virtual environment running Claude Code.
+"""
+type CCSURFACE_DimDevice @key(fields: "ccsurface_device_key") @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#DimDevice") {
+  ccsurface_device_key: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#device_key")
+  ccsurface_device_fingerprint: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#device_fingerprint")
+  ccsurface_os_name: CCSURFACE_OSName! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#os_name")
+  ccsurface_os_version: String @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#os_version")
+  ccsurface_arch: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#arch")
+  ccsurface_shell: String @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#shell")
+  ccsurface_terminal: String @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#terminal")
+  ccsurface_node_version: String @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#node_version")
+  ccsurface_claude_code_version: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#claude_code_version")
+}
+
+"""
+User Surface Dimension — the interface through which the user interacts.
+"""
+type CCSURFACE_DimUserSurface @key(fields: "ccsurface_surface_key") @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#DimUserSurface") {
+  ccsurface_surface_key: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#surface_key")
+  ccsurface_surface_type: CCSURFACE_SurfaceType! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#surface_type")
+  ccsurface_surface_version: String @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#surface_version")
+  ccsurface_ide_name: String @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#ide_name")
+  ccsurface_ide_version: String @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#ide_version")
+  ccsurface_is_remote: Boolean! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#is_remote")
+  ccsurface_is_headless: Boolean! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#is_headless")
+}
+
+"""
+Model Dimension — the Claude model powering the session.
+"""
+type CCSURFACE_DimModel @key(fields: "ccsurface_model_key") @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#DimModel") {
+  ccsurface_model_key: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#model_key")
+  ccsurface_model_id: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#model_id")
+  ccsurface_model_family: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#model_family")
+  ccsurface_model_tier: CCSURFACE_ModelTier! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#model_tier")
+  ccsurface_context_window: Int! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#context_window")
+  ccsurface_max_output_tokens: Int! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#max_output_tokens")
+  ccsurface_supports_thinking: Boolean! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#supports_thinking")
+  ccsurface_supports_vision: Boolean! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#supports_vision")
+}
+
+"""
+Time Dimension — conformed date/time at hourly grain.
+"""
+type CCSURFACE_DimTime @key(fields: "ccsurface_time_key") @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#DimTime") {
+  ccsurface_time_key: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#time_key")
+  ccsurface_iso_date: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#iso_date")
+  ccsurface_hour: Int! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#hour")
+  ccsurface_day_of_week: Int! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#day_of_week")
+  ccsurface_month: Int! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#month")
+  ccsurface_quarter: Int! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#quarter")
+  ccsurface_year: Int! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#year")
+  ccsurface_is_weekend: Boolean! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#is_weekend")
+}
+
+"""
+Tool Dimension — built-in and MCP tools available to Claude Code.
+"""
+type CCSURFACE_DimTool @key(fields: "ccsurface_tool_key") @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#DimTool") {
+  ccsurface_tool_key: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#tool_key")
+  ccsurface_tool_name: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#tool_name")
+  ccsurface_tool_category: CCSURFACE_ToolCategory! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#tool_category")
+  ccsurface_requires_permission: Boolean! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#requires_permission")
+  ccsurface_is_mcp_tool: Boolean! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#is_mcp_tool")
+  ccsurface_mcp_server_name: String @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#mcp_server_name")
+}
+
+# =============================================================================
+# FACT TYPES
+# =============================================================================
+
+"""
+Session Fact — grain: one Claude Code session.
+"""
+type CCSURFACE_FactSession @key(fields: "ccsurface_session_key") @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#FactSession") {
+  ccsurface_session_key: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#session_key")
+  # Dimension FKs
+  ccsurface_fk_user: CCSURFACE_DimUser! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#fk_user")
+  ccsurface_fk_device: CCSURFACE_DimDevice! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#fk_device")
+  ccsurface_fk_surface: CCSURFACE_DimUserSurface! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#fk_surface")
+  ccsurface_fk_model: CCSURFACE_DimModel! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#fk_model")
+  ccsurface_fk_time_start: CCSURFACE_DimTime! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#fk_time_start")
+  ccsurface_fk_time_end: CCSURFACE_DimTime @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#fk_time_end")
+  # Degenerate dimensions
+  ccsurface_session_id: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#session_id")
+  ccsurface_git_branch: String @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#git_branch")
+  ccsurface_cwd: String @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#cwd")
+  ccsurface_thinking_mode: String @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#thinking_mode")
+  ccsurface_effort_level: String @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#effort_level")
+  # Measures
+  ccsurface_duration_ms: Int! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#duration_ms")
+  ccsurface_num_turns: Int! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#num_turns")
+  ccsurface_input_tokens: Int! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#input_tokens")
+  ccsurface_output_tokens: Int! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#output_tokens")
+  ccsurface_thinking_tokens: Int @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#thinking_tokens")
+  ccsurface_cache_read_tokens: Int @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#cache_read_tokens")
+  ccsurface_cache_write_tokens: Int @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#cache_write_tokens")
+  ccsurface_total_cost_usd: Float! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#total_cost_usd")
+  ccsurface_num_tool_uses: Int! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#num_tool_uses")
+  ccsurface_num_errors: Int! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#num_errors")
+  ccsurface_num_checkpoints: Int @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#num_checkpoints")
+  ccsurface_files_edited: Int @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#files_edited")
+  ccsurface_files_created: Int @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#files_created")
+  ccsurface_stop_reason: String @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#stop_reason")
+}
+
+"""
+Tool Use Fact — grain: one tool invocation within a session.
+"""
+type CCSURFACE_FactToolUse @key(fields: "ccsurface_tool_use_key") @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#FactToolUse") {
+  ccsurface_tool_use_key: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#tool_use_key")
+  ccsurface_fk_session: CCSURFACE_FactSession! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#fk_session")
+  ccsurface_fk_tool: CCSURFACE_DimTool! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#fk_tool")
+  ccsurface_fk_time_invoked: CCSURFACE_DimTime! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#fk_time_invoked")
+  ccsurface_tool_use_id: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#tool_use_id")
+  ccsurface_parent_tool_use_id: String @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#parent_tool_use_id")
+  ccsurface_turn_number: Int! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#turn_number")
+  ccsurface_tool_duration_ms: Int! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#tool_duration_ms")
+  ccsurface_is_error: Boolean! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#is_error")
+  ccsurface_input_size_bytes: Int @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#input_size_bytes")
+  ccsurface_output_size_bytes: Int @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#output_size_bytes")
+  ccsurface_permission_decision: String @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#permission_decision")
+}
+
+"""
+Message Fact — grain: one message in a session conversation.
+"""
+type CCSURFACE_FactMessage @key(fields: "ccsurface_message_key") @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#FactMessage") {
+  ccsurface_message_key: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#message_key")
+  ccsurface_fk_session_msg: CCSURFACE_FactSession! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#fk_session_msg")
+  ccsurface_fk_time_sent: CCSURFACE_DimTime! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#fk_time_sent")
+  ccsurface_message_uuid: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#message_uuid")
+  ccsurface_message_role: String! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#message_role")
+  ccsurface_content_blocks: Int! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#content_blocks")
+  ccsurface_text_length: Int @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#text_length")
+  ccsurface_has_thinking: Boolean! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#has_thinking")
+  ccsurface_has_tool_use: Boolean! @udaUri(uri: "https://rdf.agentwarehouses.dev/onto/claude-code-surface#has_tool_use")
+}

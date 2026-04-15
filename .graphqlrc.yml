@@ -1,0 +1,5 @@
+schema: "schema/video_pipeline.graphql"
+documents: "src/**/*.{ts,graphql}"
+extensions:
+  languageService:
+    cacheSchemaFileForLookup: true

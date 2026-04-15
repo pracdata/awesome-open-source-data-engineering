@@ -1,0 +1,57 @@
+@prefix avro:         <https://rdf.netflix.net/ns/avro#> .
+@prefix datamesh:     <https://rdf.netflix.net/ns/datamesh#> .
+@prefix rdf:          <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:          <http://www.w3.org/2001/XMLSchema#> .
+@prefix source_78867: <urn:nflx:uda:datamesh:source:78867:> .
+
+source_78867:
+    rdf:type                  datamesh:Source ;
+    datamesh:description      "This DataMesh source is programmatically created as part of the UDA projection of Character." ;
+    datamesh:displayName      "ONEPIECE_Character" ;
+    datamesh:schema           [ rdf:type       avro:Record ;
+                                avro:doc       "Character\n" ;
+                                avro:fields    ( source_78867:ONEPIECE_devilFruit
+                                                 source_78867:ONEPIECE_ename
+                                                 source_78867:ONEPIECE_rname ) ;
+                                avro:name      "ONEPIECE_Character" ;
+                                avro:namespace "com.netflix.uda.avro.generated.onepiece" ] ;
+    datamesh:sourceId         "78867"^^xsd:long ;
+    datamesh:sourceIdentifier "onepiece_character_prod_v1" ;
+    datamesh:sourceType       datamesh:APPLICATION_PRODUCER
+    # Some of the properties are omitted for brevity
+.
+
+source_78867:ONEPIECE_devilFruit
+    rdf:type  avro:Field ;
+    avro:doc  "devil fruit\n" ;
+    avro:name "ONEPIECE_devilFruit" ;
+    avro:type source_78867:ONEPIECE_devilFruit.ONEPIECE_DevilFruit_Reference .
+
+source_78867:ONEPIECE_devilFruit.ONEPIECE_DevilFruit_Reference
+    rdf:type  avro:Union ;
+    avro:type [ rdf:type       avro:Record ;
+                avro:doc       "Reference to a keyed class with keys mentioned in fields below." ;
+                avro:fields    ( source_78867:ONEPIECE_devilFruit.ONEPIECE_rname ) ;
+                avro:name      "ONEPIECE_DevilFruit_Reference" ;
+                avro:namespace "com.netflix.uda.avro.generated.onepiece" ; ]
+.
+
+source_78867:ONEPIECE_devilFruit.ONEPIECE_rname
+    rdf:type        avro:Field ;
+    avro:doc        "romanized name\n" ;
+    avro:name       "ONEPIECE_rname" ;
+    avro:primaryKey true ;
+    avro:type       avro:string .
+
+source_78867:ONEPIECE_ename
+    rdf:type  avro:Field ;
+    avro:doc  "english name\n" ;
+    avro:name "ONEPIECE_ename" ;
+    avro:type avro:string .
+
+source_78867:ONEPIECE_rname
+    rdf:type        avro:Field ;
+    avro:doc        "romanized name\n" ;
+    avro:name       "ONEPIECE_rname" ;
+    avro:primaryKey true ;
+    avro:type       avro:string .

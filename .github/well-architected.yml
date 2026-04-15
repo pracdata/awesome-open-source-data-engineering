@@ -1,0 +1,87 @@
+# GitHub Well-Architected Framework Alignment
+# Reference: https://wellarchitected.github.com/
+# Repository: https://github.com/github/github-well-architected
+
+pillars:
+  security:
+    status: aligned
+    controls:
+      - name: Secret management
+        evidence: "CLAUDE_CODE_OAUTH_TOKEN only (never ANTHROPIC_API_KEY in CI)"
+        files: [".claude/rules/auth-tokens.md", ".github/workflows/claude.yml"]
+      - name: Static analysis
+        evidence: "CodeQL enabled for Python, runs on push/PR/weekly schedule"
+        files: [".github/workflows/codeql.yml"]
+      - name: Dependency scanning
+        evidence: "Dependabot weekly updates with grouped PRs"
+        files: [".github/dependabot.yml"]
+      - name: Robots.txt compliance
+        evidence: "ROBOTSTXT_OBEY = True in Scrapy settings"
+        files: ["src/agentwarehouses/settings.py"]
+
+  reliability:
+    status: aligned
+    controls:
+      - name: Retry with backoff
+        evidence: "RETRY_TIMES=3, HTTP codes 500/502/503/504/408/429"
+        files: ["src/agentwarehouses/settings.py"]
+      - name: Adaptive rate limiting
+        evidence: "AutoThrottle enabled with configurable max delay"
+        files: ["src/agentwarehouses/settings.py"]
+      - name: Deduplication
+        evidence: "rbloom Bloom filter for memory-efficient URL dedup"
+        files: ["src/agentwarehouses/spiders/llmstxt_spider.py"]
+      - name: Quality gates
+        evidence: "StatsValidatorPipeline grades each crawled page"
+        files: ["src/agentwarehouses/pipelines/stats_pipeline.py"]
+
+  performance:
+    status: aligned
+    controls:
+      - name: Concurrency tuning
+        evidence: "CONCURRENT_REQUESTS=16, PER_DOMAIN=8"
+        files: ["src/agentwarehouses/settings.py"]
+      - name: CPU-optimized ML
+        evidence: "fastembed (ONNX ~50MB) instead of torch (~2GB)"
+        files: ["pyproject.toml"]
+      - name: Async I/O
+        evidence: "Twisted AsyncioSelectorReactor for non-blocking crawls"
+        files: ["src/agentwarehouses/settings.py"]
+      - name: Serialization speed
+        evidence: "orjson for all JSON operations (10x stdlib json)"
+        files: ["src/agentwarehouses/pipelines/orjson_pipeline.py"]
+
+  operational_excellence:
+    status: aligned
+    controls:
+      - name: CI/CD pipeline
+        evidence: "GitHub Actions with Python 3.11/3.12/3.13 matrix"
+        files: [".github/workflows/ci.yml"]
+      - name: Pre-commit hooks
+        evidence: "ruff lint/format, mypy strict, pytest on pre-push"
+        files: [".pre-commit-config.yaml"]
+      - name: Automated releases
+        evidence: "release-please with conventional commits"
+        files: [".github/workflows/release-please.yml"]
+      - name: Code review automation
+        evidence: "Claude Code review action on PRs"
+        files: [".github/workflows/claude-code-review.yml"]
+      - name: OTEL observability
+        evidence: "OpenTelemetry config with metric/event catalogs"
+        files: ["src/agentwarehouses/log.py", "src/agentwarehouses/models/otel.py"]
+
+  cost_optimization:
+    status: aligned
+    controls:
+      - name: Tiered dependency install
+        evidence: "8 extras groups: core, models, warehouse, gpu, generation, mcp, social, lsp"
+        files: ["pyproject.toml"]
+      - name: CI-optimized profile
+        evidence: "install-ci target excludes heavy ML and SDK deps"
+        files: ["Makefile"]
+      - name: Session caching
+        evidence: "npm --prefer-offline, uv system install"
+        files: ["scripts/install_pkgs.sh"]
+      - name: Model tier optimization
+        evidence: "All 12 advisory subagents on sonnet (not opus). Only main conversation uses opus for codegen."
+        files: [".claude/agents/", ".claude/rules/model-tier-directive.md"]

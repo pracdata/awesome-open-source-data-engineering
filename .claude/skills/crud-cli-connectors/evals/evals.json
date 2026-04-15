@@ -1,0 +1,36 @@
+{
+  "skill_name": "crud-cli-connectors",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a new connector called 'example' using cli",
+      "expected_output": "Valid connector created with correct configuration",
+      "files": [],
+      "assertions": [
+        "Uses correct cli method for creating connectors",
+        "Output includes the name 'example'",
+        "All required fields are present"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "List all connectors and show their configuration using cli",
+      "expected_output": "Complete listing of connectors with details",
+      "files": [],
+      "assertions": [
+        "Uses correct cli command or method for listing",
+        "Response includes name and configuration fields"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Delete the connector named 'example' using cli",
+      "expected_output": "Resource removed successfully",
+      "files": [],
+      "assertions": [
+        "Uses correct cli method for deletion",
+        "Confirms removal or provides verification step"
+      ]
+    }
+  ]
+}

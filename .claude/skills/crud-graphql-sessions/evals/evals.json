@@ -1,0 +1,36 @@
+{
+  "skill_name": "crud-graphql-sessions",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a new session called 'example' using graphql",
+      "expected_output": "Valid session created with correct configuration",
+      "files": [],
+      "assertions": [
+        "Uses correct graphql method for creating sessions",
+        "Output includes the name 'example'",
+        "All required fields are present"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "List all sessions and show their configuration using graphql",
+      "expected_output": "Complete listing of sessions with details",
+      "files": [],
+      "assertions": [
+        "Uses correct graphql command or method for listing",
+        "Response includes name and configuration fields"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Delete the session named 'example' using graphql",
+      "expected_output": "Resource removed successfully",
+      "files": [],
+      "assertions": [
+        "Uses correct graphql method for deletion",
+        "Confirms removal or provides verification step"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+output/
+*.jsonl
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+node_modules/
+package-lock.json
+dist/
+
+# Java
+java/build/
+java/.gradle/
+*.class
+
+# GraphQL codegen output
+src/social/__generated__/
+.graphql-cache/
+
+# LSP
+.jdtls/
+.lsp-data/
+
+# Sessions (generated data, keep templates only)
+sessions/session_*/

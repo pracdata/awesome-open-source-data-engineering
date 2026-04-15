@@ -1,0 +1,36 @@
+{
+  "skill_name": "crud-api-mcps",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a new mcp called 'example' using api",
+      "expected_output": "Valid mcp created with correct configuration",
+      "files": [],
+      "assertions": [
+        "Uses correct api method for creating mcps",
+        "Output includes the name 'example'",
+        "All required fields are present"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "List all mcps and show their configuration using api",
+      "expected_output": "Complete listing of mcps with details",
+      "files": [],
+      "assertions": [
+        "Uses correct api command or method for listing",
+        "Response includes name and configuration fields"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Delete the mcp named 'example' using api",
+      "expected_output": "Resource removed successfully",
+      "files": [],
+      "assertions": [
+        "Uses correct api method for deletion",
+        "Confirms removal or provides verification step"
+      ]
+    }
+  ]
+}

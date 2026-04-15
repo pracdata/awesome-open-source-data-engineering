@@ -1,0 +1,47 @@
+"""
+Character
+
+"""
+type ONEPIECE_Character @key(fields: "onepiece_rname") @udaUri(uri: "https://rdf.netflix.net/onto/onepiece#Character") {
+  """
+  The name of the entity in English.
+  """
+  onepiece_ename: String @udaUri(uri: "https://rdf.netflix.net/onto/onepiece#ename")
+  """
+  A Devil Fruit that was consumed by the entity.
+  """
+  onepiece_devilFruit: ONEPIECE_DevilFruit @udaUri(uri: "https://rdf.netflix.net/onto/onepiece#devilFruit")
+  """
+  The romanized name of the entity.
+  """
+  onepiece_rname: String! @udaUri(uri: "https://rdf.netflix.net/onto/onepiece#rname")
+}
+
+"""
+Devil Fruit
+
+"""
+type ONEPIECE_DevilFruit @key(fields: "onepiece_rname") @udaUri(uri: "https://rdf.netflix.net/onto/onepiece#DevilFruit") {
+  """
+  The classification of the Devil Fruit.
+  """
+  onepiece_devilFruitType: ONEPIECE_DevilFruitType @udaUri(uri: "https://rdf.netflix.net/onto/onepiece#devilFruitType")
+  """
+  The romanized name of the entity.
+  """
+  onepiece_rname: String! @udaUri(uri: "https://rdf.netflix.net/onto/onepiece#rname")
+  """
+  The name of the entity in English.
+  """
+  onepiece_ename: String @udaUri(uri: "https://rdf.netflix.net/onto/onepiece#ename")
+}
+
+"""
+Devil Fruit Type
+
+"""
+enum ONEPIECE_DevilFruitType @udaUri(uri: "https://rdf.netflix.net/onto/onepiece#DevilFruitType") {
+  PARAMECIA @udaUri(uri: "https://rdf.netflix.net/onto/onepiece#Paramecia")
+  LOGIA @udaUri(uri: "https://rdf.netflix.net/onto/onepiece#Logia")
+  ZOAN @udaUri(uri: "https://rdf.netflix.net/onto/onepiece#Zoan")
+}

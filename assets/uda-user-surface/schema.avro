@@ -1,0 +1,103 @@
+[
+  {
+    "_attributes_": { "_pk_": ["CCSURFACE_user_key"] },
+    "doc": "User Dimension — Kimball Type 2 SCD tracking user attributes over time.\n",
+    "fields": [
+      { "name": "CCSURFACE_user_key", "type": "string", "doc": "surrogate key (UUID v7)", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#user_key" },
+      { "name": "CCSURFACE_user_id", "type": "string", "doc": "natural key — Anthropic user ID or OAuth subject", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#user_id" },
+      { "name": "CCSURFACE_org_id", "type": ["null", "string"], "doc": "organization ID", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#org_id" },
+      { "name": "CCSURFACE_plan_tier", "type": { "type": "string", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#PlanTier" }, "doc": "billing plan tier", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#plan_tier" },
+      { "name": "CCSURFACE_auth_method", "type": { "type": "string", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#AuthMethod" }, "doc": "authentication method", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#auth_method" },
+      { "name": "CCSURFACE_permission_mode", "type": { "type": "string", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#PermissionMode" }, "doc": "default permission mode", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#permission_mode" },
+      { "name": "CCSURFACE_zdr_enabled", "type": "boolean", "doc": "zero data retention enabled", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#zdr_enabled" },
+      { "name": "CCSURFACE_effective_from", "type": { "type": "long", "logicalType": "timestamp-millis" }, "doc": "SCD Type 2: row activation timestamp", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#effective_from" },
+      { "name": "CCSURFACE_effective_to", "type": ["null", { "type": "long", "logicalType": "timestamp-millis" }], "doc": "SCD Type 2: row superseded timestamp (null if current)", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#effective_to" },
+      { "name": "CCSURFACE_is_current", "type": "boolean", "doc": "whether this is the active row", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#is_current" }
+    ],
+    "name": "CCSURFACE_DimUser",
+    "namespace": "dev.agentwarehouses.uda.avro.generated.ccsurface",
+    "type": "record",
+    "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#DimUser"
+  },
+  {
+    "_attributes_": { "_pk_": ["CCSURFACE_device_key"] },
+    "doc": "Device Dimension — the physical/virtual environment running Claude Code.\n",
+    "fields": [
+      { "name": "CCSURFACE_device_key", "type": "string", "doc": "surrogate key", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#device_key" },
+      { "name": "CCSURFACE_device_fingerprint", "type": "string", "doc": "hashed composite of OS + arch + hostname", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#device_fingerprint" },
+      { "name": "CCSURFACE_os_name", "type": { "type": "string", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#OSName" }, "doc": "operating system", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#os_name" },
+      { "name": "CCSURFACE_os_version", "type": ["null", "string"], "doc": "OS version", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#os_version" },
+      { "name": "CCSURFACE_arch", "type": "string", "doc": "CPU architecture (x64, arm64)", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#arch" },
+      { "name": "CCSURFACE_shell", "type": ["null", "string"], "doc": "shell (bash, zsh, fish)", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#shell" },
+      { "name": "CCSURFACE_terminal", "type": ["null", "string"], "doc": "terminal emulator", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#terminal" },
+      { "name": "CCSURFACE_node_version", "type": ["null", "string"], "doc": "Node.js version", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#node_version" },
+      { "name": "CCSURFACE_claude_code_version", "type": "string", "doc": "Claude Code semantic version", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#claude_code_version" }
+    ],
+    "name": "CCSURFACE_DimDevice",
+    "namespace": "dev.agentwarehouses.uda.avro.generated.ccsurface",
+    "type": "record",
+    "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#DimDevice"
+  },
+  {
+    "_attributes_": { "_pk_": ["CCSURFACE_surface_key"] },
+    "doc": "User Surface Dimension — the interface through which the user interacts.\n",
+    "fields": [
+      { "name": "CCSURFACE_surface_key", "type": "string", "doc": "surrogate key", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#surface_key" },
+      { "name": "CCSURFACE_surface_type", "type": { "type": "string", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#SurfaceType" }, "doc": "surface type", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#surface_type" },
+      { "name": "CCSURFACE_surface_version", "type": ["null", "string"], "doc": "extension/app version", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#surface_version" },
+      { "name": "CCSURFACE_ide_name", "type": ["null", "string"], "doc": "IDE product name", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#ide_name" },
+      { "name": "CCSURFACE_ide_version", "type": ["null", "string"], "doc": "IDE version", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#ide_version" },
+      { "name": "CCSURFACE_is_remote", "type": "boolean", "doc": "running in cloud sandbox", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#is_remote" },
+      { "name": "CCSURFACE_is_headless", "type": "boolean", "doc": "non-interactive/programmatic mode", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#is_headless" }
+    ],
+    "name": "CCSURFACE_DimUserSurface",
+    "namespace": "dev.agentwarehouses.uda.avro.generated.ccsurface",
+    "type": "record",
+    "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#DimUserSurface"
+  },
+  {
+    "_attributes_": { "_pk_": ["CCSURFACE_session_key"] },
+    "doc": "Session Fact — grain: one Claude Code session.\n",
+    "fields": [
+      { "name": "CCSURFACE_session_key", "type": "string", "doc": "surrogate key", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#session_key" },
+      { "name": "CCSURFACE_fk_user", "type": { "type": "record", "name": "CCSURFACE_DimUser_Reference", "doc": "Reference to DimUser by surrogate key.", "fields": [{ "name": "CCSURFACE_user_key", "type": "string", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#user_key" }], "namespace": "dev.agentwarehouses.uda.avro.generated.ccsurface", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#DimUser" }, "doc": "user dimension FK", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#fk_user" },
+      { "name": "CCSURFACE_fk_device", "type": { "type": "record", "name": "CCSURFACE_DimDevice_Reference", "doc": "Reference to DimDevice by surrogate key.", "fields": [{ "name": "CCSURFACE_device_key", "type": "string", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#device_key" }], "namespace": "dev.agentwarehouses.uda.avro.generated.ccsurface", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#DimDevice" }, "doc": "device dimension FK", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#fk_device" },
+      { "name": "CCSURFACE_fk_surface", "type": { "type": "record", "name": "CCSURFACE_DimUserSurface_Reference", "doc": "Reference to DimUserSurface by surrogate key.", "fields": [{ "name": "CCSURFACE_surface_key", "type": "string", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#surface_key" }], "namespace": "dev.agentwarehouses.uda.avro.generated.ccsurface", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#DimUserSurface" }, "doc": "surface dimension FK", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#fk_surface" },
+      { "name": "CCSURFACE_session_id", "type": "string", "doc": "session ID (degenerate dimension)", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#session_id" },
+      { "name": "CCSURFACE_git_branch", "type": ["null", "string"], "doc": "git branch", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#git_branch" },
+      { "name": "CCSURFACE_cwd", "type": ["null", "string"], "doc": "working directory", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#cwd" },
+      { "name": "CCSURFACE_duration_ms", "type": "long", "doc": "session duration in milliseconds", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#duration_ms" },
+      { "name": "CCSURFACE_num_turns", "type": "int", "doc": "number of conversation turns", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#num_turns" },
+      { "name": "CCSURFACE_input_tokens", "type": "long", "doc": "total input tokens consumed", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#input_tokens" },
+      { "name": "CCSURFACE_output_tokens", "type": "long", "doc": "total output tokens generated", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#output_tokens" },
+      { "name": "CCSURFACE_total_cost_usd", "type": "double", "doc": "total session cost in USD", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#total_cost_usd" },
+      { "name": "CCSURFACE_num_tool_uses", "type": "int", "doc": "total tool invocations", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#num_tool_uses" },
+      { "name": "CCSURFACE_num_errors", "type": "int", "doc": "total errors encountered", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#num_errors" },
+      { "name": "CCSURFACE_stop_reason", "type": ["null", "string"], "doc": "why the session ended", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#stop_reason" }
+    ],
+    "name": "CCSURFACE_FactSession",
+    "namespace": "dev.agentwarehouses.uda.avro.generated.ccsurface",
+    "type": "record",
+    "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#FactSession"
+  },
+  {
+    "_attributes_": { "_pk_": ["CCSURFACE_tool_use_key"] },
+    "doc": "Tool Use Fact — grain: one tool invocation within a session.\n",
+    "fields": [
+      { "name": "CCSURFACE_tool_use_key", "type": "string", "doc": "surrogate key", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#tool_use_key" },
+      { "name": "CCSURFACE_fk_session", "type": { "type": "record", "name": "CCSURFACE_FactSession_Reference", "doc": "Reference to FactSession by surrogate key.", "fields": [{ "name": "CCSURFACE_session_key", "type": "string", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#session_key" }], "namespace": "dev.agentwarehouses.uda.avro.generated.ccsurface", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#FactSession" }, "doc": "session FK", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#fk_session" },
+      { "name": "CCSURFACE_fk_tool", "type": { "type": "record", "name": "CCSURFACE_DimTool_Reference", "doc": "Reference to DimTool by surrogate key.", "fields": [{ "name": "CCSURFACE_tool_key", "type": "string", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#tool_key" }], "namespace": "dev.agentwarehouses.uda.avro.generated.ccsurface", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#DimTool" }, "doc": "tool dimension FK", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#fk_tool" },
+      { "name": "CCSURFACE_tool_use_id", "type": "string", "doc": "tool use ID (degenerate dimension)", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#tool_use_id" },
+      { "name": "CCSURFACE_turn_number", "type": "int", "doc": "which turn in the conversation", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#turn_number" },
+      { "name": "CCSURFACE_tool_duration_ms", "type": "long", "doc": "tool execution duration", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#tool_duration_ms" },
+      { "name": "CCSURFACE_is_error", "type": "boolean", "doc": "whether the tool returned an error", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#is_error" },
+      { "name": "CCSURFACE_input_size_bytes", "type": ["null", "long"], "doc": "input payload size", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#input_size_bytes" },
+      { "name": "CCSURFACE_output_size_bytes", "type": ["null", "long"], "doc": "output payload size", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#output_size_bytes" },
+      { "name": "CCSURFACE_permission_decision", "type": ["null", "string"], "doc": "permission outcome (allow/deny/ask)", "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#permission_decision" }
+    ],
+    "name": "CCSURFACE_FactToolUse",
+    "namespace": "dev.agentwarehouses.uda.avro.generated.ccsurface",
+    "type": "record",
+    "udaUri": "https://rdf.agentwarehouses.dev/onto/claude-code-surface#FactToolUse"
+  }
+]

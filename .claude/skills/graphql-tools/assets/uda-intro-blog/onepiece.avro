@@ -1,0 +1,85 @@
+[
+  {
+    "_attributes_": {
+      "_pk_": [
+        "ONEPIECE_rname"
+      ]
+    },
+    "doc": "Character\n",
+    "fields": [
+      {
+        "doc": "devil fruit\n",
+        "name": "ONEPIECE_devilFruit",
+        "type": [
+          "null",
+          {
+            "doc": "Reference to a keyed class with keys mentioned in fields below.",
+            "fields": [
+              {
+                "doc": "romanized name\n",
+                "name": "ONEPIECE_rname",
+                "type": "string",
+                "udaUri": "https://rdf.netflix.net/onto/onepiece#rname"
+              }
+            ],
+            "name": "ONEPIECE_DevilFruit_Reference",
+            "type": "record",
+            "udaUri": "https://rdf.netflix.net/onto/onepiece#DevilFruit"
+          }
+        ],
+        "udaUri": "https://rdf.netflix.net/onto/onepiece#devilFruit"
+      },
+      {
+        "doc": "english name\n",
+        "name": "ONEPIECE_ename",
+        "type": "string",
+        "udaUri": "https://rdf.netflix.net/onto/onepiece#ename"
+      },
+      {
+        "doc": "romanized name\n",
+        "name": "ONEPIECE_rname",
+        "type": "string",
+        "udaUri": "https://rdf.netflix.net/onto/onepiece#rname"
+      }
+    ],
+    "name": "ONEPIECE_Character",
+    "namespace": "com.netflix.uda.avro.generated.onepiece",
+    "type": "record",
+    "udaUri": "https://rdf.netflix.net/onto/onepiece#Character"
+  },
+  {
+    "_attributes_": {
+      "_pk_": [
+        "ONEPIECE_rname"
+      ]
+    },
+    "doc": "Devil Fruit\n",
+    "fields": [
+      {
+        "doc": "devil fruit type\n",
+        "name": "ONEPIECE_devilFruitType",
+        "type": {
+          "type": "string",
+          "udaUri": "https://rdf.netflix.net/onto/onepiece#DevilFruitType"
+        },
+        "udaUri": "https://rdf.netflix.net/onto/onepiece#devilFruitType"
+      },
+      {
+        "doc": "english name\n",
+        "name": "ONEPIECE_ename",
+        "type": "string",
+        "udaUri": "https://rdf.netflix.net/onto/onepiece#ename"
+      },
+      {
+        "doc": "romanized name\n",
+        "name": "ONEPIECE_rname",
+        "type": "string",
+        "udaUri": "https://rdf.netflix.net/onto/onepiece#rname"
+      }
+    ],
+    "name": "ONEPIECE_DevilFruit",
+    "namespace": "com.netflix.uda.avro.generated.onepiece",
+    "type": "record",
+    "udaUri": "https://rdf.netflix.net/onto/onepiece#DevilFruit"
+  }
+]

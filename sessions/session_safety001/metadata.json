@@ -1,0 +1,26 @@
+{
+  "session_id": "safety001",
+  "topic": "anthropic-safety-research-audit",
+  "created_at": "2026-04-15T17:51:42.032458+00:00",
+  "device": {
+    "os_name": "Linux",
+    "os_version": "4.4.0",
+    "arch": "x86_64",
+    "shell": "/bin/bash",
+    "terminal": null,
+    "node_version": null,
+    "claude_code_version": "2.1.109"
+  },
+  "surface": {
+    "surface_type": "CLI",
+    "surface_version": "2.1.42",
+    "ide_name": null,
+    "ide_version": null,
+    "is_remote": false,
+    "is_headless": false
+  },
+  "model": "claude-opus-4-6",
+  "claude_code_version": "2.1.109",
+  "pages_fetched": 9,
+  "scratchpad_entries": 4
+}

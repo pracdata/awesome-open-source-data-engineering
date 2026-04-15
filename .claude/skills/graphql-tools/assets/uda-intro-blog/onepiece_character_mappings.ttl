@@ -1,0 +1,23 @@
+@prefix onepiece: <https://rdf.netflix.net/onto/onepiece#> .
+@prefix mapping:  <https://rdf.netflix.net/ns/mapping#> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<https://rdf.test.netflix.net/mapping?primaryConcept=https://rdf.netflix.net/onto/onepiece#Character&dataAsset=urn:nflx:uda:datamesh:source:78867>
+    rdf:type                  mapping:Mapping ;
+    mapping:forPrimaryConcept [ rdf:type             mapping:ConceptMapping ;
+                                mapping:fieldMapping [ rdf:type             mapping:FieldMapping ;
+                                                       mapping:fromProperty onepiece:devilFruit ;
+                                                       mapping:toField      <urn:nflx:uda:datamesh:source:78867:ONEPIECE_devilFruit> ] ;
+                                mapping:fieldMapping [ rdf:type             mapping:FieldMapping ;
+                                                       mapping:fromProperty onepiece:rname ;
+                                                       mapping:toField      <urn:nflx:uda:datamesh:source:78867:ONEPIECE_rname> ] ;
+                                mapping:fieldMapping [ rdf:type             mapping:FieldMapping ;
+                                                       mapping:fromProperty onepiece:ename ;
+                                                       mapping:toField      <urn:nflx:uda:datamesh:source:78867:ONEPIECE_ename> ] ;
+                                mapping:forConcept   onepiece:Character ] ;
+    mapping:forRelatedConcept [ rdf:type             mapping:ConceptMapping ;
+                                mapping:fieldMapping [ rdf:type             mapping:FieldMapping ;
+                                                       mapping:fromProperty onepiece:rname ;
+                                                       mapping:toField      <urn:nflx:uda:datamesh:source:78867:ONEPIECE_devilFruit.ONEPIECE_rname> ] ;
+                                mapping:forConcept   onepiece:DevilFruit ] ;
+    mapping:toDataAsset       <urn:nflx:uda:datamesh:source:78867> .

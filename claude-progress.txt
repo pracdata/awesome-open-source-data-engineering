@@ -1,0 +1,34 @@
+# agentwarehouses — Session Progress
+
+## 2026-04-12: Session 3 — Pydantic models + CRUD skills + release-please
+
+### Completed
+- Pydantic 2.0 data models: 19 modules, 125 typed symbols covering all 9 resource types
+  - base, permissions, tools (37), hooks (25 events), subagents, mcps, skills, plugins
+  - connectors, sessions, memories, agent-teams, channels, checkpoints
+  - env-vars, commands, sdk (ClaudeAgentOptions + messages), otel
+- Aligned with claude-agent-sdk Python and modelcontextprotocol/sdk-python v2
+- Pydantic 3.0-ready patterns (model_config, model_validate, ConfigDict)
+- SemVer tracking + upstream dependency version management
+- Generator script: produces 40 SKILL.md + 36 evals.json from resource profiles
+- 36 CRUD skills (4 interfaces × 9 resources): cli, sdk, api, graphql
+- 4 router skills: crud-cli, crud-sdk, crud-api, crud-graphql
+- Per-skill evals following AgentSkills.io specification
+- Release-please config for conventional-commits versioning
+- pyproject.toml: version 0.2.0, pydantic dependency, release-please config
+- 80 tests passing (32 crawler + 40 models + 8 eval schema)
+
+## 2026-04-12: Session 2 — Logger, OTEL, persona subagents
+
+### Completed
+- colorlog logger, OTEL config, 10 persona subagents, /advisors skill
+
+## 2026-04-12: Session 1 — Initial package setup
+
+### Completed
+- Scrapy package, llmstxt spider, pipelines, skills, hooks
+
+### Next Session
+- Start with: `git log --oneline -5 && cat claude-progress.txt`
+- Run full crawl and validate with /crawl-audit
+- Consider: hand-editing top 9 CRUD skills for deeper content

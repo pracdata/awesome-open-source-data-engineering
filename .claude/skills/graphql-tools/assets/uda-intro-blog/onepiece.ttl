@@ -1,0 +1,111 @@
+# core domain models
+@prefix mwi:      <https://rdf.netflix.net/ns/mwi#> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:       <http://www.w3.org/ns/shacl#> .
+@prefix uda:      <https://rdf.netflix.net/ns/uda#> .
+@prefix upper:    <https://rdf.netflix.net/ns/upper#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+# business domain models
+@prefix onepiece: <https://rdf.netflix.net/onto/onepiece#> .
+
+onepiece:
+    a            upper:DomainModel ;
+    upper:domain "onepiece" ;
+    owl:imports  uda: ;
+    mwi:owner    onepiece:Owner ;
+.
+
+onepiece:Owner
+    a                  mwi:Owner ;
+    mwi:email          "<elided>" ;
+    mwi:pagerDuty      "<elided>" ;
+    mwi:supportChannel [ a               mwi:SlackChannel ;
+                         mwi:channelID   "<elided>" ;
+                         mwi:channelName "<elided>" ; ] ;
+    mwi:alertChannel   [ a               mwi:SlackChannel ;
+                         mwi:channelID   "<elided>" ;
+                         mwi:channelName "<elided>" ; ] ;
+.
+
+onepiece:Character
+    a                 upper:DirectClass ;
+    upper:keyedOn     ( onepiece:rname ) ;
+    upper:property    onepiece:rname ;
+    upper:property    onepiece:ename ;
+    upper:property    onepiece:devilFruit ;
+    upper:label       "Character"@en ;
+    upper:description "A character from the One Piece universe."@en ;
+.
+
+onepiece:rname
+    a                 upper:Attribute ;
+    upper:datatype    xsd:string ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "romanized name"@en ;
+    upper:description "The romanized name of the entity."@en ;
+.
+
+onepiece:ename
+    a                 upper:Attribute ;
+    upper:datatype    xsd:string ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "english name"@en ;
+    upper:description "The name of the entity in English."@en ;
+.
+
+onepiece:devilFruit
+    a                 upper:Relationship ;
+    upper:class       onepiece:DevilFruit ;
+    upper:minCount    0 ;
+    upper:maxCount    1 ;
+    upper:label       "devil fruit"@en ;
+    upper:description "A Devil Fruit that was consumed by the entity."@en ;
+.
+
+onepiece:DevilFruit
+    a                 upper:DirectClass ;
+    upper:keyedOn     ( onepiece:rname ) ;
+    upper:property    onepiece:rname ;
+    upper:property    onepiece:ename ;
+    upper:property    onepiece:devilFruitType ;
+    upper:label       "Devil Fruit"@en ;
+    upper:description "Devil Fruits are supernatural fruits that are scattered throughout the world."@en ;
+.
+
+onepiece:devilFruitType
+    a                 upper:Relationship ;
+    upper:class       onepiece:DevilFruitType ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "devil fruit type"@en ;
+    upper:description "The classification of the Devil Fruit."@en ;
+.
+
+
+onepiece:DevilFruitType
+    a                 upper:Enumeration ;
+    upper:oneOf       ( onepiece:Paramecia
+                        onepiece:Logia
+                        onepiece:Zoan ) ;
+    upper:label       "Devil Fruit Type"@en ;
+    upper:description "One of Paramecia, Logia, or Zoan."@en ;
+.
+
+onepiece:Paramecia
+    a           upper:EnumValue ;
+    upper:label "Paramecia"@en ;
+.
+
+onepiece:Logia
+    a           upper:EnumValue ;
+    upper:label "Logia"@en ;
+.
+
+onepiece:Zoan
+    a           upper:EnumValue ;
+    upper:label "Zoan"@en ;
+.

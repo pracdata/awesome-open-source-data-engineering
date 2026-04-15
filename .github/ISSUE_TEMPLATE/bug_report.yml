@@ -1,0 +1,45 @@
+name: Bug Report
+description: Report a bug in agentwarehouses
+labels: [bug, triage]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened vs. what you expected
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps to trigger the bug
+      value: |
+        1. Run `scrapy crawl llmstxt`
+        2. ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Paste error output or stack traces
+      render: shell
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - Spider (llmstxt)
+        - Pipeline (orjson writer)
+        - Pipeline (stats validator)
+        - Pydantic models
+        - Claude Code config
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: python-version
+    attributes:
+      label: Python version
+      placeholder: "3.11.9"

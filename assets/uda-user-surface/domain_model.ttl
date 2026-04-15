@@ -1,0 +1,713 @@
+# =============================================================================
+# UDA Domain Model: Claude Code User Surface
+# =============================================================================
+# Ralph Kimball dimensional model expressed as a UDA ontology.
+# Following Netflix UDA patterns: domain concepts are upper:DirectClass
+# instances keyed on natural/surrogate keys, with upper:Attribute for
+# scalar properties and upper:Relationship for entity references.
+#
+# Kimball design principles applied:
+#   - Conformed dimensions (User, Device, UserSurface, Time, Model)
+#   - Fact tables as keyed classes with measure attributes
+#   - Slowly Changing Dimensions via effective_from/effective_to
+#   - Degenerate dimensions inlined into facts
+# =============================================================================
+
+# --- Namespace prefixes ---
+@prefix mwi:     <https://rdf.agentwarehouses.dev/ns/mwi#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix uda:     <https://rdf.agentwarehouses.dev/ns/uda#> .
+@prefix upper:   <https://rdf.agentwarehouses.dev/ns/upper#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+# business domain
+@prefix ccsurface: <https://rdf.agentwarehouses.dev/onto/claude-code-surface#> .
+
+# =============================================================================
+# Domain Model Declaration
+# =============================================================================
+
+ccsurface:
+    a            upper:DomainModel ;
+    upper:domain "claude-code-surface" ;
+    owl:imports  uda: ;
+    mwi:owner    ccsurface:Owner ;
+.
+
+ccsurface:Owner
+    a                  mwi:Owner ;
+    mwi:email          "platform@agentwarehouses.dev" ;
+    mwi:supportChannel [ a               mwi:SlackChannel ;
+                         mwi:channelName "#claude-code-surface" ; ] ;
+.
+
+# =============================================================================
+# CONFORMED DIMENSION: User
+# =============================================================================
+# Kimball Type 2 SCD — tracks user attribute changes over time.
+
+ccsurface:DimUser
+    a                 upper:DirectClass ;
+    upper:keyedOn     ( ccsurface:user_key ) ;
+    upper:property    ccsurface:user_key ;
+    upper:property    ccsurface:user_id ;
+    upper:property    ccsurface:org_id ;
+    upper:property    ccsurface:plan_tier ;
+    upper:property    ccsurface:auth_method ;
+    upper:property    ccsurface:permission_mode ;
+    upper:property    ccsurface:zdr_enabled ;
+    upper:property    ccsurface:effective_from ;
+    upper:property    ccsurface:effective_to ;
+    upper:property    ccsurface:is_current ;
+    upper:label       "User Dimension"@en ;
+    upper:description "Conformed dimension capturing the Claude Code user and their organizational context. Type 2 SCD tracks changes to plan, auth method, and permission mode."@en ;
+.
+
+ccsurface:user_key
+    a                 upper:Attribute ;
+    upper:datatype    xsd:string ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "user surrogate key"@en ;
+    upper:description "Surrogate key for the user dimension (UUID v7)."@en ;
+.
+
+ccsurface:user_id
+    a                 upper:Attribute ;
+    upper:datatype    xsd:string ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "user natural key"@en ;
+    upper:description "Natural key — the Anthropic user ID or OAuth subject."@en ;
+.
+
+ccsurface:org_id
+    a                 upper:Attribute ;
+    upper:datatype    xsd:string ;
+    upper:minCount    0 ;
+    upper:maxCount    1 ;
+    upper:label       "organization ID"@en ;
+    upper:description "Anthropic organization the user belongs to, if any."@en ;
+.
+
+ccsurface:plan_tier
+    a                 upper:Relationship ;
+    upper:class       ccsurface:PlanTier ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "plan tier"@en ;
+    upper:description "The user's billing plan tier."@en ;
+.
+
+ccsurface:PlanTier
+    a                 upper:Enumeration ;
+    upper:oneOf       ( ccsurface:Free
+                        ccsurface:Pro
+                        ccsurface:Team
+                        ccsurface:Enterprise
+                        ccsurface:API ) ;
+    upper:label       "Plan Tier"@en ;
+.
+
+ccsurface:Free       a upper:EnumValue ; upper:label "Free"@en .
+ccsurface:Pro        a upper:EnumValue ; upper:label "Pro"@en .
+ccsurface:Team       a upper:EnumValue ; upper:label "Team"@en .
+ccsurface:Enterprise a upper:EnumValue ; upper:label "Enterprise"@en .
+ccsurface:API        a upper:EnumValue ; upper:label "API"@en .
+
+ccsurface:auth_method
+    a                 upper:Relationship ;
+    upper:class       ccsurface:AuthMethod ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "authentication method"@en ;
+    upper:description "How the user authenticates to Claude Code."@en ;
+.
+
+ccsurface:AuthMethod
+    a                 upper:Enumeration ;
+    upper:oneOf       ( ccsurface:OAuth
+                        ccsurface:APIKey
+                        ccsurface:OAuthToken ) ;
+    upper:label       "Auth Method"@en ;
+.
+
+ccsurface:OAuth      a upper:EnumValue ; upper:label "OAuth"@en .
+ccsurface:APIKey     a upper:EnumValue ; upper:label "API Key"@en .
+ccsurface:OAuthToken a upper:EnumValue ; upper:label "OAuth Token"@en .
+
+ccsurface:permission_mode
+    a                 upper:Relationship ;
+    upper:class       ccsurface:PermissionMode ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "permission mode"@en ;
+    upper:description "Default permission mode for the user."@en ;
+.
+
+ccsurface:PermissionMode
+    a                 upper:Enumeration ;
+    upper:oneOf       ( ccsurface:ModeDefault
+                        ccsurface:ModeAcceptEdits
+                        ccsurface:ModePlan
+                        ccsurface:ModeDontAsk
+                        ccsurface:ModeAuto
+                        ccsurface:ModeBypass ) ;
+    upper:label       "Permission Mode"@en ;
+.
+
+ccsurface:ModeDefault     a upper:EnumValue ; upper:label "default"@en .
+ccsurface:ModeAcceptEdits a upper:EnumValue ; upper:label "acceptEdits"@en .
+ccsurface:ModePlan        a upper:EnumValue ; upper:label "plan"@en .
+ccsurface:ModeDontAsk     a upper:EnumValue ; upper:label "dontAsk"@en .
+ccsurface:ModeAuto        a upper:EnumValue ; upper:label "auto"@en .
+ccsurface:ModeBypass      a upper:EnumValue ; upper:label "bypassPermissions"@en .
+
+ccsurface:zdr_enabled
+    a                 upper:Attribute ;
+    upper:datatype    xsd:boolean ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "zero data retention enabled"@en ;
+    upper:description "Whether ZDR is enabled for this user's organization."@en ;
+.
+
+ccsurface:effective_from
+    a                 upper:Attribute ;
+    upper:datatype    xsd:dateTime ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "effective from"@en ;
+    upper:description "SCD Type 2: when this dimension row became active."@en ;
+.
+
+ccsurface:effective_to
+    a                 upper:Attribute ;
+    upper:datatype    xsd:dateTime ;
+    upper:minCount    0 ;
+    upper:maxCount    1 ;
+    upper:label       "effective to"@en ;
+    upper:description "SCD Type 2: when this dimension row was superseded (null if current)."@en ;
+.
+
+ccsurface:is_current
+    a                 upper:Attribute ;
+    upper:datatype    xsd:boolean ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "is current"@en ;
+    upper:description "SCD Type 2: whether this is the currently active row."@en ;
+.
+
+# =============================================================================
+# CONFORMED DIMENSION: Device
+# =============================================================================
+
+ccsurface:DimDevice
+    a                 upper:DirectClass ;
+    upper:keyedOn     ( ccsurface:device_key ) ;
+    upper:property    ccsurface:device_key ;
+    upper:property    ccsurface:device_fingerprint ;
+    upper:property    ccsurface:os_name ;
+    upper:property    ccsurface:os_version ;
+    upper:property    ccsurface:arch ;
+    upper:property    ccsurface:shell ;
+    upper:property    ccsurface:terminal ;
+    upper:property    ccsurface:node_version ;
+    upper:property    ccsurface:claude_code_version ;
+    upper:label       "Device Dimension"@en ;
+    upper:description "Conformed dimension capturing the device/environment where Claude Code runs."@en ;
+.
+
+ccsurface:device_key
+    a                 upper:Attribute ;
+    upper:datatype    xsd:string ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "device surrogate key"@en ;
+.
+
+ccsurface:device_fingerprint
+    a                 upper:Attribute ;
+    upper:datatype    xsd:string ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "device fingerprint"@en ;
+    upper:description "Hashed composite of OS + arch + hostname for device identity."@en ;
+.
+
+ccsurface:os_name
+    a                 upper:Relationship ;
+    upper:class       ccsurface:OSName ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "operating system"@en ;
+.
+
+ccsurface:OSName
+    a                 upper:Enumeration ;
+    upper:oneOf       ( ccsurface:Linux
+                        ccsurface:MacOS
+                        ccsurface:Windows ) ;
+    upper:label       "OS Name"@en ;
+.
+
+ccsurface:Linux   a upper:EnumValue ; upper:label "Linux"@en .
+ccsurface:MacOS   a upper:EnumValue ; upper:label "macOS"@en .
+ccsurface:Windows a upper:EnumValue ; upper:label "Windows"@en .
+
+ccsurface:os_version
+    a                 upper:Attribute ;
+    upper:datatype    xsd:string ;
+    upper:minCount    0 ;
+    upper:maxCount    1 ;
+    upper:label       "OS version"@en ;
+.
+
+ccsurface:arch
+    a                 upper:Attribute ;
+    upper:datatype    xsd:string ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "CPU architecture"@en ;
+    upper:description "x64, arm64, etc."@en ;
+.
+
+ccsurface:shell
+    a                 upper:Attribute ;
+    upper:datatype    xsd:string ;
+    upper:minCount    0 ;
+    upper:maxCount    1 ;
+    upper:label       "shell"@en ;
+    upper:description "bash, zsh, fish, powershell, etc."@en ;
+.
+
+ccsurface:terminal
+    a                 upper:Attribute ;
+    upper:datatype    xsd:string ;
+    upper:minCount    0 ;
+    upper:maxCount    1 ;
+    upper:label       "terminal emulator"@en ;
+.
+
+ccsurface:node_version
+    a                 upper:Attribute ;
+    upper:datatype    xsd:string ;
+    upper:minCount    0 ;
+    upper:maxCount    1 ;
+    upper:label       "Node.js version"@en ;
+.
+
+ccsurface:claude_code_version
+    a                 upper:Attribute ;
+    upper:datatype    xsd:string ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "Claude Code version"@en ;
+    upper:description "Semantic version of the Claude Code installation."@en ;
+.
+
+# =============================================================================
+# CONFORMED DIMENSION: User Surface
+# =============================================================================
+
+ccsurface:DimUserSurface
+    a                 upper:DirectClass ;
+    upper:keyedOn     ( ccsurface:surface_key ) ;
+    upper:property    ccsurface:surface_key ;
+    upper:property    ccsurface:surface_type ;
+    upper:property    ccsurface:surface_version ;
+    upper:property    ccsurface:ide_name ;
+    upper:property    ccsurface:ide_version ;
+    upper:property    ccsurface:is_remote ;
+    upper:property    ccsurface:is_headless ;
+    upper:label       "User Surface Dimension"@en ;
+    upper:description "Conformed dimension for the interface through which the user interacts with Claude Code (CLI, VS Code, Desktop, Web, JetBrains, Mobile)."@en ;
+.
+
+ccsurface:surface_key
+    a                 upper:Attribute ;
+    upper:datatype    xsd:string ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "surface surrogate key"@en ;
+.
+
+ccsurface:surface_type
+    a                 upper:Relationship ;
+    upper:class       ccsurface:SurfaceType ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "surface type"@en ;
+.
+
+ccsurface:SurfaceType
+    a                 upper:Enumeration ;
+    upper:oneOf       ( ccsurface:CLI
+                        ccsurface:VSCode
+                        ccsurface:JetBrains
+                        ccsurface:Desktop
+                        ccsurface:Web
+                        ccsurface:Mobile
+                        ccsurface:Slack
+                        ccsurface:GitHubAction
+                        ccsurface:GitLabCI
+                        ccsurface:SDK ) ;
+    upper:label       "Surface Type"@en ;
+.
+
+ccsurface:CLI          a upper:EnumValue ; upper:label "CLI"@en .
+ccsurface:VSCode       a upper:EnumValue ; upper:label "VS Code"@en .
+ccsurface:JetBrains    a upper:EnumValue ; upper:label "JetBrains"@en .
+ccsurface:Desktop      a upper:EnumValue ; upper:label "Desktop App"@en .
+ccsurface:Web          a upper:EnumValue ; upper:label "Web (claude.ai/code)"@en .
+ccsurface:Mobile       a upper:EnumValue ; upper:label "Mobile (Remote Control)"@en .
+ccsurface:Slack        a upper:EnumValue ; upper:label "Slack"@en .
+ccsurface:GitHubAction a upper:EnumValue ; upper:label "GitHub Actions"@en .
+ccsurface:GitLabCI     a upper:EnumValue ; upper:label "GitLab CI/CD"@en .
+ccsurface:SDK          a upper:EnumValue ; upper:label "Agent SDK"@en .
+
+ccsurface:surface_version
+    a                 upper:Attribute ;
+    upper:datatype    xsd:string ;
+    upper:minCount    0 ;
+    upper:maxCount    1 ;
+    upper:label       "surface version"@en ;
+    upper:description "Version of the extension, app, or integration."@en ;
+.
+
+ccsurface:ide_name
+    a                 upper:Attribute ;
+    upper:datatype    xsd:string ;
+    upper:minCount    0 ;
+    upper:maxCount    1 ;
+    upper:label       "IDE name"@en ;
+    upper:description "Specific IDE product (IntelliJ, PyCharm, WebStorm, Cursor, etc.)."@en ;
+.
+
+ccsurface:ide_version
+    a                 upper:Attribute ;
+    upper:datatype    xsd:string ;
+    upper:minCount    0 ;
+    upper:maxCount    1 ;
+    upper:label       "IDE version"@en ;
+.
+
+ccsurface:is_remote
+    a                 upper:Attribute ;
+    upper:datatype    xsd:boolean ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "is remote"@en ;
+    upper:description "Whether the session is running in a cloud sandbox."@en ;
+.
+
+ccsurface:is_headless
+    a                 upper:Attribute ;
+    upper:datatype    xsd:boolean ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "is headless"@en ;
+    upper:description "Whether running in non-interactive/programmatic mode."@en ;
+.
+
+# =============================================================================
+# CONFORMED DIMENSION: Model
+# =============================================================================
+
+ccsurface:DimModel
+    a                 upper:DirectClass ;
+    upper:keyedOn     ( ccsurface:model_key ) ;
+    upper:property    ccsurface:model_key ;
+    upper:property    ccsurface:model_id ;
+    upper:property    ccsurface:model_family ;
+    upper:property    ccsurface:model_tier ;
+    upper:property    ccsurface:context_window ;
+    upper:property    ccsurface:max_output_tokens ;
+    upper:property    ccsurface:supports_thinking ;
+    upper:property    ccsurface:supports_vision ;
+    upper:label       "Model Dimension"@en ;
+    upper:description "Conformed dimension for the Claude model used in a session."@en ;
+.
+
+ccsurface:model_key
+    a upper:Attribute ; upper:datatype xsd:string ;
+    upper:minCount 1 ; upper:maxCount 1 ;
+    upper:label "model surrogate key"@en ;
+.
+
+ccsurface:model_id
+    a upper:Attribute ; upper:datatype xsd:string ;
+    upper:minCount 1 ; upper:maxCount 1 ;
+    upper:label "model ID"@en ;
+    upper:description "Full model identifier (e.g. claude-opus-4-6)."@en ;
+.
+
+ccsurface:model_family
+    a upper:Attribute ; upper:datatype xsd:string ;
+    upper:minCount 1 ; upper:maxCount 1 ;
+    upper:label "model family"@en ;
+    upper:description "Claude 4.6, Claude 4.5, etc."@en ;
+.
+
+ccsurface:model_tier
+    a                 upper:Relationship ;
+    upper:class       ccsurface:ModelTier ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "model tier"@en ;
+.
+
+ccsurface:ModelTier
+    a upper:Enumeration ;
+    upper:oneOf ( ccsurface:Opus ccsurface:Sonnet ccsurface:Haiku ) ;
+    upper:label "Model Tier"@en ;
+.
+
+ccsurface:Opus   a upper:EnumValue ; upper:label "Opus"@en .
+ccsurface:Sonnet a upper:EnumValue ; upper:label "Sonnet"@en .
+ccsurface:Haiku  a upper:EnumValue ; upper:label "Haiku"@en .
+
+ccsurface:context_window
+    a upper:Attribute ; upper:datatype xsd:integer ;
+    upper:minCount 1 ; upper:maxCount 1 ;
+    upper:label "context window tokens"@en ;
+.
+
+ccsurface:max_output_tokens
+    a upper:Attribute ; upper:datatype xsd:integer ;
+    upper:minCount 1 ; upper:maxCount 1 ;
+    upper:label "max output tokens"@en ;
+.
+
+ccsurface:supports_thinking
+    a upper:Attribute ; upper:datatype xsd:boolean ;
+    upper:minCount 1 ; upper:maxCount 1 ;
+    upper:label "supports extended thinking"@en ;
+.
+
+ccsurface:supports_vision
+    a upper:Attribute ; upper:datatype xsd:boolean ;
+    upper:minCount 1 ; upper:maxCount 1 ;
+    upper:label "supports vision"@en ;
+.
+
+# =============================================================================
+# CONFORMED DIMENSION: Time (Date)
+# =============================================================================
+
+ccsurface:DimTime
+    a                 upper:DirectClass ;
+    upper:keyedOn     ( ccsurface:time_key ) ;
+    upper:property    ccsurface:time_key ;
+    upper:property    ccsurface:iso_date ;
+    upper:property    ccsurface:hour ;
+    upper:property    ccsurface:day_of_week ;
+    upper:property    ccsurface:month ;
+    upper:property    ccsurface:quarter ;
+    upper:property    ccsurface:year ;
+    upper:property    ccsurface:is_weekend ;
+    upper:label       "Time Dimension"@en ;
+    upper:description "Conformed date/time dimension at hourly grain."@en ;
+.
+
+ccsurface:time_key   a upper:Attribute ; upper:datatype xsd:string ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "time surrogate key"@en .
+ccsurface:iso_date   a upper:Attribute ; upper:datatype xsd:date ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "ISO date"@en .
+ccsurface:hour       a upper:Attribute ; upper:datatype xsd:integer ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "hour (0-23)"@en .
+ccsurface:day_of_week a upper:Attribute ; upper:datatype xsd:integer ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "day of week (1=Mon)"@en .
+ccsurface:month      a upper:Attribute ; upper:datatype xsd:integer ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "month (1-12)"@en .
+ccsurface:quarter    a upper:Attribute ; upper:datatype xsd:integer ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "quarter (1-4)"@en .
+ccsurface:year       a upper:Attribute ; upper:datatype xsd:integer ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "year"@en .
+ccsurface:is_weekend a upper:Attribute ; upper:datatype xsd:boolean ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "is weekend"@en .
+
+# =============================================================================
+# CONFORMED DIMENSION: Tool
+# =============================================================================
+
+ccsurface:DimTool
+    a                 upper:DirectClass ;
+    upper:keyedOn     ( ccsurface:tool_key ) ;
+    upper:property    ccsurface:tool_key ;
+    upper:property    ccsurface:tool_name ;
+    upper:property    ccsurface:tool_category ;
+    upper:property    ccsurface:requires_permission ;
+    upper:property    ccsurface:is_mcp_tool ;
+    upper:property    ccsurface:mcp_server_name ;
+    upper:label       "Tool Dimension"@en ;
+    upper:description "Conformed dimension for Claude Code's built-in and MCP tools."@en ;
+.
+
+ccsurface:tool_key   a upper:Attribute ; upper:datatype xsd:string ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "tool surrogate key"@en .
+ccsurface:tool_name  a upper:Attribute ; upper:datatype xsd:string ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "tool name"@en .
+
+ccsurface:tool_category
+    a                 upper:Relationship ;
+    upper:class       ccsurface:ToolCategory ;
+    upper:minCount    1 ;
+    upper:maxCount    1 ;
+    upper:label       "tool category"@en ;
+.
+
+ccsurface:ToolCategory
+    a upper:Enumeration ;
+    upper:oneOf ( ccsurface:CatFileOps ccsurface:CatCodeExec ccsurface:CatCodeSearch
+                  ccsurface:CatFileSearch ccsurface:CatWebOps ccsurface:CatSubagent
+                  ccsurface:CatTaskMgmt ccsurface:CatMCP ccsurface:CatGit
+                  ccsurface:CatUserInteraction ccsurface:CatWorkflow ) ;
+    upper:label "Tool Category"@en ;
+.
+
+ccsurface:CatFileOps        a upper:EnumValue ; upper:label "file_operations"@en .
+ccsurface:CatCodeExec       a upper:EnumValue ; upper:label "code_execution"@en .
+ccsurface:CatCodeSearch     a upper:EnumValue ; upper:label "code_search"@en .
+ccsurface:CatFileSearch     a upper:EnumValue ; upper:label "file_search"@en .
+ccsurface:CatWebOps         a upper:EnumValue ; upper:label "web_operations"@en .
+ccsurface:CatSubagent       a upper:EnumValue ; upper:label "subagent_spawning"@en .
+ccsurface:CatTaskMgmt       a upper:EnumValue ; upper:label "task_management"@en .
+ccsurface:CatMCP            a upper:EnumValue ; upper:label "mcp_integration"@en .
+ccsurface:CatGit            a upper:EnumValue ; upper:label "git_operations"@en .
+ccsurface:CatUserInteraction a upper:EnumValue ; upper:label "user_interaction"@en .
+ccsurface:CatWorkflow       a upper:EnumValue ; upper:label "workflow"@en .
+
+ccsurface:requires_permission a upper:Attribute ; upper:datatype xsd:boolean ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "requires permission"@en .
+ccsurface:is_mcp_tool        a upper:Attribute ; upper:datatype xsd:boolean ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "is MCP tool"@en .
+ccsurface:mcp_server_name    a upper:Attribute ; upper:datatype xsd:string ; upper:minCount 0 ; upper:maxCount 1 ; upper:label "MCP server name"@en .
+
+# =============================================================================
+# FACT TABLE: Session (grain = one Claude Code session)
+# =============================================================================
+
+ccsurface:FactSession
+    a                 upper:DirectClass ;
+    upper:keyedOn     ( ccsurface:session_key ) ;
+    # Dimension foreign keys
+    upper:property    ccsurface:session_key ;
+    upper:property    ccsurface:fk_user ;
+    upper:property    ccsurface:fk_device ;
+    upper:property    ccsurface:fk_surface ;
+    upper:property    ccsurface:fk_model ;
+    upper:property    ccsurface:fk_time_start ;
+    upper:property    ccsurface:fk_time_end ;
+    # Degenerate dimensions
+    upper:property    ccsurface:session_id ;
+    upper:property    ccsurface:git_branch ;
+    upper:property    ccsurface:cwd ;
+    upper:property    ccsurface:thinking_mode ;
+    upper:property    ccsurface:effort_level ;
+    # Measures
+    upper:property    ccsurface:duration_ms ;
+    upper:property    ccsurface:num_turns ;
+    upper:property    ccsurface:input_tokens ;
+    upper:property    ccsurface:output_tokens ;
+    upper:property    ccsurface:thinking_tokens ;
+    upper:property    ccsurface:cache_read_tokens ;
+    upper:property    ccsurface:cache_write_tokens ;
+    upper:property    ccsurface:total_cost_usd ;
+    upper:property    ccsurface:num_tool_uses ;
+    upper:property    ccsurface:num_errors ;
+    upper:property    ccsurface:num_checkpoints ;
+    upper:property    ccsurface:files_edited ;
+    upper:property    ccsurface:files_created ;
+    upper:property    ccsurface:stop_reason ;
+    upper:label       "Session Fact"@en ;
+    upper:description "Fact table at session grain. Each row is one Claude Code session with measures for cost, tokens, duration, and activity."@en ;
+.
+
+ccsurface:session_key      a upper:Attribute ; upper:datatype xsd:string ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "session surrogate key"@en .
+ccsurface:fk_user          a upper:Relationship ; upper:class ccsurface:DimUser ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "user dimension FK"@en .
+ccsurface:fk_device        a upper:Relationship ; upper:class ccsurface:DimDevice ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "device dimension FK"@en .
+ccsurface:fk_surface       a upper:Relationship ; upper:class ccsurface:DimUserSurface ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "surface dimension FK"@en .
+ccsurface:fk_model         a upper:Relationship ; upper:class ccsurface:DimModel ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "model dimension FK"@en .
+ccsurface:fk_time_start    a upper:Relationship ; upper:class ccsurface:DimTime ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "start time FK"@en .
+ccsurface:fk_time_end      a upper:Relationship ; upper:class ccsurface:DimTime ; upper:minCount 0 ; upper:maxCount 1 ; upper:label "end time FK"@en .
+ccsurface:session_id       a upper:Attribute ; upper:datatype xsd:string ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "session ID (degenerate)"@en .
+ccsurface:git_branch       a upper:Attribute ; upper:datatype xsd:string ; upper:minCount 0 ; upper:maxCount 1 ; upper:label "git branch"@en .
+ccsurface:cwd              a upper:Attribute ; upper:datatype xsd:string ; upper:minCount 0 ; upper:maxCount 1 ; upper:label "working directory"@en .
+ccsurface:thinking_mode    a upper:Attribute ; upper:datatype xsd:string ; upper:minCount 0 ; upper:maxCount 1 ; upper:label "thinking mode"@en .
+ccsurface:effort_level     a upper:Attribute ; upper:datatype xsd:string ; upper:minCount 0 ; upper:maxCount 1 ; upper:label "effort level"@en .
+ccsurface:duration_ms      a upper:Attribute ; upper:datatype xsd:long ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "duration (ms)"@en .
+ccsurface:num_turns        a upper:Attribute ; upper:datatype xsd:integer ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "number of turns"@en .
+ccsurface:input_tokens     a upper:Attribute ; upper:datatype xsd:long ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "input tokens"@en .
+ccsurface:output_tokens    a upper:Attribute ; upper:datatype xsd:long ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "output tokens"@en .
+ccsurface:thinking_tokens  a upper:Attribute ; upper:datatype xsd:long ; upper:minCount 0 ; upper:maxCount 1 ; upper:label "thinking tokens"@en .
+ccsurface:cache_read_tokens  a upper:Attribute ; upper:datatype xsd:long ; upper:minCount 0 ; upper:maxCount 1 ; upper:label "cache read tokens"@en .
+ccsurface:cache_write_tokens a upper:Attribute ; upper:datatype xsd:long ; upper:minCount 0 ; upper:maxCount 1 ; upper:label "cache write tokens"@en .
+ccsurface:total_cost_usd   a upper:Attribute ; upper:datatype xsd:decimal ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "total cost (USD)"@en .
+ccsurface:num_tool_uses    a upper:Attribute ; upper:datatype xsd:integer ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "tool uses"@en .
+ccsurface:num_errors       a upper:Attribute ; upper:datatype xsd:integer ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "errors"@en .
+ccsurface:num_checkpoints  a upper:Attribute ; upper:datatype xsd:integer ; upper:minCount 0 ; upper:maxCount 1 ; upper:label "checkpoints"@en .
+ccsurface:files_edited     a upper:Attribute ; upper:datatype xsd:integer ; upper:minCount 0 ; upper:maxCount 1 ; upper:label "files edited"@en .
+ccsurface:files_created    a upper:Attribute ; upper:datatype xsd:integer ; upper:minCount 0 ; upper:maxCount 1 ; upper:label "files created"@en .
+ccsurface:stop_reason      a upper:Attribute ; upper:datatype xsd:string ; upper:minCount 0 ; upper:maxCount 1 ; upper:label "stop reason"@en .
+
+# =============================================================================
+# FACT TABLE: Tool Use (grain = one tool invocation within a session)
+# =============================================================================
+
+ccsurface:FactToolUse
+    a                 upper:DirectClass ;
+    upper:keyedOn     ( ccsurface:tool_use_key ) ;
+    upper:property    ccsurface:tool_use_key ;
+    upper:property    ccsurface:fk_session ;
+    upper:property    ccsurface:fk_tool ;
+    upper:property    ccsurface:fk_time_invoked ;
+    # Degenerate dimensions
+    upper:property    ccsurface:tool_use_id ;
+    upper:property    ccsurface:parent_tool_use_id ;
+    upper:property    ccsurface:turn_number ;
+    # Measures
+    upper:property    ccsurface:tool_duration_ms ;
+    upper:property    ccsurface:is_error ;
+    upper:property    ccsurface:input_size_bytes ;
+    upper:property    ccsurface:output_size_bytes ;
+    upper:property    ccsurface:permission_decision ;
+    upper:label       "Tool Use Fact"@en ;
+    upper:description "Fact table at tool-invocation grain. Each row is one tool call within a session."@en ;
+.
+
+ccsurface:tool_use_key      a upper:Attribute ; upper:datatype xsd:string ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "tool use surrogate key"@en .
+ccsurface:fk_session        a upper:Relationship ; upper:class ccsurface:FactSession ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "session FK"@en .
+ccsurface:fk_tool           a upper:Relationship ; upper:class ccsurface:DimTool ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "tool dimension FK"@en .
+ccsurface:fk_time_invoked   a upper:Relationship ; upper:class ccsurface:DimTime ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "invocation time FK"@en .
+ccsurface:tool_use_id       a upper:Attribute ; upper:datatype xsd:string ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "tool use ID (degenerate)"@en .
+ccsurface:parent_tool_use_id a upper:Attribute ; upper:datatype xsd:string ; upper:minCount 0 ; upper:maxCount 1 ; upper:label "parent tool use ID"@en .
+ccsurface:turn_number       a upper:Attribute ; upper:datatype xsd:integer ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "turn number"@en .
+ccsurface:tool_duration_ms  a upper:Attribute ; upper:datatype xsd:long ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "tool duration (ms)"@en .
+ccsurface:is_error          a upper:Attribute ; upper:datatype xsd:boolean ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "is error"@en .
+ccsurface:input_size_bytes  a upper:Attribute ; upper:datatype xsd:long ; upper:minCount 0 ; upper:maxCount 1 ; upper:label "input size (bytes)"@en .
+ccsurface:output_size_bytes a upper:Attribute ; upper:datatype xsd:long ; upper:minCount 0 ; upper:maxCount 1 ; upper:label "output size (bytes)"@en .
+ccsurface:permission_decision a upper:Attribute ; upper:datatype xsd:string ; upper:minCount 0 ; upper:maxCount 1 ; upper:label "permission decision"@en .
+
+# =============================================================================
+# FACT TABLE: Message (grain = one message in a session conversation)
+# =============================================================================
+
+ccsurface:FactMessage
+    a                 upper:DirectClass ;
+    upper:keyedOn     ( ccsurface:message_key ) ;
+    upper:property    ccsurface:message_key ;
+    upper:property    ccsurface:fk_session_msg ;
+    upper:property    ccsurface:fk_time_sent ;
+    # Degenerate
+    upper:property    ccsurface:message_uuid ;
+    upper:property    ccsurface:message_role ;
+    # Measures
+    upper:property    ccsurface:content_blocks ;
+    upper:property    ccsurface:text_length ;
+    upper:property    ccsurface:has_thinking ;
+    upper:property    ccsurface:has_tool_use ;
+    upper:label       "Message Fact"@en ;
+    upper:description "Fact table at message grain for conversation analysis."@en ;
+.
+
+ccsurface:message_key      a upper:Attribute ; upper:datatype xsd:string ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "message surrogate key"@en .
+ccsurface:fk_session_msg   a upper:Relationship ; upper:class ccsurface:FactSession ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "session FK"@en .
+ccsurface:fk_time_sent     a upper:Relationship ; upper:class ccsurface:DimTime ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "sent time FK"@en .
+ccsurface:message_uuid     a upper:Attribute ; upper:datatype xsd:string ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "message UUID"@en .
+ccsurface:message_role     a upper:Attribute ; upper:datatype xsd:string ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "message role"@en .
+ccsurface:content_blocks   a upper:Attribute ; upper:datatype xsd:integer ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "content block count"@en .
+ccsurface:text_length      a upper:Attribute ; upper:datatype xsd:long ; upper:minCount 0 ; upper:maxCount 1 ; upper:label "text length (chars)"@en .
+ccsurface:has_thinking     a upper:Attribute ; upper:datatype xsd:boolean ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "has thinking block"@en .
+ccsurface:has_tool_use     a upper:Attribute ; upper:datatype xsd:boolean ; upper:minCount 1 ; upper:maxCount 1 ; upper:label "has tool use block"@en .

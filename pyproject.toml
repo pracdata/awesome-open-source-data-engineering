@@ -1,0 +1,180 @@
+[build-system]
+requires = ["setuptools>=75.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentwarehouses"
+version = "0.2.0"
+description = "Scrapy sitemap crawler for llms.txt documentation pages with Pydantic data models"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+dependencies = [
+    "scrapy>=2.12,<3.0",
+    "orjson>=3.10,<4.0",
+    "rbloom>=1.5,<2.0",
+    "colorlog>=6.10,<7.0",
+]
+
+[project.optional-dependencies]
+models = [
+    "pydantic>=2.9,<4.0",
+]
+
+# ── Video generation pipeline (Claude + Veo 3.1 + GraphQL) ───────
+generation = [
+    "pydantic>=2.9,<4.0",
+    "anthropic>=0.52,<1.0",
+    "google-genai>=1.14,<2.0",
+    "strawberry-graphql>=0.262,<1.0",
+    "uvicorn>=0.34,<1.0",
+]
+
+# ── CPU-optimized warehouse (low latency, low memory) ──────────
+# fastembed uses ONNX Runtime (~50 MB) instead of PyTorch (~2 GB)
+# for embedding generation. Same all-MiniLM-L6-v2 model, 50x smaller.
+warehouse = [
+    "pydantic>=2.9,<4.0",
+    "psycopg[binary]>=3.2,<4.0",
+    "sqlmodel>=0.0.22,<1.0",
+    "fastembed>=0.7,<1.0",
+    "onnxruntime>=1.22,<2.0",
+    "networkx>=3.4,<4.0",
+    "httpx>=0.28,<1.0",
+    "mempalace>=3.0,<4.0",
+    "numpy>=1.26,<3.0",
+]
+
+# ── GPU tier: full torch + sentence-transformers + dspy ─────────
+# Only install when you need CUDA-accelerated training, DSPy LLM
+# extraction, or torch-dependent model pipelines.
+gpu = [
+    "pydantic>=2.9,<4.0",
+    "psycopg[binary]>=3.2,<4.0",
+    "sqlmodel>=0.0.22,<1.0",
+    "sentence-transformers>=3.3,<4.0",
+    "networkx>=3.4,<4.0",
+    "dspy>=3.0,<4.0",
+    "httpx>=0.28,<1.0",
+    "mempalace>=3.0,<4.0",
+]
+
+# ── MCP + Claude Agent SDKs ───────────────────────────────
+mcp = [
+    "mcp>=1.27,<2.0",
+    "claude-code-sdk>=0.0.25,<1.0",
+]
+
+# ── Multi-agent research system (Claude Agent SDK) ───────
+research = [
+    "claude-code-sdk>=0.0.25,<1.0",
+    "reportlab>=4.0,<5.0",
+    "matplotlib>=3.8,<4.0",
+]
+
+# ── Social distribution SDKs (TikTok Business API) ───────
+social = [
+    "tiktok-business-api-sdk>=1.0,<2.0",
+]
+
+# ── LSP tooling (Serena + language servers) ───────────────
+lsp = [
+    "python-lsp-server>=1.14,<2.0",
+]
+
+# ── Dev + test tooling (CPU-fast, no heavy ML deps) ─────────────
+dev = [
+    "ruff>=0.8",
+    "mypy>=1.13",
+    "pytest>=8.0",
+    "pytest-cov>=7.0",
+    "pytest-xdist>=3.5",
+    "pytest-timeout>=2.3",
+    "pytest-benchmark>=5.1",
+    "pydantic>=2.9,<4.0",
+    "pre-commit>=4.0",
+]
+
+[tool.release-please]
+release-type = "python"
+package-name = "agentwarehouses"
+bump-minor-pre-major = true
+
+[project.scripts]
+research-agent = "agentwarehouses.research_agent.agent:main"
+
+[project.entry-points."scrapy"]
+settings = "agentwarehouses.settings"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+
+[tool.ruff.lint.per-file-ignores]
+".claude/skills/*/scripts/*.py" = ["E501"]
+"scripts/*.py" = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+
+[[tool.mypy.overrides]]
+module = [
+    "agentwarehouses.generation.*",
+    "agentwarehouses.spiders.neon_docs_spider",
+    "agentwarehouses.research_agent.*",
+]
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = [
+    "anthropic",
+    "anthropic.*",
+    "google.*",
+    "strawberry",
+    "strawberry.*",
+    "claude_agent_sdk",
+    "claude_agent_sdk.*",
+    "reportlab",
+    "reportlab.*",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "unit: fast isolated unit tests",
+    "integration: tests requiring Scrapy or filesystem",
+    "models: Pydantic model validation tests",
+    "evals: AgentSkills.io eval schema tests",
+    "slow: tests that may take >5s",
+]
+addopts = [
+    "--strict-markers",
+    "--timeout=30",
+    "-x",
+]
+
+[tool.coverage.run]
+source = ["agentwarehouses"]
+omit = [
+    "*/settings.py",
+    "*/generation/*",
+    "*/spiders/neon_docs_spider.py",
+    "*/research_agent/*",
+]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "\\.\\.\\.",
+]

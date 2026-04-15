@@ -1,0 +1,16 @@
+{
+  "packages": {
+    ".": {
+      "release-type": "python",
+      "package-name": "agentwarehouses",
+      "bump-minor-pre-major": true,
+      "changelog-sections": [
+        {"type": "feat", "section": "Features"},
+        {"type": "fix", "section": "Bug Fixes"},
+        {"type": "deps", "section": "Dependencies"},
+        {"type": "docs", "section": "Documentation"}
+      ],
+      "extra-files": ["src/agentwarehouses/models/_version.py"]
+    }
+  }
+}

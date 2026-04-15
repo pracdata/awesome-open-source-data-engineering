@@ -1,0 +1,36 @@
+{
+  "skill_name": "crud-api-agent-teams",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a new agent-team called 'example' using api",
+      "expected_output": "Valid agent-team created with correct configuration",
+      "files": [],
+      "assertions": [
+        "Uses correct api method for creating agent-teams",
+        "Output includes the name 'example'",
+        "All required fields are present"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "List all agent-teams and show their configuration using api",
+      "expected_output": "Complete listing of agent-teams with details",
+      "files": [],
+      "assertions": [
+        "Uses correct api command or method for listing",
+        "Response includes name and configuration fields"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Delete the agent-team named 'example' using api",
+      "expected_output": "Resource removed successfully",
+      "files": [],
+      "assertions": [
+        "Uses correct api method for deletion",
+        "Confirms removal or provides verification step"
+      ]
+    }
+  ]
+}

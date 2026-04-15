@@ -1,0 +1,3039 @@
+{
+  "skill_name": "crud-eval",
+  "matrix": {
+    "interfaces": [
+      "graphql",
+      "api",
+      "sdk",
+      "cli"
+    ],
+    "entities": [
+      "skills",
+      "plugins",
+      "connectors",
+      "mcps",
+      "subagents",
+      "hooks",
+      "sessions",
+      "memories",
+      "agent-teams"
+    ],
+    "operations": [
+      "create",
+      "read",
+      "update",
+      "delete"
+    ]
+  },
+  "total_evals": 144,
+  "evals": [
+    {
+      "id": "graphql-skills-create",
+      "interface": "graphql",
+      "entity": "skills",
+      "operation": "create",
+      "prompt": "Create a new skill via the graphql interface with name 'test-analyzer' and verify it was created successfully.",
+      "expected_output": "A successful create of a skill via graphql, returning the appropriate response.",
+      "command_hint": "mutation { createSkill(input: $input) { id name } }",
+      "test_data": {
+        "name": "test-analyzer",
+        "description": "Analyzes test data"
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created skill",
+        "The response confirms the skill was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The graphql call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "graphql-skills-read",
+      "interface": "graphql",
+      "entity": "skills",
+      "operation": "read",
+      "prompt": "Retrieve the skill with ID '{id}' via the graphql interface and display all its fields.",
+      "expected_output": "A successful read of a skill via graphql, returning the appropriate response.",
+      "command_hint": "query { skill(id: $id) { id name description } }",
+      "test_data": {
+        "name": "test-analyzer",
+        "description": "Analyzes test data"
+      },
+      "assertions": [
+        "The operation returns the skill data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The graphql call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for skill"
+      ]
+    },
+    {
+      "id": "graphql-skills-update",
+      "interface": "graphql",
+      "entity": "skills",
+      "operation": "update",
+      "prompt": "Update the skill with ID '{id}' via the graphql interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a skill via graphql, returning the appropriate response.",
+      "command_hint": "mutation { updateSkill(id: $id, input: $input) { id name } }",
+      "test_data": {
+        "name": "test-analyzer",
+        "description": "Analyzes test data"
+      },
+      "assertions": [
+        "The operation returns the updated skill with changed fields",
+        "The version/timestamp is incremented after update",
+        "The graphql call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "graphql-skills-delete",
+      "interface": "graphql",
+      "entity": "skills",
+      "operation": "delete",
+      "prompt": "Delete the skill with ID '{id}' via the graphql interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a skill via graphql, returning the appropriate response.",
+      "command_hint": "mutation { deleteSkill(id: $id) { success } }",
+      "test_data": {
+        "name": "test-analyzer",
+        "description": "Analyzes test data"
+      },
+      "assertions": [
+        "The operation confirms the skill was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The graphql call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "graphql-plugins-create",
+      "interface": "graphql",
+      "entity": "plugins",
+      "operation": "create",
+      "prompt": "Create a new plugin via the graphql interface with name 'test-plugin' and verify it was created successfully.",
+      "expected_output": "A successful create of a plugin via graphql, returning the appropriate response.",
+      "command_hint": "mutation { createPlugin(input: $input) { id name } }",
+      "test_data": {
+        "name": "test-plugin",
+        "type": "tool",
+        "description": "A test plugin"
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created plugin",
+        "The response confirms the plugin was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The graphql call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "graphql-plugins-read",
+      "interface": "graphql",
+      "entity": "plugins",
+      "operation": "read",
+      "prompt": "Retrieve the plugin with ID '{id}' via the graphql interface and display all its fields.",
+      "expected_output": "A successful read of a plugin via graphql, returning the appropriate response.",
+      "command_hint": "query { plugin(id: $id) { id name description } }",
+      "test_data": {
+        "name": "test-plugin",
+        "type": "tool",
+        "description": "A test plugin"
+      },
+      "assertions": [
+        "The operation returns the plugin data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The graphql call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for plugin"
+      ]
+    },
+    {
+      "id": "graphql-plugins-update",
+      "interface": "graphql",
+      "entity": "plugins",
+      "operation": "update",
+      "prompt": "Update the plugin with ID '{id}' via the graphql interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a plugin via graphql, returning the appropriate response.",
+      "command_hint": "mutation { updatePlugin(id: $id, input: $input) { id name } }",
+      "test_data": {
+        "name": "test-plugin",
+        "type": "tool",
+        "description": "A test plugin"
+      },
+      "assertions": [
+        "The operation returns the updated plugin with changed fields",
+        "The version/timestamp is incremented after update",
+        "The graphql call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "graphql-plugins-delete",
+      "interface": "graphql",
+      "entity": "plugins",
+      "operation": "delete",
+      "prompt": "Delete the plugin with ID '{id}' via the graphql interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a plugin via graphql, returning the appropriate response.",
+      "command_hint": "mutation { deletePlugin(id: $id) { success } }",
+      "test_data": {
+        "name": "test-plugin",
+        "type": "tool",
+        "description": "A test plugin"
+      },
+      "assertions": [
+        "The operation confirms the plugin was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The graphql call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "graphql-connectors-create",
+      "interface": "graphql",
+      "entity": "connectors",
+      "operation": "create",
+      "prompt": "Create a new connector via the graphql interface with name 'test-connector' and verify it was created successfully.",
+      "expected_output": "A successful create of a connector via graphql, returning the appropriate response.",
+      "command_hint": "mutation { createConnector(input: $input) { id name } }",
+      "test_data": {
+        "name": "test-connector",
+        "type": "mcp",
+        "config": {
+          "command": "echo"
+        }
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created connector",
+        "The response confirms the connector was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The graphql call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "graphql-connectors-read",
+      "interface": "graphql",
+      "entity": "connectors",
+      "operation": "read",
+      "prompt": "Retrieve the connector with ID '{id}' via the graphql interface and display all its fields.",
+      "expected_output": "A successful read of a connector via graphql, returning the appropriate response.",
+      "command_hint": "query { connector(id: $id) { id name description } }",
+      "test_data": {
+        "name": "test-connector",
+        "type": "mcp",
+        "config": {
+          "command": "echo"
+        }
+      },
+      "assertions": [
+        "The operation returns the connector data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The graphql call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for connector"
+      ]
+    },
+    {
+      "id": "graphql-connectors-update",
+      "interface": "graphql",
+      "entity": "connectors",
+      "operation": "update",
+      "prompt": "Update the connector with ID '{id}' via the graphql interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a connector via graphql, returning the appropriate response.",
+      "command_hint": "mutation { updateConnector(id: $id, input: $input) { id name } }",
+      "test_data": {
+        "name": "test-connector",
+        "type": "mcp",
+        "config": {
+          "command": "echo"
+        }
+      },
+      "assertions": [
+        "The operation returns the updated connector with changed fields",
+        "The version/timestamp is incremented after update",
+        "The graphql call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "graphql-connectors-delete",
+      "interface": "graphql",
+      "entity": "connectors",
+      "operation": "delete",
+      "prompt": "Delete the connector with ID '{id}' via the graphql interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a connector via graphql, returning the appropriate response.",
+      "command_hint": "mutation { deleteConnector(id: $id) { success } }",
+      "test_data": {
+        "name": "test-connector",
+        "type": "mcp",
+        "config": {
+          "command": "echo"
+        }
+      },
+      "assertions": [
+        "The operation confirms the connector was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The graphql call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "graphql-mcps-create",
+      "interface": "graphql",
+      "entity": "mcps",
+      "operation": "create",
+      "prompt": "Create a new mcp via the graphql interface with name 'test-mcp' and verify it was created successfully.",
+      "expected_output": "A successful create of a mcp via graphql, returning the appropriate response.",
+      "command_hint": "mutation { createMcp(input: $input) { id name } }",
+      "test_data": {
+        "name": "test-mcp",
+        "command": "npx",
+        "args": [
+          "@test/server"
+        ]
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created mcp",
+        "The response confirms the mcp was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The graphql call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "graphql-mcps-read",
+      "interface": "graphql",
+      "entity": "mcps",
+      "operation": "read",
+      "prompt": "Retrieve the mcp with ID '{id}' via the graphql interface and display all its fields.",
+      "expected_output": "A successful read of a mcp via graphql, returning the appropriate response.",
+      "command_hint": "query { mcp(id: $id) { id name description } }",
+      "test_data": {
+        "name": "test-mcp",
+        "command": "npx",
+        "args": [
+          "@test/server"
+        ]
+      },
+      "assertions": [
+        "The operation returns the mcp data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The graphql call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for mcp"
+      ]
+    },
+    {
+      "id": "graphql-mcps-update",
+      "interface": "graphql",
+      "entity": "mcps",
+      "operation": "update",
+      "prompt": "Update the mcp with ID '{id}' via the graphql interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a mcp via graphql, returning the appropriate response.",
+      "command_hint": "mutation { updateMcp(id: $id, input: $input) { id name } }",
+      "test_data": {
+        "name": "test-mcp",
+        "command": "npx",
+        "args": [
+          "@test/server"
+        ]
+      },
+      "assertions": [
+        "The operation returns the updated mcp with changed fields",
+        "The version/timestamp is incremented after update",
+        "The graphql call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "graphql-mcps-delete",
+      "interface": "graphql",
+      "entity": "mcps",
+      "operation": "delete",
+      "prompt": "Delete the mcp with ID '{id}' via the graphql interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a mcp via graphql, returning the appropriate response.",
+      "command_hint": "mutation { deleteMcp(id: $id) { success } }",
+      "test_data": {
+        "name": "test-mcp",
+        "command": "npx",
+        "args": [
+          "@test/server"
+        ]
+      },
+      "assertions": [
+        "The operation confirms the mcp was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The graphql call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "graphql-subagents-create",
+      "interface": "graphql",
+      "entity": "subagents",
+      "operation": "create",
+      "prompt": "Create a new subagent via the graphql interface with name 'test-subagent' and verify it was created successfully.",
+      "expected_output": "A successful create of a subagent via graphql, returning the appropriate response.",
+      "command_hint": "mutation { createSubagent(input: $input) { id name } }",
+      "test_data": {
+        "name": "test-subagent",
+        "model": {
+          "id": "claude-sonnet-4-6"
+        },
+        "system": "You are a test helper."
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created subagent",
+        "The response confirms the subagent was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The graphql call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "graphql-subagents-read",
+      "interface": "graphql",
+      "entity": "subagents",
+      "operation": "read",
+      "prompt": "Retrieve the subagent with ID '{id}' via the graphql interface and display all its fields.",
+      "expected_output": "A successful read of a subagent via graphql, returning the appropriate response.",
+      "command_hint": "query { subagent(id: $id) { id name description } }",
+      "test_data": {
+        "name": "test-subagent",
+        "model": {
+          "id": "claude-sonnet-4-6"
+        },
+        "system": "You are a test helper."
+      },
+      "assertions": [
+        "The operation returns the subagent data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The graphql call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for subagent"
+      ]
+    },
+    {
+      "id": "graphql-subagents-update",
+      "interface": "graphql",
+      "entity": "subagents",
+      "operation": "update",
+      "prompt": "Update the subagent with ID '{id}' via the graphql interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a subagent via graphql, returning the appropriate response.",
+      "command_hint": "mutation { updateSubagent(id: $id, input: $input) { id name } }",
+      "test_data": {
+        "name": "test-subagent",
+        "model": {
+          "id": "claude-sonnet-4-6"
+        },
+        "system": "You are a test helper."
+      },
+      "assertions": [
+        "The operation returns the updated subagent with changed fields",
+        "The version/timestamp is incremented after update",
+        "The graphql call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "graphql-subagents-delete",
+      "interface": "graphql",
+      "entity": "subagents",
+      "operation": "delete",
+      "prompt": "Delete the subagent with ID '{id}' via the graphql interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a subagent via graphql, returning the appropriate response.",
+      "command_hint": "mutation { deleteSubagent(id: $id) { success } }",
+      "test_data": {
+        "name": "test-subagent",
+        "model": {
+          "id": "claude-sonnet-4-6"
+        },
+        "system": "You are a test helper."
+      },
+      "assertions": [
+        "The operation confirms the subagent was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The graphql call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "graphql-hooks-create",
+      "interface": "graphql",
+      "entity": "hooks",
+      "operation": "create",
+      "prompt": "Create a new hook via the graphql interface with name 'test-hook' and verify it was created successfully.",
+      "expected_output": "A successful create of a hook via graphql, returning the appropriate response.",
+      "command_hint": "mutation { createHook(input: $input) { id name } }",
+      "test_data": {
+        "event": "PreToolUse",
+        "command": "echo pre-hook",
+        "matcher": "Bash"
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created hook",
+        "The response confirms the hook was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The graphql call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "graphql-hooks-read",
+      "interface": "graphql",
+      "entity": "hooks",
+      "operation": "read",
+      "prompt": "Retrieve the hook with ID '{id}' via the graphql interface and display all its fields.",
+      "expected_output": "A successful read of a hook via graphql, returning the appropriate response.",
+      "command_hint": "query { hook(id: $id) { id name description } }",
+      "test_data": {
+        "event": "PreToolUse",
+        "command": "echo pre-hook",
+        "matcher": "Bash"
+      },
+      "assertions": [
+        "The operation returns the hook data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The graphql call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for hook"
+      ]
+    },
+    {
+      "id": "graphql-hooks-update",
+      "interface": "graphql",
+      "entity": "hooks",
+      "operation": "update",
+      "prompt": "Update the hook with ID '{id}' via the graphql interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a hook via graphql, returning the appropriate response.",
+      "command_hint": "mutation { updateHook(id: $id, input: $input) { id name } }",
+      "test_data": {
+        "event": "PreToolUse",
+        "command": "echo pre-hook",
+        "matcher": "Bash"
+      },
+      "assertions": [
+        "The operation returns the updated hook with changed fields",
+        "The version/timestamp is incremented after update",
+        "The graphql call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "graphql-hooks-delete",
+      "interface": "graphql",
+      "entity": "hooks",
+      "operation": "delete",
+      "prompt": "Delete the hook with ID '{id}' via the graphql interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a hook via graphql, returning the appropriate response.",
+      "command_hint": "mutation { deleteHook(id: $id) { success } }",
+      "test_data": {
+        "event": "PreToolUse",
+        "command": "echo pre-hook",
+        "matcher": "Bash"
+      },
+      "assertions": [
+        "The operation confirms the hook was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The graphql call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "graphql-sessions-create",
+      "interface": "graphql",
+      "entity": "sessions",
+      "operation": "create",
+      "prompt": "Create a new session via the graphql interface with name 'test-session' and verify it was created successfully.",
+      "expected_output": "A successful create of a session via graphql, returning the appropriate response.",
+      "command_hint": "mutation { createSession(input: $input) { id name } }",
+      "test_data": {
+        "title": "test-session",
+        "agent": "agent_placeholder",
+        "environment": "env_placeholder"
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created session",
+        "The response confirms the session was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The graphql call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "graphql-sessions-read",
+      "interface": "graphql",
+      "entity": "sessions",
+      "operation": "read",
+      "prompt": "Retrieve the session with ID '{id}' via the graphql interface and display all its fields.",
+      "expected_output": "A successful read of a session via graphql, returning the appropriate response.",
+      "command_hint": "query { session(id: $id) { id name description } }",
+      "test_data": {
+        "title": "test-session",
+        "agent": "agent_placeholder",
+        "environment": "env_placeholder"
+      },
+      "assertions": [
+        "The operation returns the session data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The graphql call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for session"
+      ]
+    },
+    {
+      "id": "graphql-sessions-update",
+      "interface": "graphql",
+      "entity": "sessions",
+      "operation": "update",
+      "prompt": "Update the session with ID '{id}' via the graphql interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a session via graphql, returning the appropriate response.",
+      "command_hint": "mutation { updateSession(id: $id, input: $input) { id name } }",
+      "test_data": {
+        "title": "test-session",
+        "agent": "agent_placeholder",
+        "environment": "env_placeholder"
+      },
+      "assertions": [
+        "The operation returns the updated session with changed fields",
+        "The version/timestamp is incremented after update",
+        "The graphql call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "graphql-sessions-delete",
+      "interface": "graphql",
+      "entity": "sessions",
+      "operation": "delete",
+      "prompt": "Delete the session with ID '{id}' via the graphql interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a session via graphql, returning the appropriate response.",
+      "command_hint": "mutation { deleteSession(id: $id) { success } }",
+      "test_data": {
+        "title": "test-session",
+        "agent": "agent_placeholder",
+        "environment": "env_placeholder"
+      },
+      "assertions": [
+        "The operation confirms the session was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The graphql call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "graphql-memories-create",
+      "interface": "graphql",
+      "entity": "memories",
+      "operation": "create",
+      "prompt": "Create a new memory via the graphql interface with name 'test-memory' and verify it was created successfully.",
+      "expected_output": "A successful create of a memory via graphql, returning the appropriate response.",
+      "command_hint": "mutation { createMemory(input: $input) { id name } }",
+      "test_data": {
+        "key": "test-memory",
+        "content": "This is a test memory entry."
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created memory",
+        "The response confirms the memory was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The graphql call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "graphql-memories-read",
+      "interface": "graphql",
+      "entity": "memories",
+      "operation": "read",
+      "prompt": "Retrieve the memory with ID '{id}' via the graphql interface and display all its fields.",
+      "expected_output": "A successful read of a memory via graphql, returning the appropriate response.",
+      "command_hint": "query { memory(id: $id) { id name description } }",
+      "test_data": {
+        "key": "test-memory",
+        "content": "This is a test memory entry."
+      },
+      "assertions": [
+        "The operation returns the memory data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The graphql call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for memory"
+      ]
+    },
+    {
+      "id": "graphql-memories-update",
+      "interface": "graphql",
+      "entity": "memories",
+      "operation": "update",
+      "prompt": "Update the memory with ID '{id}' via the graphql interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a memory via graphql, returning the appropriate response.",
+      "command_hint": "mutation { updateMemory(id: $id, input: $input) { id name } }",
+      "test_data": {
+        "key": "test-memory",
+        "content": "This is a test memory entry."
+      },
+      "assertions": [
+        "The operation returns the updated memory with changed fields",
+        "The version/timestamp is incremented after update",
+        "The graphql call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "graphql-memories-delete",
+      "interface": "graphql",
+      "entity": "memories",
+      "operation": "delete",
+      "prompt": "Delete the memory with ID '{id}' via the graphql interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a memory via graphql, returning the appropriate response.",
+      "command_hint": "mutation { deleteMemory(id: $id) { success } }",
+      "test_data": {
+        "key": "test-memory",
+        "content": "This is a test memory entry."
+      },
+      "assertions": [
+        "The operation confirms the memory was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The graphql call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "graphql-agent-teams-create",
+      "interface": "graphql",
+      "entity": "agent-teams",
+      "operation": "create",
+      "prompt": "Create a new agent-team via the graphql interface with name 'test-team' and verify it was created successfully.",
+      "expected_output": "A successful create of a agent-team via graphql, returning the appropriate response.",
+      "command_hint": "mutation { createAgentTeam(input: $input) { id name } }",
+      "test_data": {
+        "name": "test-team",
+        "agents": [
+          {
+            "name": "leader",
+            "role": "coordinator"
+          }
+        ]
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created agent-team",
+        "The response confirms the agent-team was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The graphql call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "graphql-agent-teams-read",
+      "interface": "graphql",
+      "entity": "agent-teams",
+      "operation": "read",
+      "prompt": "Retrieve the agent-team with ID '{id}' via the graphql interface and display all its fields.",
+      "expected_output": "A successful read of a agent-team via graphql, returning the appropriate response.",
+      "command_hint": "query { agent-team(id: $id) { id name description } }",
+      "test_data": {
+        "name": "test-team",
+        "agents": [
+          {
+            "name": "leader",
+            "role": "coordinator"
+          }
+        ]
+      },
+      "assertions": [
+        "The operation returns the agent-team data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The graphql call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for agent-team"
+      ]
+    },
+    {
+      "id": "graphql-agent-teams-update",
+      "interface": "graphql",
+      "entity": "agent-teams",
+      "operation": "update",
+      "prompt": "Update the agent-team with ID '{id}' via the graphql interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a agent-team via graphql, returning the appropriate response.",
+      "command_hint": "mutation { updateAgentTeam(id: $id, input: $input) { id name } }",
+      "test_data": {
+        "name": "test-team",
+        "agents": [
+          {
+            "name": "leader",
+            "role": "coordinator"
+          }
+        ]
+      },
+      "assertions": [
+        "The operation returns the updated agent-team with changed fields",
+        "The version/timestamp is incremented after update",
+        "The graphql call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "graphql-agent-teams-delete",
+      "interface": "graphql",
+      "entity": "agent-teams",
+      "operation": "delete",
+      "prompt": "Delete the agent-team with ID '{id}' via the graphql interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a agent-team via graphql, returning the appropriate response.",
+      "command_hint": "mutation { deleteAgentTeam(id: $id) { success } }",
+      "test_data": {
+        "name": "test-team",
+        "agents": [
+          {
+            "name": "leader",
+            "role": "coordinator"
+          }
+        ]
+      },
+      "assertions": [
+        "The operation confirms the agent-team was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The graphql call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "api-skills-create",
+      "interface": "api",
+      "entity": "skills",
+      "operation": "create",
+      "prompt": "Create a new skill via the api interface with name 'test-analyzer' and verify it was created successfully.",
+      "expected_output": "A successful create of a skill via api, returning the appropriate response.",
+      "command_hint": "POST /v1/beta/skills",
+      "test_data": {
+        "name": "test-analyzer",
+        "description": "Analyzes test data"
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created skill",
+        "The response confirms the skill was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The api call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "api-skills-read",
+      "interface": "api",
+      "entity": "skills",
+      "operation": "read",
+      "prompt": "Retrieve the skill with ID '{id}' via the api interface and display all its fields.",
+      "expected_output": "A successful read of a skill via api, returning the appropriate response.",
+      "command_hint": "GET /v1/beta/skills/{id}",
+      "test_data": {
+        "name": "test-analyzer",
+        "description": "Analyzes test data"
+      },
+      "assertions": [
+        "The operation returns the skill data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The api call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for skill"
+      ]
+    },
+    {
+      "id": "api-skills-update",
+      "interface": "api",
+      "entity": "skills",
+      "operation": "update",
+      "prompt": "Update the skill with ID '{id}' via the api interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a skill via api, returning the appropriate response.",
+      "command_hint": "PUT /v1/beta/skills/{id}",
+      "test_data": {
+        "name": "test-analyzer",
+        "description": "Analyzes test data"
+      },
+      "assertions": [
+        "The operation returns the updated skill with changed fields",
+        "The version/timestamp is incremented after update",
+        "The api call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "api-skills-delete",
+      "interface": "api",
+      "entity": "skills",
+      "operation": "delete",
+      "prompt": "Delete the skill with ID '{id}' via the api interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a skill via api, returning the appropriate response.",
+      "command_hint": "DELETE /v1/beta/skills/{id}",
+      "test_data": {
+        "name": "test-analyzer",
+        "description": "Analyzes test data"
+      },
+      "assertions": [
+        "The operation confirms the skill was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The api call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "api-plugins-create",
+      "interface": "api",
+      "entity": "plugins",
+      "operation": "create",
+      "prompt": "Create a new plugin via the api interface with name 'test-plugin' and verify it was created successfully.",
+      "expected_output": "A successful create of a plugin via api, returning the appropriate response.",
+      "command_hint": "POST /v1/beta/plugins",
+      "test_data": {
+        "name": "test-plugin",
+        "type": "tool",
+        "description": "A test plugin"
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created plugin",
+        "The response confirms the plugin was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The api call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "api-plugins-read",
+      "interface": "api",
+      "entity": "plugins",
+      "operation": "read",
+      "prompt": "Retrieve the plugin with ID '{id}' via the api interface and display all its fields.",
+      "expected_output": "A successful read of a plugin via api, returning the appropriate response.",
+      "command_hint": "GET /v1/beta/plugins/{id}",
+      "test_data": {
+        "name": "test-plugin",
+        "type": "tool",
+        "description": "A test plugin"
+      },
+      "assertions": [
+        "The operation returns the plugin data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The api call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for plugin"
+      ]
+    },
+    {
+      "id": "api-plugins-update",
+      "interface": "api",
+      "entity": "plugins",
+      "operation": "update",
+      "prompt": "Update the plugin with ID '{id}' via the api interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a plugin via api, returning the appropriate response.",
+      "command_hint": "PUT /v1/beta/plugins/{id}",
+      "test_data": {
+        "name": "test-plugin",
+        "type": "tool",
+        "description": "A test plugin"
+      },
+      "assertions": [
+        "The operation returns the updated plugin with changed fields",
+        "The version/timestamp is incremented after update",
+        "The api call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "api-plugins-delete",
+      "interface": "api",
+      "entity": "plugins",
+      "operation": "delete",
+      "prompt": "Delete the plugin with ID '{id}' via the api interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a plugin via api, returning the appropriate response.",
+      "command_hint": "DELETE /v1/beta/plugins/{id}",
+      "test_data": {
+        "name": "test-plugin",
+        "type": "tool",
+        "description": "A test plugin"
+      },
+      "assertions": [
+        "The operation confirms the plugin was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The api call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "api-connectors-create",
+      "interface": "api",
+      "entity": "connectors",
+      "operation": "create",
+      "prompt": "Create a new connector via the api interface with name 'test-connector' and verify it was created successfully.",
+      "expected_output": "A successful create of a connector via api, returning the appropriate response.",
+      "command_hint": "POST /v1/beta/connectors",
+      "test_data": {
+        "name": "test-connector",
+        "type": "mcp",
+        "config": {
+          "command": "echo"
+        }
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created connector",
+        "The response confirms the connector was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The api call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "api-connectors-read",
+      "interface": "api",
+      "entity": "connectors",
+      "operation": "read",
+      "prompt": "Retrieve the connector with ID '{id}' via the api interface and display all its fields.",
+      "expected_output": "A successful read of a connector via api, returning the appropriate response.",
+      "command_hint": "GET /v1/beta/connectors/{id}",
+      "test_data": {
+        "name": "test-connector",
+        "type": "mcp",
+        "config": {
+          "command": "echo"
+        }
+      },
+      "assertions": [
+        "The operation returns the connector data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The api call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for connector"
+      ]
+    },
+    {
+      "id": "api-connectors-update",
+      "interface": "api",
+      "entity": "connectors",
+      "operation": "update",
+      "prompt": "Update the connector with ID '{id}' via the api interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a connector via api, returning the appropriate response.",
+      "command_hint": "PUT /v1/beta/connectors/{id}",
+      "test_data": {
+        "name": "test-connector",
+        "type": "mcp",
+        "config": {
+          "command": "echo"
+        }
+      },
+      "assertions": [
+        "The operation returns the updated connector with changed fields",
+        "The version/timestamp is incremented after update",
+        "The api call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "api-connectors-delete",
+      "interface": "api",
+      "entity": "connectors",
+      "operation": "delete",
+      "prompt": "Delete the connector with ID '{id}' via the api interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a connector via api, returning the appropriate response.",
+      "command_hint": "DELETE /v1/beta/connectors/{id}",
+      "test_data": {
+        "name": "test-connector",
+        "type": "mcp",
+        "config": {
+          "command": "echo"
+        }
+      },
+      "assertions": [
+        "The operation confirms the connector was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The api call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "api-mcps-create",
+      "interface": "api",
+      "entity": "mcps",
+      "operation": "create",
+      "prompt": "Create a new mcp via the api interface with name 'test-mcp' and verify it was created successfully.",
+      "expected_output": "A successful create of a mcp via api, returning the appropriate response.",
+      "command_hint": "POST /v1/beta/mcps",
+      "test_data": {
+        "name": "test-mcp",
+        "command": "npx",
+        "args": [
+          "@test/server"
+        ]
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created mcp",
+        "The response confirms the mcp was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The api call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "api-mcps-read",
+      "interface": "api",
+      "entity": "mcps",
+      "operation": "read",
+      "prompt": "Retrieve the mcp with ID '{id}' via the api interface and display all its fields.",
+      "expected_output": "A successful read of a mcp via api, returning the appropriate response.",
+      "command_hint": "GET /v1/beta/mcps/{id}",
+      "test_data": {
+        "name": "test-mcp",
+        "command": "npx",
+        "args": [
+          "@test/server"
+        ]
+      },
+      "assertions": [
+        "The operation returns the mcp data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The api call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for mcp"
+      ]
+    },
+    {
+      "id": "api-mcps-update",
+      "interface": "api",
+      "entity": "mcps",
+      "operation": "update",
+      "prompt": "Update the mcp with ID '{id}' via the api interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a mcp via api, returning the appropriate response.",
+      "command_hint": "PUT /v1/beta/mcps/{id}",
+      "test_data": {
+        "name": "test-mcp",
+        "command": "npx",
+        "args": [
+          "@test/server"
+        ]
+      },
+      "assertions": [
+        "The operation returns the updated mcp with changed fields",
+        "The version/timestamp is incremented after update",
+        "The api call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "api-mcps-delete",
+      "interface": "api",
+      "entity": "mcps",
+      "operation": "delete",
+      "prompt": "Delete the mcp with ID '{id}' via the api interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a mcp via api, returning the appropriate response.",
+      "command_hint": "DELETE /v1/beta/mcps/{id}",
+      "test_data": {
+        "name": "test-mcp",
+        "command": "npx",
+        "args": [
+          "@test/server"
+        ]
+      },
+      "assertions": [
+        "The operation confirms the mcp was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The api call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "api-subagents-create",
+      "interface": "api",
+      "entity": "subagents",
+      "operation": "create",
+      "prompt": "Create a new subagent via the api interface with name 'test-subagent' and verify it was created successfully.",
+      "expected_output": "A successful create of a subagent via api, returning the appropriate response.",
+      "command_hint": "POST /v1/beta/subagents",
+      "test_data": {
+        "name": "test-subagent",
+        "model": {
+          "id": "claude-sonnet-4-6"
+        },
+        "system": "You are a test helper."
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created subagent",
+        "The response confirms the subagent was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The api call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "api-subagents-read",
+      "interface": "api",
+      "entity": "subagents",
+      "operation": "read",
+      "prompt": "Retrieve the subagent with ID '{id}' via the api interface and display all its fields.",
+      "expected_output": "A successful read of a subagent via api, returning the appropriate response.",
+      "command_hint": "GET /v1/beta/subagents/{id}",
+      "test_data": {
+        "name": "test-subagent",
+        "model": {
+          "id": "claude-sonnet-4-6"
+        },
+        "system": "You are a test helper."
+      },
+      "assertions": [
+        "The operation returns the subagent data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The api call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for subagent"
+      ]
+    },
+    {
+      "id": "api-subagents-update",
+      "interface": "api",
+      "entity": "subagents",
+      "operation": "update",
+      "prompt": "Update the subagent with ID '{id}' via the api interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a subagent via api, returning the appropriate response.",
+      "command_hint": "PUT /v1/beta/subagents/{id}",
+      "test_data": {
+        "name": "test-subagent",
+        "model": {
+          "id": "claude-sonnet-4-6"
+        },
+        "system": "You are a test helper."
+      },
+      "assertions": [
+        "The operation returns the updated subagent with changed fields",
+        "The version/timestamp is incremented after update",
+        "The api call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "api-subagents-delete",
+      "interface": "api",
+      "entity": "subagents",
+      "operation": "delete",
+      "prompt": "Delete the subagent with ID '{id}' via the api interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a subagent via api, returning the appropriate response.",
+      "command_hint": "DELETE /v1/beta/subagents/{id}",
+      "test_data": {
+        "name": "test-subagent",
+        "model": {
+          "id": "claude-sonnet-4-6"
+        },
+        "system": "You are a test helper."
+      },
+      "assertions": [
+        "The operation confirms the subagent was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The api call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "api-hooks-create",
+      "interface": "api",
+      "entity": "hooks",
+      "operation": "create",
+      "prompt": "Create a new hook via the api interface with name 'test-hook' and verify it was created successfully.",
+      "expected_output": "A successful create of a hook via api, returning the appropriate response.",
+      "command_hint": "POST /v1/beta/hooks",
+      "test_data": {
+        "event": "PreToolUse",
+        "command": "echo pre-hook",
+        "matcher": "Bash"
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created hook",
+        "The response confirms the hook was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The api call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "api-hooks-read",
+      "interface": "api",
+      "entity": "hooks",
+      "operation": "read",
+      "prompt": "Retrieve the hook with ID '{id}' via the api interface and display all its fields.",
+      "expected_output": "A successful read of a hook via api, returning the appropriate response.",
+      "command_hint": "GET /v1/beta/hooks/{id}",
+      "test_data": {
+        "event": "PreToolUse",
+        "command": "echo pre-hook",
+        "matcher": "Bash"
+      },
+      "assertions": [
+        "The operation returns the hook data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The api call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for hook"
+      ]
+    },
+    {
+      "id": "api-hooks-update",
+      "interface": "api",
+      "entity": "hooks",
+      "operation": "update",
+      "prompt": "Update the hook with ID '{id}' via the api interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a hook via api, returning the appropriate response.",
+      "command_hint": "PUT /v1/beta/hooks/{id}",
+      "test_data": {
+        "event": "PreToolUse",
+        "command": "echo pre-hook",
+        "matcher": "Bash"
+      },
+      "assertions": [
+        "The operation returns the updated hook with changed fields",
+        "The version/timestamp is incremented after update",
+        "The api call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "api-hooks-delete",
+      "interface": "api",
+      "entity": "hooks",
+      "operation": "delete",
+      "prompt": "Delete the hook with ID '{id}' via the api interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a hook via api, returning the appropriate response.",
+      "command_hint": "DELETE /v1/beta/hooks/{id}",
+      "test_data": {
+        "event": "PreToolUse",
+        "command": "echo pre-hook",
+        "matcher": "Bash"
+      },
+      "assertions": [
+        "The operation confirms the hook was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The api call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "api-sessions-create",
+      "interface": "api",
+      "entity": "sessions",
+      "operation": "create",
+      "prompt": "Create a new session via the api interface with name 'test-session' and verify it was created successfully.",
+      "expected_output": "A successful create of a session via api, returning the appropriate response.",
+      "command_hint": "POST /v1/beta/sessions",
+      "test_data": {
+        "title": "test-session",
+        "agent": "agent_placeholder",
+        "environment": "env_placeholder"
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created session",
+        "The response confirms the session was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The api call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "api-sessions-read",
+      "interface": "api",
+      "entity": "sessions",
+      "operation": "read",
+      "prompt": "Retrieve the session with ID '{id}' via the api interface and display all its fields.",
+      "expected_output": "A successful read of a session via api, returning the appropriate response.",
+      "command_hint": "GET /v1/beta/sessions/{id}",
+      "test_data": {
+        "title": "test-session",
+        "agent": "agent_placeholder",
+        "environment": "env_placeholder"
+      },
+      "assertions": [
+        "The operation returns the session data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The api call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for session"
+      ]
+    },
+    {
+      "id": "api-sessions-update",
+      "interface": "api",
+      "entity": "sessions",
+      "operation": "update",
+      "prompt": "Update the session with ID '{id}' via the api interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a session via api, returning the appropriate response.",
+      "command_hint": "PUT /v1/beta/sessions/{id}",
+      "test_data": {
+        "title": "test-session",
+        "agent": "agent_placeholder",
+        "environment": "env_placeholder"
+      },
+      "assertions": [
+        "The operation returns the updated session with changed fields",
+        "The version/timestamp is incremented after update",
+        "The api call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "api-sessions-delete",
+      "interface": "api",
+      "entity": "sessions",
+      "operation": "delete",
+      "prompt": "Delete the session with ID '{id}' via the api interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a session via api, returning the appropriate response.",
+      "command_hint": "DELETE /v1/beta/sessions/{id}",
+      "test_data": {
+        "title": "test-session",
+        "agent": "agent_placeholder",
+        "environment": "env_placeholder"
+      },
+      "assertions": [
+        "The operation confirms the session was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The api call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "api-memories-create",
+      "interface": "api",
+      "entity": "memories",
+      "operation": "create",
+      "prompt": "Create a new memory via the api interface with name 'test-memory' and verify it was created successfully.",
+      "expected_output": "A successful create of a memory via api, returning the appropriate response.",
+      "command_hint": "POST /v1/beta/memories",
+      "test_data": {
+        "key": "test-memory",
+        "content": "This is a test memory entry."
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created memory",
+        "The response confirms the memory was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The api call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "api-memories-read",
+      "interface": "api",
+      "entity": "memories",
+      "operation": "read",
+      "prompt": "Retrieve the memory with ID '{id}' via the api interface and display all its fields.",
+      "expected_output": "A successful read of a memory via api, returning the appropriate response.",
+      "command_hint": "GET /v1/beta/memories/{id}",
+      "test_data": {
+        "key": "test-memory",
+        "content": "This is a test memory entry."
+      },
+      "assertions": [
+        "The operation returns the memory data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The api call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for memory"
+      ]
+    },
+    {
+      "id": "api-memories-update",
+      "interface": "api",
+      "entity": "memories",
+      "operation": "update",
+      "prompt": "Update the memory with ID '{id}' via the api interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a memory via api, returning the appropriate response.",
+      "command_hint": "PUT /v1/beta/memories/{id}",
+      "test_data": {
+        "key": "test-memory",
+        "content": "This is a test memory entry."
+      },
+      "assertions": [
+        "The operation returns the updated memory with changed fields",
+        "The version/timestamp is incremented after update",
+        "The api call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "api-memories-delete",
+      "interface": "api",
+      "entity": "memories",
+      "operation": "delete",
+      "prompt": "Delete the memory with ID '{id}' via the api interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a memory via api, returning the appropriate response.",
+      "command_hint": "DELETE /v1/beta/memories/{id}",
+      "test_data": {
+        "key": "test-memory",
+        "content": "This is a test memory entry."
+      },
+      "assertions": [
+        "The operation confirms the memory was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The api call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "api-agent-teams-create",
+      "interface": "api",
+      "entity": "agent-teams",
+      "operation": "create",
+      "prompt": "Create a new agent-team via the api interface with name 'test-team' and verify it was created successfully.",
+      "expected_output": "A successful create of a agent-team via api, returning the appropriate response.",
+      "command_hint": "POST /v1/beta/agent_teams",
+      "test_data": {
+        "name": "test-team",
+        "agents": [
+          {
+            "name": "leader",
+            "role": "coordinator"
+          }
+        ]
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created agent-team",
+        "The response confirms the agent-team was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The api call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "api-agent-teams-read",
+      "interface": "api",
+      "entity": "agent-teams",
+      "operation": "read",
+      "prompt": "Retrieve the agent-team with ID '{id}' via the api interface and display all its fields.",
+      "expected_output": "A successful read of a agent-team via api, returning the appropriate response.",
+      "command_hint": "GET /v1/beta/agent_teams/{id}",
+      "test_data": {
+        "name": "test-team",
+        "agents": [
+          {
+            "name": "leader",
+            "role": "coordinator"
+          }
+        ]
+      },
+      "assertions": [
+        "The operation returns the agent-team data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The api call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for agent-team"
+      ]
+    },
+    {
+      "id": "api-agent-teams-update",
+      "interface": "api",
+      "entity": "agent-teams",
+      "operation": "update",
+      "prompt": "Update the agent-team with ID '{id}' via the api interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a agent-team via api, returning the appropriate response.",
+      "command_hint": "PUT /v1/beta/agent_teams/{id}",
+      "test_data": {
+        "name": "test-team",
+        "agents": [
+          {
+            "name": "leader",
+            "role": "coordinator"
+          }
+        ]
+      },
+      "assertions": [
+        "The operation returns the updated agent-team with changed fields",
+        "The version/timestamp is incremented after update",
+        "The api call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "api-agent-teams-delete",
+      "interface": "api",
+      "entity": "agent-teams",
+      "operation": "delete",
+      "prompt": "Delete the agent-team with ID '{id}' via the api interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a agent-team via api, returning the appropriate response.",
+      "command_hint": "DELETE /v1/beta/agent_teams/{id}",
+      "test_data": {
+        "name": "test-team",
+        "agents": [
+          {
+            "name": "leader",
+            "role": "coordinator"
+          }
+        ]
+      },
+      "assertions": [
+        "The operation confirms the agent-team was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The api call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "sdk-skills-create",
+      "interface": "sdk",
+      "entity": "skills",
+      "operation": "create",
+      "prompt": "Create a new skill via the sdk interface with name 'test-analyzer' and verify it was created successfully.",
+      "expected_output": "A successful create of a skill via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.skills.create(**params)",
+      "test_data": {
+        "name": "test-analyzer",
+        "description": "Analyzes test data"
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created skill",
+        "The response confirms the skill was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The sdk call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "sdk-skills-read",
+      "interface": "sdk",
+      "entity": "skills",
+      "operation": "read",
+      "prompt": "Retrieve the skill with ID '{id}' via the sdk interface and display all its fields.",
+      "expected_output": "A successful read of a skill via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.skills.retrieve(skill_id=id)",
+      "test_data": {
+        "name": "test-analyzer",
+        "description": "Analyzes test data"
+      },
+      "assertions": [
+        "The operation returns the skill data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The sdk call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for skill"
+      ]
+    },
+    {
+      "id": "sdk-skills-update",
+      "interface": "sdk",
+      "entity": "skills",
+      "operation": "update",
+      "prompt": "Update the skill with ID '{id}' via the sdk interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a skill via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.skills.update(skill_id=id, **params)",
+      "test_data": {
+        "name": "test-analyzer",
+        "description": "Analyzes test data"
+      },
+      "assertions": [
+        "The operation returns the updated skill with changed fields",
+        "The version/timestamp is incremented after update",
+        "The sdk call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "sdk-skills-delete",
+      "interface": "sdk",
+      "entity": "skills",
+      "operation": "delete",
+      "prompt": "Delete the skill with ID '{id}' via the sdk interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a skill via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.skills.delete(skill_id=id)",
+      "test_data": {
+        "name": "test-analyzer",
+        "description": "Analyzes test data"
+      },
+      "assertions": [
+        "The operation confirms the skill was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The sdk call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "sdk-plugins-create",
+      "interface": "sdk",
+      "entity": "plugins",
+      "operation": "create",
+      "prompt": "Create a new plugin via the sdk interface with name 'test-plugin' and verify it was created successfully.",
+      "expected_output": "A successful create of a plugin via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.plugins.create(**params)",
+      "test_data": {
+        "name": "test-plugin",
+        "type": "tool",
+        "description": "A test plugin"
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created plugin",
+        "The response confirms the plugin was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The sdk call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "sdk-plugins-read",
+      "interface": "sdk",
+      "entity": "plugins",
+      "operation": "read",
+      "prompt": "Retrieve the plugin with ID '{id}' via the sdk interface and display all its fields.",
+      "expected_output": "A successful read of a plugin via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.plugins.retrieve(plugin_id=id)",
+      "test_data": {
+        "name": "test-plugin",
+        "type": "tool",
+        "description": "A test plugin"
+      },
+      "assertions": [
+        "The operation returns the plugin data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The sdk call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for plugin"
+      ]
+    },
+    {
+      "id": "sdk-plugins-update",
+      "interface": "sdk",
+      "entity": "plugins",
+      "operation": "update",
+      "prompt": "Update the plugin with ID '{id}' via the sdk interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a plugin via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.plugins.update(plugin_id=id, **params)",
+      "test_data": {
+        "name": "test-plugin",
+        "type": "tool",
+        "description": "A test plugin"
+      },
+      "assertions": [
+        "The operation returns the updated plugin with changed fields",
+        "The version/timestamp is incremented after update",
+        "The sdk call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "sdk-plugins-delete",
+      "interface": "sdk",
+      "entity": "plugins",
+      "operation": "delete",
+      "prompt": "Delete the plugin with ID '{id}' via the sdk interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a plugin via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.plugins.delete(plugin_id=id)",
+      "test_data": {
+        "name": "test-plugin",
+        "type": "tool",
+        "description": "A test plugin"
+      },
+      "assertions": [
+        "The operation confirms the plugin was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The sdk call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "sdk-connectors-create",
+      "interface": "sdk",
+      "entity": "connectors",
+      "operation": "create",
+      "prompt": "Create a new connector via the sdk interface with name 'test-connector' and verify it was created successfully.",
+      "expected_output": "A successful create of a connector via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.connectors.create(**params)",
+      "test_data": {
+        "name": "test-connector",
+        "type": "mcp",
+        "config": {
+          "command": "echo"
+        }
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created connector",
+        "The response confirms the connector was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The sdk call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "sdk-connectors-read",
+      "interface": "sdk",
+      "entity": "connectors",
+      "operation": "read",
+      "prompt": "Retrieve the connector with ID '{id}' via the sdk interface and display all its fields.",
+      "expected_output": "A successful read of a connector via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.connectors.retrieve(connector_id=id)",
+      "test_data": {
+        "name": "test-connector",
+        "type": "mcp",
+        "config": {
+          "command": "echo"
+        }
+      },
+      "assertions": [
+        "The operation returns the connector data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The sdk call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for connector"
+      ]
+    },
+    {
+      "id": "sdk-connectors-update",
+      "interface": "sdk",
+      "entity": "connectors",
+      "operation": "update",
+      "prompt": "Update the connector with ID '{id}' via the sdk interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a connector via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.connectors.update(connector_id=id, **params)",
+      "test_data": {
+        "name": "test-connector",
+        "type": "mcp",
+        "config": {
+          "command": "echo"
+        }
+      },
+      "assertions": [
+        "The operation returns the updated connector with changed fields",
+        "The version/timestamp is incremented after update",
+        "The sdk call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "sdk-connectors-delete",
+      "interface": "sdk",
+      "entity": "connectors",
+      "operation": "delete",
+      "prompt": "Delete the connector with ID '{id}' via the sdk interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a connector via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.connectors.delete(connector_id=id)",
+      "test_data": {
+        "name": "test-connector",
+        "type": "mcp",
+        "config": {
+          "command": "echo"
+        }
+      },
+      "assertions": [
+        "The operation confirms the connector was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The sdk call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "sdk-mcps-create",
+      "interface": "sdk",
+      "entity": "mcps",
+      "operation": "create",
+      "prompt": "Create a new mcp via the sdk interface with name 'test-mcp' and verify it was created successfully.",
+      "expected_output": "A successful create of a mcp via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.mcps.create(**params)",
+      "test_data": {
+        "name": "test-mcp",
+        "command": "npx",
+        "args": [
+          "@test/server"
+        ]
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created mcp",
+        "The response confirms the mcp was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The sdk call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "sdk-mcps-read",
+      "interface": "sdk",
+      "entity": "mcps",
+      "operation": "read",
+      "prompt": "Retrieve the mcp with ID '{id}' via the sdk interface and display all its fields.",
+      "expected_output": "A successful read of a mcp via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.mcps.retrieve(mcp_id=id)",
+      "test_data": {
+        "name": "test-mcp",
+        "command": "npx",
+        "args": [
+          "@test/server"
+        ]
+      },
+      "assertions": [
+        "The operation returns the mcp data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The sdk call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for mcp"
+      ]
+    },
+    {
+      "id": "sdk-mcps-update",
+      "interface": "sdk",
+      "entity": "mcps",
+      "operation": "update",
+      "prompt": "Update the mcp with ID '{id}' via the sdk interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a mcp via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.mcps.update(mcp_id=id, **params)",
+      "test_data": {
+        "name": "test-mcp",
+        "command": "npx",
+        "args": [
+          "@test/server"
+        ]
+      },
+      "assertions": [
+        "The operation returns the updated mcp with changed fields",
+        "The version/timestamp is incremented after update",
+        "The sdk call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "sdk-mcps-delete",
+      "interface": "sdk",
+      "entity": "mcps",
+      "operation": "delete",
+      "prompt": "Delete the mcp with ID '{id}' via the sdk interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a mcp via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.mcps.delete(mcp_id=id)",
+      "test_data": {
+        "name": "test-mcp",
+        "command": "npx",
+        "args": [
+          "@test/server"
+        ]
+      },
+      "assertions": [
+        "The operation confirms the mcp was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The sdk call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "sdk-subagents-create",
+      "interface": "sdk",
+      "entity": "subagents",
+      "operation": "create",
+      "prompt": "Create a new subagent via the sdk interface with name 'test-subagent' and verify it was created successfully.",
+      "expected_output": "A successful create of a subagent via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.subagents.create(**params)",
+      "test_data": {
+        "name": "test-subagent",
+        "model": {
+          "id": "claude-sonnet-4-6"
+        },
+        "system": "You are a test helper."
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created subagent",
+        "The response confirms the subagent was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The sdk call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "sdk-subagents-read",
+      "interface": "sdk",
+      "entity": "subagents",
+      "operation": "read",
+      "prompt": "Retrieve the subagent with ID '{id}' via the sdk interface and display all its fields.",
+      "expected_output": "A successful read of a subagent via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.subagents.retrieve(subagent_id=id)",
+      "test_data": {
+        "name": "test-subagent",
+        "model": {
+          "id": "claude-sonnet-4-6"
+        },
+        "system": "You are a test helper."
+      },
+      "assertions": [
+        "The operation returns the subagent data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The sdk call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for subagent"
+      ]
+    },
+    {
+      "id": "sdk-subagents-update",
+      "interface": "sdk",
+      "entity": "subagents",
+      "operation": "update",
+      "prompt": "Update the subagent with ID '{id}' via the sdk interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a subagent via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.subagents.update(subagent_id=id, **params)",
+      "test_data": {
+        "name": "test-subagent",
+        "model": {
+          "id": "claude-sonnet-4-6"
+        },
+        "system": "You are a test helper."
+      },
+      "assertions": [
+        "The operation returns the updated subagent with changed fields",
+        "The version/timestamp is incremented after update",
+        "The sdk call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "sdk-subagents-delete",
+      "interface": "sdk",
+      "entity": "subagents",
+      "operation": "delete",
+      "prompt": "Delete the subagent with ID '{id}' via the sdk interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a subagent via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.subagents.delete(subagent_id=id)",
+      "test_data": {
+        "name": "test-subagent",
+        "model": {
+          "id": "claude-sonnet-4-6"
+        },
+        "system": "You are a test helper."
+      },
+      "assertions": [
+        "The operation confirms the subagent was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The sdk call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "sdk-hooks-create",
+      "interface": "sdk",
+      "entity": "hooks",
+      "operation": "create",
+      "prompt": "Create a new hook via the sdk interface with name 'test-hook' and verify it was created successfully.",
+      "expected_output": "A successful create of a hook via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.hooks.create(**params)",
+      "test_data": {
+        "event": "PreToolUse",
+        "command": "echo pre-hook",
+        "matcher": "Bash"
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created hook",
+        "The response confirms the hook was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The sdk call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "sdk-hooks-read",
+      "interface": "sdk",
+      "entity": "hooks",
+      "operation": "read",
+      "prompt": "Retrieve the hook with ID '{id}' via the sdk interface and display all its fields.",
+      "expected_output": "A successful read of a hook via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.hooks.retrieve(hook_id=id)",
+      "test_data": {
+        "event": "PreToolUse",
+        "command": "echo pre-hook",
+        "matcher": "Bash"
+      },
+      "assertions": [
+        "The operation returns the hook data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The sdk call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for hook"
+      ]
+    },
+    {
+      "id": "sdk-hooks-update",
+      "interface": "sdk",
+      "entity": "hooks",
+      "operation": "update",
+      "prompt": "Update the hook with ID '{id}' via the sdk interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a hook via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.hooks.update(hook_id=id, **params)",
+      "test_data": {
+        "event": "PreToolUse",
+        "command": "echo pre-hook",
+        "matcher": "Bash"
+      },
+      "assertions": [
+        "The operation returns the updated hook with changed fields",
+        "The version/timestamp is incremented after update",
+        "The sdk call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "sdk-hooks-delete",
+      "interface": "sdk",
+      "entity": "hooks",
+      "operation": "delete",
+      "prompt": "Delete the hook with ID '{id}' via the sdk interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a hook via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.hooks.delete(hook_id=id)",
+      "test_data": {
+        "event": "PreToolUse",
+        "command": "echo pre-hook",
+        "matcher": "Bash"
+      },
+      "assertions": [
+        "The operation confirms the hook was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The sdk call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "sdk-sessions-create",
+      "interface": "sdk",
+      "entity": "sessions",
+      "operation": "create",
+      "prompt": "Create a new session via the sdk interface with name 'test-session' and verify it was created successfully.",
+      "expected_output": "A successful create of a session via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.sessions.create(**params)",
+      "test_data": {
+        "title": "test-session",
+        "agent": "agent_placeholder",
+        "environment": "env_placeholder"
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created session",
+        "The response confirms the session was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The sdk call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "sdk-sessions-read",
+      "interface": "sdk",
+      "entity": "sessions",
+      "operation": "read",
+      "prompt": "Retrieve the session with ID '{id}' via the sdk interface and display all its fields.",
+      "expected_output": "A successful read of a session via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.sessions.retrieve(session_id=id)",
+      "test_data": {
+        "title": "test-session",
+        "agent": "agent_placeholder",
+        "environment": "env_placeholder"
+      },
+      "assertions": [
+        "The operation returns the session data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The sdk call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for session"
+      ]
+    },
+    {
+      "id": "sdk-sessions-update",
+      "interface": "sdk",
+      "entity": "sessions",
+      "operation": "update",
+      "prompt": "Update the session with ID '{id}' via the sdk interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a session via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.sessions.update(session_id=id, **params)",
+      "test_data": {
+        "title": "test-session",
+        "agent": "agent_placeholder",
+        "environment": "env_placeholder"
+      },
+      "assertions": [
+        "The operation returns the updated session with changed fields",
+        "The version/timestamp is incremented after update",
+        "The sdk call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "sdk-sessions-delete",
+      "interface": "sdk",
+      "entity": "sessions",
+      "operation": "delete",
+      "prompt": "Delete the session with ID '{id}' via the sdk interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a session via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.sessions.delete(session_id=id)",
+      "test_data": {
+        "title": "test-session",
+        "agent": "agent_placeholder",
+        "environment": "env_placeholder"
+      },
+      "assertions": [
+        "The operation confirms the session was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The sdk call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "sdk-memories-create",
+      "interface": "sdk",
+      "entity": "memories",
+      "operation": "create",
+      "prompt": "Create a new memory via the sdk interface with name 'test-memory' and verify it was created successfully.",
+      "expected_output": "A successful create of a memory via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.memories.create(**params)",
+      "test_data": {
+        "key": "test-memory",
+        "content": "This is a test memory entry."
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created memory",
+        "The response confirms the memory was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The sdk call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "sdk-memories-read",
+      "interface": "sdk",
+      "entity": "memories",
+      "operation": "read",
+      "prompt": "Retrieve the memory with ID '{id}' via the sdk interface and display all its fields.",
+      "expected_output": "A successful read of a memory via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.memories.retrieve(memory_id=id)",
+      "test_data": {
+        "key": "test-memory",
+        "content": "This is a test memory entry."
+      },
+      "assertions": [
+        "The operation returns the memory data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The sdk call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for memory"
+      ]
+    },
+    {
+      "id": "sdk-memories-update",
+      "interface": "sdk",
+      "entity": "memories",
+      "operation": "update",
+      "prompt": "Update the memory with ID '{id}' via the sdk interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a memory via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.memories.update(memory_id=id, **params)",
+      "test_data": {
+        "key": "test-memory",
+        "content": "This is a test memory entry."
+      },
+      "assertions": [
+        "The operation returns the updated memory with changed fields",
+        "The version/timestamp is incremented after update",
+        "The sdk call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "sdk-memories-delete",
+      "interface": "sdk",
+      "entity": "memories",
+      "operation": "delete",
+      "prompt": "Delete the memory with ID '{id}' via the sdk interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a memory via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.memories.delete(memory_id=id)",
+      "test_data": {
+        "key": "test-memory",
+        "content": "This is a test memory entry."
+      },
+      "assertions": [
+        "The operation confirms the memory was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The sdk call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "sdk-agent-teams-create",
+      "interface": "sdk",
+      "entity": "agent-teams",
+      "operation": "create",
+      "prompt": "Create a new agent-team via the sdk interface with name 'test-team' and verify it was created successfully.",
+      "expected_output": "A successful create of a agent-team via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.agent_teams.create(**params)",
+      "test_data": {
+        "name": "test-team",
+        "agents": [
+          {
+            "name": "leader",
+            "role": "coordinator"
+          }
+        ]
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created agent-team",
+        "The response confirms the agent-team was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The sdk call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "sdk-agent-teams-read",
+      "interface": "sdk",
+      "entity": "agent-teams",
+      "operation": "read",
+      "prompt": "Retrieve the agent-team with ID '{id}' via the sdk interface and display all its fields.",
+      "expected_output": "A successful read of a agent-team via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.agent_teams.retrieve(agent-team_id=id)",
+      "test_data": {
+        "name": "test-team",
+        "agents": [
+          {
+            "name": "leader",
+            "role": "coordinator"
+          }
+        ]
+      },
+      "assertions": [
+        "The operation returns the agent-team data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The sdk call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for agent-team"
+      ]
+    },
+    {
+      "id": "sdk-agent-teams-update",
+      "interface": "sdk",
+      "entity": "agent-teams",
+      "operation": "update",
+      "prompt": "Update the agent-team with ID '{id}' via the sdk interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a agent-team via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.agent_teams.update(agent-team_id=id, **params)",
+      "test_data": {
+        "name": "test-team",
+        "agents": [
+          {
+            "name": "leader",
+            "role": "coordinator"
+          }
+        ]
+      },
+      "assertions": [
+        "The operation returns the updated agent-team with changed fields",
+        "The version/timestamp is incremented after update",
+        "The sdk call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "sdk-agent-teams-delete",
+      "interface": "sdk",
+      "entity": "agent-teams",
+      "operation": "delete",
+      "prompt": "Delete the agent-team with ID '{id}' via the sdk interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a agent-team via sdk, returning the appropriate response.",
+      "command_hint": "client.beta.agent_teams.delete(agent-team_id=id)",
+      "test_data": {
+        "name": "test-team",
+        "agents": [
+          {
+            "name": "leader",
+            "role": "coordinator"
+          }
+        ]
+      },
+      "assertions": [
+        "The operation confirms the agent-team was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The sdk call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "cli-skills-create",
+      "interface": "cli",
+      "entity": "skills",
+      "operation": "create",
+      "prompt": "Create a new skill via the cli interface with name 'test-analyzer' and verify it was created successfully.",
+      "expected_output": "A successful create of a skill via cli, returning the appropriate response.",
+      "command_hint": "ant beta:skills create [< config.yaml]",
+      "test_data": {
+        "name": "test-analyzer",
+        "description": "Analyzes test data"
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created skill",
+        "The response confirms the skill was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The cli call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "cli-skills-read",
+      "interface": "cli",
+      "entity": "skills",
+      "operation": "read",
+      "prompt": "Retrieve the skill with ID '{id}' via the cli interface and display all its fields.",
+      "expected_output": "A successful read of a skill via cli, returning the appropriate response.",
+      "command_hint": "ant beta:skills retrieve --skill-id <id>",
+      "test_data": {
+        "name": "test-analyzer",
+        "description": "Analyzes test data"
+      },
+      "assertions": [
+        "The operation returns the skill data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The cli call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for skill"
+      ]
+    },
+    {
+      "id": "cli-skills-update",
+      "interface": "cli",
+      "entity": "skills",
+      "operation": "update",
+      "prompt": "Update the skill with ID '{id}' via the cli interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a skill via cli, returning the appropriate response.",
+      "command_hint": "ant beta:skills update --skill-id <id> --version <v>",
+      "test_data": {
+        "name": "test-analyzer",
+        "description": "Analyzes test data"
+      },
+      "assertions": [
+        "The operation returns the updated skill with changed fields",
+        "The version/timestamp is incremented after update",
+        "The cli call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "cli-skills-delete",
+      "interface": "cli",
+      "entity": "skills",
+      "operation": "delete",
+      "prompt": "Delete the skill with ID '{id}' via the cli interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a skill via cli, returning the appropriate response.",
+      "command_hint": "ant beta:skills delete --skill-id <id>",
+      "test_data": {
+        "name": "test-analyzer",
+        "description": "Analyzes test data"
+      },
+      "assertions": [
+        "The operation confirms the skill was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The cli call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "cli-plugins-create",
+      "interface": "cli",
+      "entity": "plugins",
+      "operation": "create",
+      "prompt": "Create a new plugin via the cli interface with name 'test-plugin' and verify it was created successfully.",
+      "expected_output": "A successful create of a plugin via cli, returning the appropriate response.",
+      "command_hint": "ant beta:plugins create [< config.yaml]",
+      "test_data": {
+        "name": "test-plugin",
+        "type": "tool",
+        "description": "A test plugin"
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created plugin",
+        "The response confirms the plugin was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The cli call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "cli-plugins-read",
+      "interface": "cli",
+      "entity": "plugins",
+      "operation": "read",
+      "prompt": "Retrieve the plugin with ID '{id}' via the cli interface and display all its fields.",
+      "expected_output": "A successful read of a plugin via cli, returning the appropriate response.",
+      "command_hint": "ant beta:plugins retrieve --plugin-id <id>",
+      "test_data": {
+        "name": "test-plugin",
+        "type": "tool",
+        "description": "A test plugin"
+      },
+      "assertions": [
+        "The operation returns the plugin data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The cli call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for plugin"
+      ]
+    },
+    {
+      "id": "cli-plugins-update",
+      "interface": "cli",
+      "entity": "plugins",
+      "operation": "update",
+      "prompt": "Update the plugin with ID '{id}' via the cli interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a plugin via cli, returning the appropriate response.",
+      "command_hint": "ant beta:plugins update --plugin-id <id> --version <v>",
+      "test_data": {
+        "name": "test-plugin",
+        "type": "tool",
+        "description": "A test plugin"
+      },
+      "assertions": [
+        "The operation returns the updated plugin with changed fields",
+        "The version/timestamp is incremented after update",
+        "The cli call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "cli-plugins-delete",
+      "interface": "cli",
+      "entity": "plugins",
+      "operation": "delete",
+      "prompt": "Delete the plugin with ID '{id}' via the cli interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a plugin via cli, returning the appropriate response.",
+      "command_hint": "ant beta:plugins delete --plugin-id <id>",
+      "test_data": {
+        "name": "test-plugin",
+        "type": "tool",
+        "description": "A test plugin"
+      },
+      "assertions": [
+        "The operation confirms the plugin was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The cli call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "cli-connectors-create",
+      "interface": "cli",
+      "entity": "connectors",
+      "operation": "create",
+      "prompt": "Create a new connector via the cli interface with name 'test-connector' and verify it was created successfully.",
+      "expected_output": "A successful create of a connector via cli, returning the appropriate response.",
+      "command_hint": "ant beta:connectors create [< config.yaml]",
+      "test_data": {
+        "name": "test-connector",
+        "type": "mcp",
+        "config": {
+          "command": "echo"
+        }
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created connector",
+        "The response confirms the connector was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The cli call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "cli-connectors-read",
+      "interface": "cli",
+      "entity": "connectors",
+      "operation": "read",
+      "prompt": "Retrieve the connector with ID '{id}' via the cli interface and display all its fields.",
+      "expected_output": "A successful read of a connector via cli, returning the appropriate response.",
+      "command_hint": "ant beta:connectors retrieve --connector-id <id>",
+      "test_data": {
+        "name": "test-connector",
+        "type": "mcp",
+        "config": {
+          "command": "echo"
+        }
+      },
+      "assertions": [
+        "The operation returns the connector data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The cli call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for connector"
+      ]
+    },
+    {
+      "id": "cli-connectors-update",
+      "interface": "cli",
+      "entity": "connectors",
+      "operation": "update",
+      "prompt": "Update the connector with ID '{id}' via the cli interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a connector via cli, returning the appropriate response.",
+      "command_hint": "ant beta:connectors update --connector-id <id> --version <v>",
+      "test_data": {
+        "name": "test-connector",
+        "type": "mcp",
+        "config": {
+          "command": "echo"
+        }
+      },
+      "assertions": [
+        "The operation returns the updated connector with changed fields",
+        "The version/timestamp is incremented after update",
+        "The cli call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "cli-connectors-delete",
+      "interface": "cli",
+      "entity": "connectors",
+      "operation": "delete",
+      "prompt": "Delete the connector with ID '{id}' via the cli interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a connector via cli, returning the appropriate response.",
+      "command_hint": "ant beta:connectors delete --connector-id <id>",
+      "test_data": {
+        "name": "test-connector",
+        "type": "mcp",
+        "config": {
+          "command": "echo"
+        }
+      },
+      "assertions": [
+        "The operation confirms the connector was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The cli call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "cli-mcps-create",
+      "interface": "cli",
+      "entity": "mcps",
+      "operation": "create",
+      "prompt": "Create a new mcp via the cli interface with name 'test-mcp' and verify it was created successfully.",
+      "expected_output": "A successful create of a mcp via cli, returning the appropriate response.",
+      "command_hint": "ant beta:mcps create [< config.yaml]",
+      "test_data": {
+        "name": "test-mcp",
+        "command": "npx",
+        "args": [
+          "@test/server"
+        ]
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created mcp",
+        "The response confirms the mcp was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The cli call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "cli-mcps-read",
+      "interface": "cli",
+      "entity": "mcps",
+      "operation": "read",
+      "prompt": "Retrieve the mcp with ID '{id}' via the cli interface and display all its fields.",
+      "expected_output": "A successful read of a mcp via cli, returning the appropriate response.",
+      "command_hint": "ant beta:mcps retrieve --mcp-id <id>",
+      "test_data": {
+        "name": "test-mcp",
+        "command": "npx",
+        "args": [
+          "@test/server"
+        ]
+      },
+      "assertions": [
+        "The operation returns the mcp data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The cli call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for mcp"
+      ]
+    },
+    {
+      "id": "cli-mcps-update",
+      "interface": "cli",
+      "entity": "mcps",
+      "operation": "update",
+      "prompt": "Update the mcp with ID '{id}' via the cli interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a mcp via cli, returning the appropriate response.",
+      "command_hint": "ant beta:mcps update --mcp-id <id> --version <v>",
+      "test_data": {
+        "name": "test-mcp",
+        "command": "npx",
+        "args": [
+          "@test/server"
+        ]
+      },
+      "assertions": [
+        "The operation returns the updated mcp with changed fields",
+        "The version/timestamp is incremented after update",
+        "The cli call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "cli-mcps-delete",
+      "interface": "cli",
+      "entity": "mcps",
+      "operation": "delete",
+      "prompt": "Delete the mcp with ID '{id}' via the cli interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a mcp via cli, returning the appropriate response.",
+      "command_hint": "ant beta:mcps delete --mcp-id <id>",
+      "test_data": {
+        "name": "test-mcp",
+        "command": "npx",
+        "args": [
+          "@test/server"
+        ]
+      },
+      "assertions": [
+        "The operation confirms the mcp was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The cli call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "cli-subagents-create",
+      "interface": "cli",
+      "entity": "subagents",
+      "operation": "create",
+      "prompt": "Create a new subagent via the cli interface with name 'test-subagent' and verify it was created successfully.",
+      "expected_output": "A successful create of a subagent via cli, returning the appropriate response.",
+      "command_hint": "ant beta:subagents create [< config.yaml]",
+      "test_data": {
+        "name": "test-subagent",
+        "model": {
+          "id": "claude-sonnet-4-6"
+        },
+        "system": "You are a test helper."
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created subagent",
+        "The response confirms the subagent was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The cli call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "cli-subagents-read",
+      "interface": "cli",
+      "entity": "subagents",
+      "operation": "read",
+      "prompt": "Retrieve the subagent with ID '{id}' via the cli interface and display all its fields.",
+      "expected_output": "A successful read of a subagent via cli, returning the appropriate response.",
+      "command_hint": "ant beta:subagents retrieve --subagent-id <id>",
+      "test_data": {
+        "name": "test-subagent",
+        "model": {
+          "id": "claude-sonnet-4-6"
+        },
+        "system": "You are a test helper."
+      },
+      "assertions": [
+        "The operation returns the subagent data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The cli call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for subagent"
+      ]
+    },
+    {
+      "id": "cli-subagents-update",
+      "interface": "cli",
+      "entity": "subagents",
+      "operation": "update",
+      "prompt": "Update the subagent with ID '{id}' via the cli interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a subagent via cli, returning the appropriate response.",
+      "command_hint": "ant beta:subagents update --subagent-id <id> --version <v>",
+      "test_data": {
+        "name": "test-subagent",
+        "model": {
+          "id": "claude-sonnet-4-6"
+        },
+        "system": "You are a test helper."
+      },
+      "assertions": [
+        "The operation returns the updated subagent with changed fields",
+        "The version/timestamp is incremented after update",
+        "The cli call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "cli-subagents-delete",
+      "interface": "cli",
+      "entity": "subagents",
+      "operation": "delete",
+      "prompt": "Delete the subagent with ID '{id}' via the cli interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a subagent via cli, returning the appropriate response.",
+      "command_hint": "ant beta:subagents delete --subagent-id <id>",
+      "test_data": {
+        "name": "test-subagent",
+        "model": {
+          "id": "claude-sonnet-4-6"
+        },
+        "system": "You are a test helper."
+      },
+      "assertions": [
+        "The operation confirms the subagent was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The cli call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "cli-hooks-create",
+      "interface": "cli",
+      "entity": "hooks",
+      "operation": "create",
+      "prompt": "Create a new hook via the cli interface with name 'test-hook' and verify it was created successfully.",
+      "expected_output": "A successful create of a hook via cli, returning the appropriate response.",
+      "command_hint": "ant beta:hooks create [< config.yaml]",
+      "test_data": {
+        "event": "PreToolUse",
+        "command": "echo pre-hook",
+        "matcher": "Bash"
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created hook",
+        "The response confirms the hook was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The cli call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "cli-hooks-read",
+      "interface": "cli",
+      "entity": "hooks",
+      "operation": "read",
+      "prompt": "Retrieve the hook with ID '{id}' via the cli interface and display all its fields.",
+      "expected_output": "A successful read of a hook via cli, returning the appropriate response.",
+      "command_hint": "ant beta:hooks retrieve --hook-id <id>",
+      "test_data": {
+        "event": "PreToolUse",
+        "command": "echo pre-hook",
+        "matcher": "Bash"
+      },
+      "assertions": [
+        "The operation returns the hook data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The cli call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for hook"
+      ]
+    },
+    {
+      "id": "cli-hooks-update",
+      "interface": "cli",
+      "entity": "hooks",
+      "operation": "update",
+      "prompt": "Update the hook with ID '{id}' via the cli interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a hook via cli, returning the appropriate response.",
+      "command_hint": "ant beta:hooks update --hook-id <id> --version <v>",
+      "test_data": {
+        "event": "PreToolUse",
+        "command": "echo pre-hook",
+        "matcher": "Bash"
+      },
+      "assertions": [
+        "The operation returns the updated hook with changed fields",
+        "The version/timestamp is incremented after update",
+        "The cli call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "cli-hooks-delete",
+      "interface": "cli",
+      "entity": "hooks",
+      "operation": "delete",
+      "prompt": "Delete the hook with ID '{id}' via the cli interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a hook via cli, returning the appropriate response.",
+      "command_hint": "ant beta:hooks delete --hook-id <id>",
+      "test_data": {
+        "event": "PreToolUse",
+        "command": "echo pre-hook",
+        "matcher": "Bash"
+      },
+      "assertions": [
+        "The operation confirms the hook was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The cli call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "cli-sessions-create",
+      "interface": "cli",
+      "entity": "sessions",
+      "operation": "create",
+      "prompt": "Create a new session via the cli interface with name 'test-session' and verify it was created successfully.",
+      "expected_output": "A successful create of a session via cli, returning the appropriate response.",
+      "command_hint": "ant beta:sessions create [< config.yaml]",
+      "test_data": {
+        "title": "test-session",
+        "agent": "agent_placeholder",
+        "environment": "env_placeholder"
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created session",
+        "The response confirms the session was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The cli call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "cli-sessions-read",
+      "interface": "cli",
+      "entity": "sessions",
+      "operation": "read",
+      "prompt": "Retrieve the session with ID '{id}' via the cli interface and display all its fields.",
+      "expected_output": "A successful read of a session via cli, returning the appropriate response.",
+      "command_hint": "ant beta:sessions retrieve --session-id <id>",
+      "test_data": {
+        "title": "test-session",
+        "agent": "agent_placeholder",
+        "environment": "env_placeholder"
+      },
+      "assertions": [
+        "The operation returns the session data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The cli call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for session"
+      ]
+    },
+    {
+      "id": "cli-sessions-update",
+      "interface": "cli",
+      "entity": "sessions",
+      "operation": "update",
+      "prompt": "Update the session with ID '{id}' via the cli interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a session via cli, returning the appropriate response.",
+      "command_hint": "ant beta:sessions update --session-id <id> --version <v>",
+      "test_data": {
+        "title": "test-session",
+        "agent": "agent_placeholder",
+        "environment": "env_placeholder"
+      },
+      "assertions": [
+        "The operation returns the updated session with changed fields",
+        "The version/timestamp is incremented after update",
+        "The cli call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "cli-sessions-delete",
+      "interface": "cli",
+      "entity": "sessions",
+      "operation": "delete",
+      "prompt": "Delete the session with ID '{id}' via the cli interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a session via cli, returning the appropriate response.",
+      "command_hint": "ant beta:sessions delete --session-id <id>",
+      "test_data": {
+        "title": "test-session",
+        "agent": "agent_placeholder",
+        "environment": "env_placeholder"
+      },
+      "assertions": [
+        "The operation confirms the session was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The cli call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "cli-memories-create",
+      "interface": "cli",
+      "entity": "memories",
+      "operation": "create",
+      "prompt": "Create a new memory via the cli interface with name 'test-memory' and verify it was created successfully.",
+      "expected_output": "A successful create of a memory via cli, returning the appropriate response.",
+      "command_hint": "ant beta:memories create [< config.yaml]",
+      "test_data": {
+        "key": "test-memory",
+        "content": "This is a test memory entry."
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created memory",
+        "The response confirms the memory was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The cli call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "cli-memories-read",
+      "interface": "cli",
+      "entity": "memories",
+      "operation": "read",
+      "prompt": "Retrieve the memory with ID '{id}' via the cli interface and display all its fields.",
+      "expected_output": "A successful read of a memory via cli, returning the appropriate response.",
+      "command_hint": "ant beta:memories retrieve --memory-id <id>",
+      "test_data": {
+        "key": "test-memory",
+        "content": "This is a test memory entry."
+      },
+      "assertions": [
+        "The operation returns the memory data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The cli call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for memory"
+      ]
+    },
+    {
+      "id": "cli-memories-update",
+      "interface": "cli",
+      "entity": "memories",
+      "operation": "update",
+      "prompt": "Update the memory with ID '{id}' via the cli interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a memory via cli, returning the appropriate response.",
+      "command_hint": "ant beta:memories update --memory-id <id> --version <v>",
+      "test_data": {
+        "key": "test-memory",
+        "content": "This is a test memory entry."
+      },
+      "assertions": [
+        "The operation returns the updated memory with changed fields",
+        "The version/timestamp is incremented after update",
+        "The cli call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "cli-memories-delete",
+      "interface": "cli",
+      "entity": "memories",
+      "operation": "delete",
+      "prompt": "Delete the memory with ID '{id}' via the cli interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a memory via cli, returning the appropriate response.",
+      "command_hint": "ant beta:memories delete --memory-id <id>",
+      "test_data": {
+        "key": "test-memory",
+        "content": "This is a test memory entry."
+      },
+      "assertions": [
+        "The operation confirms the memory was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The cli call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    },
+    {
+      "id": "cli-agent-teams-create",
+      "interface": "cli",
+      "entity": "agent-teams",
+      "operation": "create",
+      "prompt": "Create a new agent-team via the cli interface with name 'test-team' and verify it was created successfully.",
+      "expected_output": "A successful create of a agent-team via cli, returning the appropriate response.",
+      "command_hint": "ant beta:agent_teams create [< config.yaml]",
+      "test_data": {
+        "name": "test-team",
+        "agents": [
+          {
+            "name": "leader",
+            "role": "coordinator"
+          }
+        ]
+      },
+      "assertions": [
+        "The operation returns a valid identifier for the created agent-team",
+        "The response confirms the agent-team was created with the provided name/title",
+        "The response includes a timestamp or version number",
+        "The cli call uses the correct endpoint/method for creation"
+      ]
+    },
+    {
+      "id": "cli-agent-teams-read",
+      "interface": "cli",
+      "entity": "agent-teams",
+      "operation": "read",
+      "prompt": "Retrieve the agent-team with ID '{id}' via the cli interface and display all its fields.",
+      "expected_output": "A successful read of a agent-team via cli, returning the appropriate response.",
+      "command_hint": "ant beta:agent_teams retrieve --agent-team-id <id>",
+      "test_data": {
+        "name": "test-team",
+        "agents": [
+          {
+            "name": "leader",
+            "role": "coordinator"
+          }
+        ]
+      },
+      "assertions": [
+        "The operation returns the agent-team data matching the requested ID",
+        "The response includes all expected fields (id, name, description or equivalent)",
+        "The cli call uses the correct endpoint/method for retrieval",
+        "The response format matches the expected schema for agent-team"
+      ]
+    },
+    {
+      "id": "cli-agent-teams-update",
+      "interface": "cli",
+      "entity": "agent-teams",
+      "operation": "update",
+      "prompt": "Update the agent-team with ID '{id}' via the cli interface to change its description to 'Updated by eval', then verify the change.",
+      "expected_output": "A successful update of a agent-team via cli, returning the appropriate response.",
+      "command_hint": "ant beta:agent_teams update --agent-team-id <id> --version <v>",
+      "test_data": {
+        "name": "test-team",
+        "agents": [
+          {
+            "name": "leader",
+            "role": "coordinator"
+          }
+        ]
+      },
+      "assertions": [
+        "The operation returns the updated agent-team with changed fields",
+        "The version/timestamp is incremented after update",
+        "The cli call includes the version lock for optimistic concurrency",
+        "Unchanged fields retain their original values"
+      ]
+    },
+    {
+      "id": "cli-agent-teams-delete",
+      "interface": "cli",
+      "entity": "agent-teams",
+      "operation": "delete",
+      "prompt": "Delete the agent-team with ID '{id}' via the cli interface and confirm it no longer exists.",
+      "expected_output": "A successful delete of a agent-team via cli, returning the appropriate response.",
+      "command_hint": "ant beta:agent_teams delete --agent-team-id <id>",
+      "test_data": {
+        "name": "test-team",
+        "agents": [
+          {
+            "name": "leader",
+            "role": "coordinator"
+          }
+        ]
+      },
+      "assertions": [
+        "The operation confirms the agent-team was deleted",
+        "A subsequent read of the same ID returns 404 or empty result",
+        "The cli call uses the correct endpoint/method for deletion",
+        "The operation is idempotent (re-deleting does not error fatally)"
+      ]
+    }
+  ]
+}

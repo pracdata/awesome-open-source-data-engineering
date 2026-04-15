@@ -1,0 +1,32 @@
+name: Feature Request
+description: Suggest an enhancement or new capability
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or motivation
+      description: What problem does this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: How should this work?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Crawler / Spider
+        - Data models
+        - Claude Code skills
+        - Claude Code agents
+        - CI/CD
+        - Documentation
+        - Other
+    validations:
+      required: true

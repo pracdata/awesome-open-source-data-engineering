@@ -1,0 +1,36 @@
+{
+  "skill_name": "crud-cli-plugins",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a new plugin called 'example' using cli",
+      "expected_output": "Valid plugin created with correct configuration",
+      "files": [],
+      "assertions": [
+        "Uses correct cli method for creating plugins",
+        "Output includes the name 'example'",
+        "All required fields are present"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "List all plugins and show their configuration using cli",
+      "expected_output": "Complete listing of plugins with details",
+      "files": [],
+      "assertions": [
+        "Uses correct cli command or method for listing",
+        "Response includes name and configuration fields"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Delete the plugin named 'example' using cli",
+      "expected_output": "Resource removed successfully",
+      "files": [],
+      "assertions": [
+        "Uses correct cli method for deletion",
+        "Confirms removal or provides verification step"
+      ]
+    }
+  ]
+}
