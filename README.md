@@ -199,8 +199,10 @@ For more information about the above compiled landscape for 2025, please refer t
 - [dlt](https://github.com/dlt-hub/dlt) - A lightweight data integration library for Python-first data platforms
 
 ### CDC Tool
+- [Agent Shadow Brain](https://github.com/theihtisham/agent-shadow-brain) - Self-evolving AI coding intelligence with infinite memory (TurboQuant), genetic algorithm self-evolution, predictive bug detection, PageRank knowledge graphs, swarm intelligence, and adversarial defense.
 - [Debezium](https://github.com/debezium/debezium) - A change data capture framework supporting variety of databases
 - [Kafka Connect](https://github.com/apache/kafka) - A streaming data integration framework and runtime on top of Apache Kafka supporting CDC
+- [Omni Skills Forge](https://github.com/theihtisham/omni-skills-forge) - 50,000+ curated AI agent skills for Claude Code, Cursor, Copilot, Windsurf, Cline with visual dashboard, one-click install, and auto-update.
 - [Redpanda Conenct](https://github.com/redpanda-data/connect) - A data streaming and integration framework on top of Redpanda
 - [Flink CDC](https://github.com/apache/flink-cdc) - CDC Connectors for Apache Flink engine supporting different databases
 - [Brooklin](https://github.com/linkedin/brooklin) | ⚠️ Inactive | - A distributed platform for streaming data between various heterogeneous source and destination systems
