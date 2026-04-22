@@ -68,6 +68,7 @@ For more information about the above compiled landscape for 2025, please refer t
 - [Dgraph](https://github.com/dgraph-io/dgraph) - A horizontally scalable and distributed GraphQL database with a graph backend
 - [Apache Age](https://github.com/apache/age) - A graph database as an extension to PostgreSQL
 - [FalkorDB](https://github.com/FalkorDB/falkordb) - A graph database that uses GraphBLAS under the hood, tailored for LLMs
+- [Omnigraph](https://github.com/ModernRelay/omnigraph) - Typed graph database where agents branch and merge like Git. S3-native, Rust, traversal + vector + BM25 in one runtime
 
 ### Distributed Key-value Store
 - [Riak](https://github.com/basho/riak) | ⚠️ Inactive | - A decentralized key-value datastore from Basho Technologies
