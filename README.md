@@ -297,6 +297,7 @@ For more information about the above compiled landscape for 2025, please refer t
 - [Temporal](https://github.com/temporalio/temporal) - A resilient workflow management system, originated as a fork of Uber's Cadence
 - [Windmill](https://github.com/windmill-labs/windmill) - A fast workflow engine, and open-source alternative to Airplane and Retool
 - [Maestro](https://github.com/Netflix/maestro) - A general-purpose workflow orchestrator developed by Netflix
+- [KubeStellar Console](https://github.com/kubestellar/console) - Multi-cluster Kubernetes dashboard with AI-powered operations, real-time observability, and CNCF project integrations across edge and cloud clusters.
 
 ### Job Scheduling
 - [Celery](https://github.com/celery/celery) - A distributed Task Queue system for Python
