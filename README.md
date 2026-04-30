@@ -211,6 +211,7 @@ For more information about the above compiled landscape for 2025, please refer t
 
 ### Data Migration
 - [DBmate](https://github.com/amacneil/dbmate) - A lightweight, framework-agnostic database migration tool.
+- [d-migrate](https://github.com/pt9912/d-migrate) - A database-independent CLI tool for schema migration, reverse engineering, and streaming data transfer across PostgreSQL, MySQL, and SQLite
 - [Ingestr](https://github.com/bruin-data/ingestr) - A CLI tool to copy data between any databases with a single command
 - [Sling](https://github.com/slingdata-io/sling-cli) - A CLI tool to transfer data from a source to target storage/database
 
