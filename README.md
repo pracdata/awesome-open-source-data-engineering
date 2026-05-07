@@ -476,4 +476,5 @@ For more information about the above compiled landscape for 2025, please refer t
 - [Superduper](https://github.com/superduper-io/superduper) - a Python based framework for building AI-data workflows and applications
 - [Cognee](https://github.com/topoteretes/cognee) - LLM Memory Engine for implementing LLM Workflows
 - [vLLM](https://github.com/vllm-project/vllm) - A high-throughput and memory-efficient inference and serving engine for LLMs
+- [AI for Database](https://aifordatabase.com) - Agentic AI for databases — natural language queries, self-refreshing dashboards, and automated workflows triggered by database changes
 
