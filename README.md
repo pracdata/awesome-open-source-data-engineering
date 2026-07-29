@@ -456,6 +456,7 @@ For more information about the above compiled landscape for 2025, please refer t
 - [Vespa](https://github.com/vespa-engine/vespa) - A storage to organize vectors, tensors, text and structured data
 - [vald](https://github.com/vdaas/vald) - A scalable distributed approximate nearest neighbor (ANN) dense vector search engine
 - [pgvector](https://github.com/pgvector/pgvector) - A vector similarity search as a Postgres extension
+- [Infino](https://github.com/infino-ai/infino) - An embedded engine for vector, full-text and SQL queries over Parquet on object storage
 
 ### MLOps
 - [mlflow](https://github.com/mlflow/mlflow) - A a platform to streamline machine learning development and lifecycle management
