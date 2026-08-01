@@ -146,6 +146,7 @@ For more information about the above compiled landscape for 2025, please refer t
 - [pg_analytics](https://github.com/paradedb/pg_analytics) - A DuckDB-powered analytics extension for Postgres
 - [pg_mooncake](https://github.com/Mooncake-Labs/pg_mooncake) - A columnar storage extension for Postres based on DuckDB
 - [pg_parquet](https://github.com/CrunchyData/pg_parquet) - A Postgres extension for reading and writing data lake Parquet files
+- [KoldStore](https://github.com/kalamdb/koldstore) - PostgreSQL tiered-storage that moves historical rows to Parquet while keeping the original table fully queryable and supporting updates and deletes.
 
 ## DATA LAKE PLATFORM
 
