@@ -98,6 +98,7 @@ For more information about the above compiled landscape for 2025, please refer t
 - [OpenSearch](https://github.com/opensearch-project/OpenSearch) - A community-driven, open source fork of Elasticsearch and Kibana
 - [Quickwit](https://github.com/quickwit-oss/quickwit) - A fast cloud-native search engine for observability data
 - [ParadeDB](https://github.com/paradedb/paradedb) - A search engine built on Postgres
+- [Manticore Search](https://github.com/manticoresoftware/manticoresearch) - An open-source search database for full-text, vector, and hybrid search with real-time indexing and SQL
 
 ### Streaming Database
 - [RisingWave](https://github.com/risingwavelabs/risingwave) - A scalable Postgres for stream processing, analytics, and management
