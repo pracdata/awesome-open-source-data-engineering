@@ -403,7 +403,8 @@ For more information about the above compiled landscape for 2025, please refer t
 ## ANALYTICS & VISUALISATION
 
 ### BI & Dashboard
-- [Apache Superset](https://github.com/apache/superset) - A poular open source data visualization and data exploration platform 
+- [Apache Superset](https://github.com/apache/superset) - A poular open source data visualization and data exploration platform
+- [Helical Insight](https://www.helicalinsight.com/) - A free and open-source unified BI and analytics platform with self-service analytics, dashboards, AI-powered insights, reporting, and embedded analytics
 - [Metabase](https://github.com/metabase/metabase) - A simple data visualisation and exploration dashboard
 - [Redash](https://github.com/getredash/redash) - A tool to explore, query, visualize, and share data with many data source connectors
 - [Lightdash](https://github.com/lightdash/lightdash) - A self-service BI to turn dbt project into a full-stack BI platform
