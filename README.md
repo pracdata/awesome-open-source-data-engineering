@@ -297,6 +297,7 @@ For more information about the above compiled landscape for 2025, please refer t
 - [Temporal](https://github.com/temporalio/temporal) - A resilient workflow management system, originated as a fork of Uber's Cadence
 - [Windmill](https://github.com/windmill-labs/windmill) - A fast workflow engine, and open-source alternative to Airplane and Retool
 - [Maestro](https://github.com/Netflix/maestro) - A general-purpose workflow orchestrator developed by Netflix
+- [Bruin](https://github.com/bruin-data/bruin) - An end-to-end data pipeline framework combining ingestion, SQL & Python transformation, and data quality in a single CLI
 
 ### Job Scheduling
 - [Celery](https://github.com/celery/celery) - A distributed Task Queue system for Python
