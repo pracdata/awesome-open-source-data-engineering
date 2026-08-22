@@ -322,6 +322,7 @@ For more information about the above compiled landscape for 2025, please refer t
 ### Data Modeling
 - [dbt](https://github.com/dbt-labs/dbt-core) - A data modeling and transformation tool for data pipelines
 - [SQLMesh](https://github.com/TobikoData/sqlmesh) - A data transformation and modeling framework that is backwards compatible with dbt
+- [dbt-ci](https://github.com/datablock-dev/dbt-ci) - A state-based CI tool for dbt that runs only the changed models and drops deleted ones from the warehouse
 
 ### Pipeline Observability
 - [Elementry](https://github.com/elementary-data/elementary) - A dbt-native data observability solution to monitor data pipelines
