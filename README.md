@@ -325,6 +325,7 @@ For more information about the above compiled landscape for 2025, please refer t
 
 ### Pipeline Observability
 - [Elementry](https://github.com/elementary-data/elementary) - A dbt-native data observability solution to monitor data pipelines
+- [HighWater](https://github.com/FrankFu916/highwater) - A self-hosted data freshness & quality monitor: YAML checks watch tables, APIs and files for staleness, schema drift, null spikes and volume anomalies
 
 
 ## DATA INFRASTRUCTURE
