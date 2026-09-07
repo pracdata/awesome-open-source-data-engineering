@@ -310,6 +310,7 @@ For more information about the above compiled landscape for 2025, please refer t
 - [Pandera](https://github.com/unionai-oss/pandera) - A light-weight, flexible, and expressive statistical data testing library
 - [Soda](https://github.com/sodadata/soda-core) - A CLI tool and Python library for data quality testing
 - [Pydantic](https://github.com/pydantic/pydantic) - A data validation library using Python type hints 
+- [venn](https://github.com/KonMam/venn) - A CLI tool for row-level diffs of files, directories and lake tables, across formats and larger than memory
 
 ### Data Versioning
 - [LakeFS](https://github.com/treeverse/lakeFS) - A data version control for data stored in data lakes
