@@ -197,6 +197,7 @@ For more information about the above compiled landscape for 2025, please refer t
 - [Apache SeaTunnel](https://github.com/apache/seatunnel) - A high-performance, distributed data integration tool supporting vairous ingestion patterns
 - [Estuary Flow](https://github.com/estuary/flow) - A real-time ETL and data pipeline platform for quick data integration
 - [dlt](https://github.com/dlt-hub/dlt) - A lightweight data integration library for Python-first data platforms
+- [OLake](https://github.com/datazip-inc/olake) - A CDC and batch replication tool that moves data from Postgres, MySQL, MongoDB, Oracle, SQL Server, DB2, Kafka and S3 into Apache Iceberg, with table maintenance
 
 ### CDC Tool
 - [Debezium](https://github.com/debezium/debezium) - A change data capture framework supporting variety of databases
