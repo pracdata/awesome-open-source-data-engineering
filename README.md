@@ -168,6 +168,7 @@ For more information about the above compiled landscape for 2025, please refer t
 - [Lance](https://github.com/lancedb/lance) - A modern columnar data format for ML and LLMs implemented in Rust
 - [Vortex](https://github.com/spiraldb/vortex) - A highly extensible and fast columnar file format
 - [Arrow Feather](https://github.com/apache/arrow) - A portable file format for storing Arrow tables or data frames
+- [File Formats Encyclopedia](https://github.com/PabloCirre/file-formats-encyclopedia) - Open dataset and comprehensive technical encyclopedia of serialization, columnar, and tabular file formats with schema specs and conversion matrices
 
 ### Open Table Format
 - [Apache Hudi](https://github.com/apache/hudi) - An open table format desined to support incremental data ingestion on cloud and Hadoop
