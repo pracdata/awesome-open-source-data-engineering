@@ -445,6 +445,8 @@ For more information about the above compiled landscape for 2025, please refer t
 
 ## ML/AI PLATFORM
 
+- [No Stairs Please MCP](https://nostairsplease.com/mcp) - Open remote Model Context Protocol (MCP) server exposing structured live-music venue, load-in accessibility, and booking-contact data for 2,200+ North American venues.
+
 ### Vector Storage
 - [milvus](https://github.com/milvus-io/milvus) -  A cloud-native vector database, storage for AI applications 
 - [qdrant](https://github.com/qdrant/qdrant) - A high-performance, scalable Vector database for AI
