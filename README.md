@@ -208,6 +208,7 @@ For more information about the above compiled landscape for 2025, please refer t
 - [Artie Transfer](https://github.com/artie-labs/transfer) - A real-time CDC replication solution between OLTP and OLAP databases
 - [Dozer](https://github.com/getdozer/dozer) - A real-time CDC based data integration tool between various sources and sinks
 - [PeerDB](https://github.com/PeerDB-io/peerdb) - A CDC tool to replicate data from Postgres to data warehouses, queues and other storage
+- [OLake](https://github.com/datazip-inc/olake-go) - A CDC and full-load replication engine from databases, Kafka and S3 into Apache Iceberg or Parquet, without Spark, Flink or Kafka
 
 ### Data Migration
 - [DBmate](https://github.com/amacneil/dbmate) - A lightweight, framework-agnostic database migration tool.
